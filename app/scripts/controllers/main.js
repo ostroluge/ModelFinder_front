@@ -7,11 +7,14 @@
  * # MainCtrl
  * Controller of the modelFinderApp
  */
-angular.module('modelFinderApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
+modelFinderApp.controller('MainCtrl', function ($scope, $http) {
+  $http({
+    method: 'GET',
+    url: 'http://localhost:8080/adminList',
+  }).success(function(data){
+    $scope.message = data;
+  }).error(function(){
+    alert("error");
   });
+});
