@@ -1,0 +1,13 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="LoginCtrl">
+    <form novalidate class="css-form">
+      E-mail: <br>
+      <input type="email" ng-model="userName" required> <br>
+      Password: <br>
+      <input type="password" ng-model="userPassword" required> <br>
+      <input type="submit" ng-click="authenticate(user)" value="Connexion">
+    </form>
+    <p>{{send}}</p>
+    <p>{{messageAuth}}</p>
+  </div>
+</div>
