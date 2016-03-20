@@ -15,20 +15,9 @@ modelFinderApp.controller('LoginCtrl', function ($scope, $http) {
 
   $scope.authenticate = function () {
 
-    //var data = JSON.stringify({
-    //  email: $scope.userName,
-    //  password: $scope.userPassword
-    //});
-    //
-    //$scope.send = data
-
     var postObject = new Object();
     postObject.mail = $scope.userName;
     postObject.password = $scope.userPassword;
-
-    var jsonString = "Hello";
-    var jsonLol = JSON.stringify(jsonString);
-    jsonLol = JSON.parse(jsonLol);
 
     $http({
       url: "http://localhost:8080/login",
