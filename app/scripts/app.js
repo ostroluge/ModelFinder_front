@@ -18,6 +18,10 @@ modelFinderApp.config(['$routeProvider',
       .when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
       });
   }
 ]);
