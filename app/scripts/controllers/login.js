@@ -15,35 +15,38 @@ modelFinderApp.controller('LoginCtrl', function ($scope, $http) {
 
   $scope.authenticate = function () {
 
-    var data = JSON.stringify({
-      email: $scope.userName,
-      password: $scope.userPassword
-    });
-
-    $scope.send = data
+    //var data = JSON.stringify({
+    //  email: $scope.userName,
+    //  password: $scope.userPassword
+    //});
+    //
+    //$scope.send = data
 
     var postObject = new Object();
-    postObject.email = $scope.userName;
+    postObject.mail = $scope.userName;
     postObject.password = $scope.userPassword;
 
+    var jsonString = "Hello";
+    var jsonLol = JSON.stringify(jsonString);
+    jsonLol = JSON.parse(jsonLol);
+
     $http({
-      url: 'http://localhost:8080/login',
-      method: 'POST',
+      url: "http://localhost:8080/login",
+      method: "POST",
+      dataType: "json",
       data: postObject,
-      headers: [{'Content-Type': 'application/json'}]
+      headers: {
+        "Content-Type": "application/json"
+      }
     }).success(function successCallback(response) {
-        $scope.messageAuth = "Login successful"
+        if (response.response == "success") {
+          $scope.messageAuth = "Login successful"
+        } else {
+          $scope.messageAuth = "Login failed"
+        }
       })
       .error(function errorCallback(response) {
-        $scope.messageAuth = "Login failed"
+        $scope.messageAuth = "Error " + response
       });
-
-    //$http.post('http://localhost:8080/login', data)
-    //  .success(function successCallback(response) {
-    //    $scope.messageAuth = "Login successful"
-    //  })
-    //  .error(function errorCallback(response) {
-    //    $scope.messageAuth = "Login failed"
-    //  })
   };
 });
