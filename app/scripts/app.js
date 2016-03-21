@@ -29,13 +29,13 @@ modelFinderApp.config(['$routeProvider',
         controller:'AnnonceCtrl', 
         templateUrl:'views/annonce.html', 
     }).
-    otherwise({redirectTo:'/'});  
 =======
-      })
-      .when('/login', {
+    .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       });
+    otherwise({redirectTo:'/'});  
+     
 >>>>>>> refs/remotes/origin/master
   }
 ]);
