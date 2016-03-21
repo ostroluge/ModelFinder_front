@@ -19,6 +19,7 @@ modelFinderApp.config(['$routeProvider',
     when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+<<<<<<< HEAD
       }).
     when('/student', {
         controller:'StudentCtrl', 
@@ -29,5 +30,12 @@ modelFinderApp.config(['$routeProvider',
         templateUrl:'views/annonce.html', 
     }).
     otherwise({redirectTo:'/'});  
+=======
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginCtrl'
+      });
+>>>>>>> refs/remotes/origin/master
   }
 ]);
