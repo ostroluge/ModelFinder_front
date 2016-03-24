@@ -13,13 +13,10 @@ var modelFinderApp = angular.module('modelFinderApp', ['ngRoute']);
 
 modelFinderApp.config(['$routeProvider',
   function($routeProvider) {
-
-   
     $routeProvider.
     when('/main', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
-<<<<<<< HEAD
       }).
     when('/student', {
         controller:'StudentCtrl', 
@@ -29,13 +26,10 @@ modelFinderApp.config(['$routeProvider',
         controller:'AnnonceCtrl', 
         templateUrl:'views/annonce.html', 
     }).
-=======
-    .when('/login', {
+    when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
-      });
+      }).
     otherwise({redirectTo:'/'});  
-     
->>>>>>> refs/remotes/origin/master
-  }
+    }
 ]);
