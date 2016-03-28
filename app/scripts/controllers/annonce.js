@@ -8,7 +8,7 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('AnnonceCtrl', function ($scope, $http) {
+modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
   $http({
     method: 'GET',
     url: 'http://localhost:8080/annonceList',
@@ -17,4 +17,9 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http) {
   }).error(function(){
     alert("error");
   });
+
+  $scope.go = function (path) {
+    $location.path(path);
+  };
+
 });
