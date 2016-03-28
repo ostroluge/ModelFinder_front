@@ -26,7 +26,7 @@ modelFinderApp.config(['$routeProvider',
     }).
     when('/annonces', {
         controller:'AnnonceCtrl',
-        templateUrl:'views/annonce.html',
+        templateUrl:'views/liste_annonces.html',
     }).
     when('/login', {
         templateUrl: 'views/login.html',
