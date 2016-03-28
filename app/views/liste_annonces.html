@@ -1,6 +1,6 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="AnnonceCtrl">
-    <table border="1" style="width:100%" ng-repeat="annonce in message">
+    <table border="1" style="width:100%">
       <tr align="center">
         <td>Id</td>
         <td>Titre</td>
@@ -10,7 +10,7 @@
         <td>Thème prestation</td>
         <td>Détails</td>
       </tr>
-      <tr align="center">
+      <tr align="center" ng-repeat="annonce in message">
         <td>{{ annonce.id }}</td>
         <td>{{ annonce.titre }}</td>
         <td>{{ annonce.date_debut }}</td>
