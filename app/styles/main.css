@@ -1,3 +1,4 @@
+/*Styles génériques */
 header{
   background: #006A5C url(../images/logo_blanc.png) no-repeat;
   background-position: 8px 8px;
@@ -18,7 +19,7 @@ body{
 }
 
 
-ul ul {display: none;} 
+ul ul {display: none;}
 
 ul:hover ul {display:block;}
 
@@ -32,7 +33,7 @@ ul:hover ul {display:block;}
 }
 
 .menu_contenu{
-  padding : 30px 7px 7px 7px; 
+  padding : 30px 7px 7px 7px;
 }
 
 ul{
@@ -40,7 +41,7 @@ ul{
 }
 
 ul a{
-   text-decoration:none; 
+   text-decoration:none;
    color : #006A5C;
    font-weight: bold;
 }
@@ -58,4 +59,26 @@ ul a{
 div{
   color : #737373;
   font-weight: bold;
+}
+
+/*Style list_annonces.html */
+.card {
+  background: #FFFFFF;
+  border: 1px solid green;
+  border-bottom: 3px solid darkgreen;
+  padding: 10px;
+  margin: 15px;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 15px;
+  color: darkgreen;
+  font-weight: bold;
+}
+
+button {
+  display: block;
+  margin: auto;
+  padding: 5px;
 }

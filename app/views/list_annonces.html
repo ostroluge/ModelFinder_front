@@ -1,34 +1,12 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="AnnonceCtrl">
-    <style>
-      .card {
-        background: #FFFFFF;
-        border: 1px solid green;
-        border-bottom: 3px solid darkgreen;
-        padding: 10px;
-        margin: 15px;
-        overflow: hidden;
-      }
-
-      h1 {
-        margin: 15px;
-        color: darkgreen;
-        font-weight: bold;
-      }
-
-      button {
-        display: block;
-        margin: auto;
-        padding: 5px;
-      }
-    </style>
+  <div ng-controller="AnnonceCtrl" ng-init="getAllAnnonces()">
     <h1>Liste des annonces</h1>
     <div class="card" ng-repeat="annonce in message">
-      {{ annonce.titre }}<br>
-      Date début : {{ annonce.date_debut }}<br>
-      Date fin : {{ annonce.date_fin }}<br>
-      Catégorie prestation : {{ annonce.categorie_prestation }}<br>
-      Thème prestation : {{ annonce.theme_prestation }}<br>
+      {{ annonce.title }}<br>
+      Date début : {{ annonce.dateBegin }}<br>
+      Date fin : {{ annonce.dateEnd }}<br>
+      Catégorie prestation : {{ annonce.categoryService }}<br>
+      Thème prestation : {{ annonce.themeService }}<br>
       <button ng-click="go('/student')">Voir les détails</button>
     </div>
   </div>
