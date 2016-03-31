@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/main.css">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
     <script src="/bower_components/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
@@ -16,27 +17,26 @@
     <script src="/bower_components/angular-route/angular-route.js"></script>
   </head>
 
-  <body ng-app="modelFinderApp">
-
-    <header>
-
-    <nav>
-      <ul class=menu>
-        <li>Menu
-          <ul class=menu_contenu>
+  <body ng-app="modelFinderApp"
+    <div class="container-fluid">
+      <header class="row">
+        <div class="col-md-12">
+        </div>
+      </header>
+      <div class="content" class="row">
+        <nav class="col-md-2">
+          <ul class="sidebar-nav">
             <li class="active"><a href="#/main">Home</a></li>
             <li class="active"><a href="#/student">Students</a></li>
             <li class="active"><a href="#/annonces">Annonces</a></li>
             <li class="active"><a href="#/login">Login</a></li>
-
+            <li class="active"><a href="#/createAnnonce">Créer annonce</a></li>
             <li><a ng-href="#/">About</a></li>
           </ul>
-        </li>
-      </ul>
-    </nav>
-    </header>
-    <div class=contenu>
-      <div ng-view="'views/main.html'" ng-controller="MainCtrl"></div>
-    </div>
+        </nav>
+        <section class="col-md-offset-1 col-md-8">
+          <div ng-view="'views/main.html'" ng-controller="MainCtrl"></div>
+        </section>
+      </div>
   </body>
 </html>

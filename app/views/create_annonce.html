@@ -1,0 +1,62 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="AnnonceCtrl">
+    <h1>Création d'une annonce</h1>
+    <form novalidate class="css-form">
+      <p>Titre:
+        <input type="text" ng-model="titleAnnonce" required>
+      </p>
+      <p> Thème:
+        <input type="text" ng-model="themeAnnonce" required>
+      </p>
+      <p>
+        Catégorie :
+        <SELECT ng-model="categoryAnnonce">
+          <OPTION>Body-painting</OPTION>
+        </SELECT>
+      </p>
+      <p>
+        Date début:
+        <input type="date" ng-model="dateBeginAnnonce" required>
+      </p>
+      <p>
+        Date fin:
+        <input type="date" ng-model="dateEndAnnonce" required>
+      </p>
+      <p> Accessoires:
+        <input type="text" ng-model="accessoriesAnnonce" required>
+      </p>
+      <p>
+        Couleur cheveux :
+        <input type="text" ng-model="hairColorAnnonce" required>
+      </p>
+      <p>
+        Longueur des cheveux :
+        <SELECT ng-model="lengthHairAnnonce">
+          <OPTION>Courts</OPTION>
+        </SELECT>
+      </p>
+      <p>
+        Carnation peau :
+        <SELECT ng-model="skinToneAnnonce">
+          <OPTION>Claire</OPTION>
+        </SELECT>
+      </p>
+      <p>
+        Taille min :
+        <input type="number" ng-model="heightMinAnnonce" required>
+      </p>
+      <p>
+        Taille max :
+        <input type="number" ng-model="heightMaxAnnonce" required>
+      </p>
+      <p>
+        Couleur des yeux :
+        <SELECT ng-model="eyeColorAnnonce">
+          <OPTION>Bleus</OPTION>
+        </SELECT>
+      </p>
+      <input type="submit" ng-click="createAnnonce()" value="Creation d'une annonce">
+    </form>
+    <p>{{messageCreation}}</p>
+  </div>
+</div>
