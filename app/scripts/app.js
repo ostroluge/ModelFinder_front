@@ -26,12 +26,16 @@ modelFinderApp.config(['$routeProvider',
     }).
     when('/annonces', {
         controller:'AnnonceCtrl',
-        templateUrl:'views/liste_annonces.html',
+        templateUrl:'views/list_annonces.html',
     }).
     when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
-      }).
+    }).
+    when('/createAnnonce', {
+      controller:'AnnonceCtrl',
+      templateUrl:'views/create_annonce.html'
+    }).
     otherwise({redirectTo:'/'});
 
   }
