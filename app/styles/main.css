@@ -1,15 +1,24 @@
+.container
+{
+    display:table;
+    height: 100%;
+    width: 100%;
+    margin-top: -50px;
+    padding-top: 50px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 /*Styles génériques */
 header{
   background: #006A5C url(../images/logo_blanc.png) no-repeat;
   background-position: 8px 8px;
   color: #FFFFFF;
-  text-align : right;
   height: 60px;
-  padding-right: 8px;
-  padding-top: 10px;
 }
 
-body{
+.{
+
   font-family:"Uni Sans";
 }
 
@@ -18,23 +27,20 @@ body{
     src: url('Uni Sans Thin.ttf');
 }
 
+.content{
+  margin-top : 25px;
+  height: 100%;
+}
+
+nav{ 
+  padding-top : 20px;
+  color: #FFFFFF; 
+  background: #006A5C;
+}
 
 ul ul {display: none;}
 
 ul:hover ul {display:block;}
-
-.menu{
-  width:100px;
-  position: absolute;
-  right: 25px;
-  border-right: 2px solid #006A5C;
-  border-bottom: 2px solid #006A5C;
-  padding: 0px 7px 7px 7px;
-}
-
-.menu_contenu{
-  padding : 30px 7px 7px 7px;
-}
 
 ul{
  list-style-type:none;
@@ -46,6 +52,7 @@ ul a{
    font-weight: bold;
 }
 
+
 .contenu{
   margin-top: 25px;
   right : 150px;
@@ -55,6 +62,7 @@ ul a{
   border: 2px solid #006A5C;
 
 }
+
 
 div{
   color : #737373;
