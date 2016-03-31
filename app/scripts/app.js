@@ -32,6 +32,10 @@ modelFinderApp.config(['$routeProvider',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       }).
+    when('/detail_annonce/:id_annonce', {
+        templateUrl: 'views/detail_annonce.html',
+        controller: 'DetailAnnonceCtrl'
+      }).
     otherwise({redirectTo:'/'});
 
   }

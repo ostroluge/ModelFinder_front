@@ -13,7 +13,8 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
     method: 'GET',
     url: 'http://localhost:8080/annonceList',
   }).success(function(data){
-    $scope.message = data;
+      $scope.message = data;
+
   }).error(function(){
     alert("error");
   });
@@ -21,5 +22,8 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
   $scope.go = function (path) {
     $location.path(path);
   };
-
+    
+    $scope.getIndex = function(annonce){
+	return $scope.message.indexOf(annonce);
+};
 });

@@ -24,12 +24,14 @@
     </style>
     <h1>Liste des annonces</h1>
     <div class="card" ng-repeat="annonce in message">
-      {{ annonce.titre }}<br>
-      Date début : {{ annonce.date_debut }}<br>
-      Date fin : {{ annonce.date_fin }}<br>
-      Catégorie prestation : {{ annonce.categorie_prestation }}<br>
-      Thème prestation : {{ annonce.theme_prestation }}<br>
-      <button ng-click="go('/student')">Voir les détails</button>
+      {{ annonce.title }}<br>
+      Date début : {{ annonce.dateBegin }}<br>
+      Date fin : {{ annonce.dateEnd }}<br>
+      Catégorie prestation : {{ annonce.categoryService }}<br>
+      Thème prestation : {{ annonce.themeService }}<br>
+        <td>{{annonce.id}}</td>
+        <td>{{getIndex(annonce)}}</td>
+        <button ng-click="go('/detail_annonce/'+annonce.id)">Voir les détails</button>
     </div>
   </div>
 </div>
