@@ -8,30 +8,23 @@
     <h1 class="titre">Liste des annonces</h1>
     <div class="card">
       <label>Date : <input ng-model="search.dateBegin"></label> <br>
-      <label>Catégorie prestation :
-        <select ng-model="search.categoryService">
-          <option></option>
-          <option>Shooting mode</option>
-          <option>Shooting beauté</option>
-          <option>Shooting SFX</option>
-          <option>Body-painting</option>
-          <option>Face-painting</option>
-        </select>
+      <label data-ng-init="getCategoriesEnum()">Catégorie prestation :
+          <select ng-model="search.categoryService">
+            <option value=""></option>
+            <option data-ng-repeat="categorie in categoriesEnum" value="{{categorie}}">{{categorie}}</option>
+          </select>
+        </p>
       </label> <br>
-      <label>Longueur des cheveux :
+      <label data-ng-init="getLengthHairEnum()">Longueur des cheveux :
         <select ng-model="search.lengthHair">
-          <option></option>
-          <option>Courts</option>
-          <option>Mi-Longs</option>
-          <option>Longs</option>
+        <option value=""></option>
+        <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
         </select>
       </label> <br>
-      <label>Carnation de la peau :
+      <label data-ng-init="getSkinToneEnum()">Carnation de la peau :
         <select ng-model="search.skinTone">
-          <option></option>
-          <option>Claire</option>
-          <option>Moyenne</option>
-          <option>Foncée</option>
+          <option value=""></option>
+          <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
         </select>
       </label>
     </div>

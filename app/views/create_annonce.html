@@ -8,11 +8,12 @@
       <p> Thème:
         <input type="text" ng-model="themeAnnonce" required>
       </p>
-      <p>
-        Catégorie :
-        <SELECT ng-model="categoryAnnonce">
-          <OPTION>Body-painting</OPTION>
-        </SELECT>
+      <p data-ng-init="getCategoriesEnum()">
+        Catégories :
+      <select ng-model="categoryAnnonce">
+        <option value=""></option>
+        <option data-ng-repeat="categorie in categoriesEnum" value="{{categorie}}">{{categorie}}</option>
+      </select><br>
       </p>
       <p>
         Date début:
@@ -29,17 +30,19 @@
         Couleur cheveux :
         <input type="text" ng-model="hairColorAnnonce" required>
       </p>
-      <p>
+      <p data-ng-init="getLengthHairEnum()">
         Longueur des cheveux :
-        <SELECT ng-model="lengthHairAnnonce">
-          <OPTION>Courts</OPTION>
-        </SELECT>
+        <select ng-model="lengthHairAnnonce">
+          <option value=""></option>
+          <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
+        </select><br>
       </p>
-      <p>
-        Carnation peau :
-        <SELECT ng-model="skinToneAnnonce">
-          <OPTION>Claire</OPTION>
-        </SELECT>
+      <p data-ng-init="getSkinToneEnum()">
+        Carnation de peau :
+        <select ng-model="skinToneAnnonce">
+          <option value=""></option>
+          <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
+        </select><br>
       </p>
       <p>
         Taille min :
@@ -49,11 +52,12 @@
         Taille max :
         <input type="number" ng-model="heightMaxAnnonce" required>
       </p>
-      <p>
+      <p data-ng-init="getEyeColorEnum()">
         Couleur des yeux :
-        <SELECT ng-model="eyeColorAnnonce">
-          <OPTION>Bleus</OPTION>
-        </SELECT>
+        <select ng-model="eyeColorAnnonce">
+          <option value=""></option>
+          <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
+        </select><br>
       </p>
       <input type="submit" ng-click="createAnnonce()" value="Creation d'une annonce">
     </form>
