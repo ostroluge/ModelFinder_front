@@ -1,14 +1,13 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="AnnonceCtrl" ng-init="message = [{title:'Annonce 1', dateBegin:'23/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Photo'},
-  {title:'Annonce 2', dateBegin:'03/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Painting'},
-  {title:'Annonce 3', dateBegin:'12/04/1994', dateEnd:'24/01/1994', categoryService:'Body-painting', themeService:'Photo'}]
-  ">
+  <div ng-controller="AnnonceCtrl" ng-init="getAllAnnonces()">
 
-    <!--getAllAnnonces()-->
-
+    <!--message = [{title:'Annonce 1', dateBegin:'23/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Photo', lengthHair:'Courts', skinTone:'Claire'},-->
+    <!--{title:'Annonce 2', dateBegin:'03/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Painting', lengthHair:'Courts', skinTone:'Moyenne'},-->
+    <!--{title:'Annonce 3', dateBegin:'12/04/1994', dateEnd:'24/01/1994', categoryService:'Body-painting', themeService:'Photo', lengthHair:'Longs', skinTone:'Foncée'}]-->
 
     <h1>Liste des annonces</h1> <br>
     <div class="card">
+      <label>Date : <input ng-model="search.dateBegin"></label> <br>
       <label>Catégorie prestation :
         <select ng-model="search.categoryService">
           <option></option>
@@ -19,8 +18,22 @@
           <option>Face-painting</option>
         </select>
       </label> <br>
-      <label>Date : <input ng-model="search.dateBegin"></label> <br>
-      <label>Thème prestation : <input ng-model="search.themeService"></label>
+      <label>Longueur des cheveux :
+        <select ng-model="search.lengthHair">
+          <option></option>
+          <option>Courts</option>
+          <option>Mi-Longs</option>
+          <option>Longs</option>
+        </select>
+      </label> <br>
+      <label>Carnation de la peau :
+        <select ng-model="search.skinTone">
+          <option></option>
+          <option>Claire</option>
+          <option>Moyenne</option>
+          <option>Foncée</option>
+        </select>
+      </label>
     </div>
     <div class="card" ng-repeat="annonce in message | filter:search:strict">
       {{ annonce.title }}<br>

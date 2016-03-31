@@ -9,18 +9,6 @@
  */
 
 modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
-  $scope.titleAnnonce = "";
-  $scope.themeAnnonce = "";
-  $scope.categoryAnnonce = "";
-  $scope.dateBeginAnnonce="";
-  $scope.dateEndAnnonce="";
-  $scope.accessoriesAnnonce="";
-  $scope.hairColorAnnonce="";
-  $scope.lengthHairAnnonce="";
-  $scope.skinToneAnnonce="";
-  $scope.heightMinAnnonce="";
-  $scope.heightMaxAnnonce="";
-  $scope.eyeColorAnnonce="";
 
   $scope.getAllAnnonces = function(){
     $http({
