@@ -1,0 +1,46 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="DetailAnnonceCtrl">
+    <style>
+      .card {
+        background: #FFFFFF;
+        border: 1px solid green;
+        border-bottom: 3px solid darkgreen;
+        padding: 10px;
+        margin: 15px;
+        overflow: hidden;
+      }
+
+      h1 {
+        margin: 15px;
+        color: darkgreen;
+        font-weight: bold;
+      }
+
+      button {
+        display: block;
+        margin: auto;
+        padding: 5px;
+      }
+    </style>
+      
+    <h1>Détails de l'annonce</h1>
+    <div class="card">
+        {{$scope.annonce.title}}
+        ID : {{id}}<br>
+        Postée par l'etudiant n° : {{etudiant_id}}<br>
+        Id du groupe d'accessoire : {{groupe_accessoire_id}}<br>
+        Titre : {{ titre }}<br>
+        Date début : {{ date_debut }}<br>
+        Date fin : {{ date_fin }}<br>
+        Catégorie prestation : {{ categorie_prestation }}<br>
+        Thème prestation : {{ theme_prestation }}<br>
+        Carnation de peau : {{carnation_peau}}<br>
+        Couleur des yeux : {{couleur_yeux}}<br>
+        Couleur de cheveux : {{couleur_cheveux}}<br>
+        Longueur de cheveux : {{longueur_cheveux}}<br>
+        Taille modèle min : {{taille_min}}<br>
+        Taille modèle max : {{taille_max}}<br>
+        Commentaire : {{commentaire}}<br>
+    </div>
+  </div>
+</div>
