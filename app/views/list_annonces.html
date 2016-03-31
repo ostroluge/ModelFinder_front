@@ -5,7 +5,7 @@
     <!--{title:'Annonce 2', dateBegin:'03/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Painting', lengthHair:'Courts', skinTone:'Moyenne'},-->
     <!--{title:'Annonce 3', dateBegin:'12/04/1994', dateEnd:'24/01/1994', categoryService:'Body-painting', themeService:'Photo', lengthHair:'Longs', skinTone:'Foncée'}]-->
 
-    <h1>Liste des annonces</h1> <br>
+    <h1 class="titre">Liste des annonces</h1>
     <div class="card">
       <label>Date : <input ng-model="search.dateBegin"></label> <br>
       <label>Catégorie prestation :
@@ -41,7 +41,7 @@
       Date fin : {{ annonce.dateEnd }}<br>
       Catégorie prestation : {{ annonce.categoryService }}<br>
       Thème prestation : {{ annonce.themeService }}<br>
-      <button ng-click="go('/detail_annonce/'+annonce.id)">Voir les détails</button>
+      <button class="button" ng-click="go('/detail_annonce/'+annonce.id)">Voir les détails</button>
     </div>
   </div>
 </div>
