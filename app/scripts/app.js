@@ -32,9 +32,13 @@ modelFinderApp.config(['$routeProvider',
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
     }).
-    when('/detail_annonce/:id_annonce', {
+    when('/detailAnnonce/:id_annonce', {
         templateUrl: 'views/detail_annonce.html',
         controller: 'DetailAnnonceCtrl'
+    }).
+      when('/updateAnnonce/:idAnnonce',{
+      controller: 'ModifyAnnonceCtrl',
+      templateUrl:'views/modify_annonce.html'
     }).
     when('/createAnnonce', {
       controller:'AnnonceCtrl',

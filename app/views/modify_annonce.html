@@ -1,6 +1,6 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="AnnonceCtrl">
-    <h1>Création d'une annonce</h1>
+  <div ng-controller="ModifyAnnonceCtrl" data-ng-init="getDetailAnnonce()">
+    <h1>Modification d'une annonce</h1>
     <form novalidate class="css-form">
       <p>Titre:
         <input type="text" ng-model="titleAnnonce" required>
@@ -63,8 +63,8 @@
         Commentaire :
         <input type="text" ng-model="comment">
       </p>
-      <input type="submit" ng-click="createAnnonce()" value="Creation d'une annonce">
+      <input type="submit" ng-click="updateAnnonce()" value="Editer l'annonce">
     </form>
-    <p>{{messageCreation}}</p>
+    <p>{{messageUpdate}}</p>
   </div>
 </div>

@@ -2,37 +2,45 @@
 
 /**
  * @ngdoc function
- * @name modelFinderApp.controller:AnnonceCtrl
+ * @name modelFinderApp.controller:ModifyAnnonceCtrl
  * @description});
- * # AnnonceCtrl
+ * # ModifyAnnonceCtrl
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
+modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $location, $routeParams) {
 
-  $scope.getAllAnnonces = function () {
+  $scope.getDetailAnnonce = function() {
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/annonceList',
+      url: 'http://localhost:8080/detailAnnonce/' + $routeParams.idAnnonce,
     }).success(function (data) {
-      $scope.message = data;
+
+      $scope.id = data.id;
+      $scope.etudiant_id = data.idStudent;
+      $scope.accessoriesAnnonce = data.idAccessories;
+      $scope.titleAnnonce = data.title;
+      $scope.dateBeginAnnonce = new Date(data.dateBegin);
+      $scope.dateEndAnnonce = new Date(data.dateEnd);
+      $scope.categoryAnnonce = data.categoryService;
+      $scope.themeAnnonce = data.themeService;
+      $scope.skinToneAnnonce = data.skinTone;
+      $scope.eyeColorAnnonce = data.eyeColor;
+      $scope.hairColorAnnonce = data.hairColor;
+      $scope.lengthHairAnnonce = data.lengthHair;
+      $scope.heightMinAnnonce = data.heightMin;
+      $scope.heightMaxAnnonce = data.heightMax;
+      $scope.comment = data.comment;
+
     }).error(function () {
       alert("error");
     });
   };
 
-
-  $scope.go = function (path) {
-    $location.path(path);
-  };
-
-  $scope.getIndex = function (annonce) {
-    return $scope.message.indexOf(annonce);
-  };
-
-  $scope.createAnnonce = function () {
+  $scope.updateAnnonce = function () {
 
     var postObject = new Object();
+    postObject.id= $routeParams.idAnnonce;
     postObject.title = $scope.titleAnnonce;
     postObject.themeService = $scope.themeAnnonce;
     postObject.categoryService = $scope.categoryAnnonce;
@@ -48,7 +56,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
     postObject.comment = $scope.comment;
 
     $http({
-      url: "http://localhost:8080/createAnnonce",
+      url: "http://localhost:8080/updateAnnonce",
       method: "POST",
       dataType: "json",
       data: postObject,
@@ -57,15 +65,16 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $scope.messageCreation = "Annonce créée"
+          $location.path("/annonces");
         } else {
-          $scope.messageCreation = "Erreur de création"
+          $scope.messageUpdate = "Erreur d'édition"
         }
       })
       .error(function errorCallback(response) {
-        $scope.messageCreation = "Error " + response
+        $scope.messageUpdate= "Error " + response
       });
   };
+
 
   $scope.getCategoriesEnum = function() {
     $http({
@@ -104,5 +113,3 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
   };
 
 });
-
-
