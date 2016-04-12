@@ -44,6 +44,10 @@ modelFinderApp.config(['$routeProvider',
       controller:'AnnonceCtrl',
       templateUrl:'views/create_annonce.html'
     }).
+     when('/suggestionModele', {
+      controller:'SuggestionModelCtrl',
+      templateUrl:'views/suggestion_modele.html'
+    }).
     otherwise({redirectTo:'/'});
 
   }

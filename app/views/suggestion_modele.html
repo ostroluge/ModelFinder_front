@@ -1,0 +1,11 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="SuggestionModelCtrl">
+    <h1 class="titre">Suggestion de modèles</h1>
+      
+    <div class="card" ng-repeat="model in message">
+        ID : {{ model.id }}<br/>
+        Prénom : {{model.name}}<br/>
+        
+    </div>
+  </div>
+</div>
