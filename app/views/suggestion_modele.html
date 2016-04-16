@@ -1,11 +1,11 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="SuggestionModelCtrl">
     <h1 class="titre">Suggestion de modèles</h1>
-      
+
     <div class="card" ng-repeat="model in message | limitTo:5">
         <div style="font-size:15px; font-weight:bold; cursor:pointer;" ng-click="go('/detailModel/'+model.id)">{{model.name}} {{model.lastName}}<br/></div>
-        {{calculerAge(model.dateOfBirth)}} an(s)<br/>
-        {{model.height}}<br/>
-    
+        {{calculerAge(model.dateOfBirth)}} ans<br/>
+        {{model.height}} cm<br/>
+
   </div>
 </div>

@@ -12,11 +12,11 @@ modelFinderApp.controller('SuggestionModelCtrl', function ($scope, $http, $locat
 
 $http({
     method: 'GET',
-    url: 'http://localhost:8080/suggestionModel/'+$routeParams.carnation_peau+'/'+$routeParams.couleur_cheveux+'/'+$routeParams.couleur_yeux+'/'+$routeParams.longueur_cheveux+'/'+$routeParams.taille_min+'/'+$routeParams.taille_max,
+    url: 'http://localhost:8080/suggestionModel/'+$routeParams.carnation_peau+'/'+$routeParams.couleur_yeux+'/'+$routeParams.longueur_cheveux+'/'+$routeParams.taille_min+'/'+$routeParams.taille_max,
     ///modelList
   }).success(function(data){
     $scope.message = data;
-    
+
   }).error(function(){
     alert("error");
   });
@@ -24,7 +24,7 @@ $http({
   $scope.go = function (path) {
     $location.path(path);
   };
-    
+
     $scope.calculerAge = function (dateOfBirth) {
         var maintenant = new Date();
         var birth = new Date(dateOfBirth);
@@ -37,6 +37,6 @@ function dateDiff(d1, d2)
 {
 	return new Number((d2.getTime() - d1.getTime()) / 31536000000).toFixed(0);
 };
-    
-    
+
+
 });

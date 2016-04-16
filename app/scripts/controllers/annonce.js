@@ -65,7 +65,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $scope.messageCreation = "Annonce créée"
+          $location.path('/suggestionModel/'+$scope.skinToneAnnonce+'/'+$scope.hairColorAnnonce+'/'+$scope.eyeColorAnnonce+'/'+$scope.lengthHairAnnonce+'/'+$scope.heightMinAnnonce+'/'+$scope.heightMaxAnnonce);
         } else {
           $scope.messageCreation = "Erreur de création"
         }
