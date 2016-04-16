@@ -20,7 +20,7 @@
     <script src="/bower_components/angular-route/angular-route.js"></script>
   </head>
 
-  <body ng-app="modelFinderApp"
+  <body ng-app="modelFinderApp">
     <div class="container-fluid">
       <header class="row">
         <div class="col-md-12">
@@ -34,13 +34,14 @@
             <li class="active"><a href="#/annonces">Annonces</a></li>
             <li class="active"><a href="#/login">Login</a></li>
             <li class="active"><a href="#/createAnnonce">Créer annonce</a></li>
-              
+
             <li><a ng-href="#/">About</a></li>
           </ul>
         </nav>
         <section class="col-md-offset-1 col-md-8">
           <div ng-view="'views/main.html'" ng-controller="MainCtrl"></div>
         </section>
+      </div>
       </div>
   </body>
 </html>
