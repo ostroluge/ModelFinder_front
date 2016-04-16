@@ -63,7 +63,7 @@
         Commentaire :
         <input type="text" ng-model="comment">
       </p>
-      <input type="submit" ng-click="createAnnonce()" value="Creation d'une annonce">
+      <input type="submit" ng-click="createAnnonce();go('/suggestionModel/'+skinToneAnnonce+'/'+hairColorAnnonce+'/'+eyeColorAnnonce+'/'+lengthHairAnnonce+'/'+heightMinAnnonce+'/'+heightMaxAnnonce)" value="Creation d'une annonce">
     </form>
     <p>{{messageCreation}}</p>
   </div>
