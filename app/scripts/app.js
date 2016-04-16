@@ -44,9 +44,13 @@ modelFinderApp.config(['$routeProvider',
       controller:'AnnonceCtrl',
       templateUrl:'views/create_annonce.html'
     }).
-     when('/suggestionModele', {
+     when('/suggestionModel/:carnation_peau/:couleur_cheveux/:couleur_yeux/:longueur_cheveux/:taille_min/:taille_max', {
       controller:'SuggestionModelCtrl',
       templateUrl:'views/suggestion_modele.html'
+    }).
+   when('/detailModel/:id_model', {
+      controller:'DetailModelCtrl',
+      templateUrl:'views/detail_model.html'
     }).
     otherwise({redirectTo:'/'});
 
