@@ -20,11 +20,44 @@
         <input type="date" ng-model="dateBeginAnnonce" required>
       </p>
       <p>
-        Date fin:
-        <input type="date" ng-model="dateEndAnnonce" required>
+        Durée:
+        <input type="time" ng-model="durationAnnonce" required>
       </p>
+      <span id="messageTooManyAccessories" class="visually-hidden messageError" >Vous ne pouvez pas ajouter plus d'accessoires</span>
       <p> Accessoires:
         <input type="text" ng-model="accessoriesAnnonce" required>
+        <button style="background-color:transparent; border-color:transparent;" ng-click="addAccessorie(accessoriesAnnonce)">
+          <img src="images/add_button.png" title="Ajouter un accessoire" height="15"/>
+        </button>
+      </p>
+      <p>
+        <ul>
+          <li>{{accessorie1}}
+            <button id="accessorie1" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie1')" class="visually-hidden">
+              <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+            </button>
+          </li>
+          <li>{{accessorie2}}
+            <button id="accessorie2" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie2')" class="visually-hidden">
+              <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+            </button>
+          </li>
+          <li>{{accessorie3}}
+            <button id="accessorie3" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie3')" class="visually-hidden">
+              <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+            </button>
+          </li>
+          <li>{{accessorie4}}
+            <button id="accessorie4" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie4')" class="visually-hidden">
+              <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+            </button>
+          </li>
+          <li>{{accessorie5}}
+            <button id="accessorie5" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie5')" class="visually-hidden">
+              <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+            </button>
+          </li>
+        </ul>
       </p>
       <p>
         Couleur cheveux :
