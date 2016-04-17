@@ -28,10 +28,13 @@
         {{$scope.annonce.title}}
         ID : {{id}}<br>
         Postée par l'etudiant n° : {{etudiant_id}}<br>
-        Id du groupe d'accessoire : {{groupe_accessoire_id}}<br>
+        Accessoires :<br>
+        <ul class="listeAPuce">
+          <li data-ng-repeat="accessorie in accessories" ng-if="accessorie != null">{{accessorie}}</li>
+        </ul>
         Titre : {{ titre }}<br>
         Date début : {{ date_debut }}<br>
-        Duree : {{ date_fin }}<br>
+        Date fin : {{ date_fin }}<br>
         Catégorie prestation : {{ categorie_prestation }}<br>
         Thème prestation : {{ theme_prestation }}<br>
         Carnation de peau : {{carnation_peau}}<br>

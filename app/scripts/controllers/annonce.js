@@ -37,7 +37,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
     postObjectAnnonce.themeService = $scope.themeAnnonce;
     postObjectAnnonce.categoryService = $scope.categoryAnnonce;
     postObjectAnnonce.dateBegin = $scope.dateBeginAnnonce;
-    postObjectAnnonce.dateEnd = $scope.dateEnd;
+    postObjectAnnonce.dateEnd = $scope.dateEndAnnonce;
     postObjectAnnonce.hairColor = $scope.hairColorAnnonce;
     postObjectAnnonce.accessories = 1;
     postObjectAnnonce.lengthHair = $scope.lengthHairAnnonce;
