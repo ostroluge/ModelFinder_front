@@ -48,6 +48,10 @@ modelFinderApp.config(['$routeProvider',
       controller:'SuggestionModelCtrl',
       templateUrl:'views/suggestion_modele.html'
     }).
+    when('/followAnnonces', {
+      controller:'ReponseCtrl',
+      templateUrl:'views/follow_annonces.html'
+    }).
     otherwise({redirectTo:'/'});
 
   }

@@ -1,0 +1,19 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="ReponseCtrl" ng-init="getAllReponse()">
+
+    <!--message = [{title:'Annonce 1', dateBegin:'23/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Photo', lengthHair:'Courts', skinTone:'Claire'},-->
+    <!--{title:'Annonce 2', dateBegin:'03/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Painting', lengthHair:'Courts', skinTone:'Moyenne'},-->
+    <!--{title:'Annonce 3', dateBegin:'12/04/1994', dateEnd:'24/01/1994', categoryService:'Body-painting', themeService:'Photo', lengthHair:'Longs', skinTone:'Foncée'}]-->
+
+    <h1 class="titre">Suivre ses annonces</h1>
+    <div class="card">
+      <label>Etudiant : <input ng-model="search.idStudent"></label> <br>
+    </div>
+    <div class="card" ng-repeat="reponse in message | filter:search:strict">
+    <a href='./detailAnnonce/'+reponse.idAnnonce>{{ reponse.idAnnonce }}</a><br>
+      Model : {{ reponse.idModel }}<br>
+      Statut : {{ reponse.statut }}<br>
+      <button class="button" ng-click="go('/detailAnnonce/'+reponse.idAnnonce)">Voir les détails</button>
+    </div>
+  </div>
+</div>
