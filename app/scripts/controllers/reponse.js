@@ -1,17 +1,34 @@
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name modelFinderApp.controller:ReponseCtrl
+ * @description
+ * # ReponseCtrl
+ * Controller of the modelFinderApp
+ */
 
-
-modelFinderApp.controller('ReponseCtrl', function ($scope) {
-
-  $scope.getAllReponses = function () {
-    $http({
+modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
+    
+  $http({
       method: 'GET',
       url: 'http://localhost:8080/reponseList',
     }).success(function (data) {
-      $scope.message = data;
+      $scope.reponses = data;
+    }).error(function () {
+      alert("error");
+  });
+
+
+
+/*    $http({
+      method: 'GET',
+      url: 'http://localhost:8080/annonceList',
+    }).success(function (data) {
+      $scope.students = data;
     }).error(function () {
       alert("error");
     });
-  };
-}
+*/
+
+  });

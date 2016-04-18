@@ -1,19 +1,32 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="ReponseCtrl" ng-init="getAllReponse()">
 
-    <!--message = [{title:'Annonce 1', dateBegin:'23/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Photo', lengthHair:'Courts', skinTone:'Claire'},-->
-    <!--{title:'Annonce 2', dateBegin:'03/01/1994', dateEnd:'24/01/1994', categoryService:'Shooting beauté', themeService:'Painting', lengthHair:'Courts', skinTone:'Moyenne'},-->
-    <!--{title:'Annonce 3', dateBegin:'12/04/1994', dateEnd:'24/01/1994', categoryService:'Body-painting', themeService:'Photo', lengthHair:'Longs', skinTone:'Foncée'}]-->
-
     <h1 class="titre">Suivre ses annonces</h1>
     <div class="card">
-      <label>Etudiant : <input ng-model="search.idStudent"></label> <br>
+      <label>Id de l'étudiant : <input ng-model="search.annonce.student.idStudent"></label> <br>
+      <label>Prénom de l'étudiant : <input ng-model="search.annonce.student.firstName"></label> <br>
+      <label>Nom de l'étudiant : <input ng-model="search.annonce.student.lastName"></label> <br>
     </div>
-    <div class="card" ng-repeat="reponse in message | filter:search:strict">
-    <a href='./detailAnnonce/'+reponse.idAnnonce>{{ reponse.idAnnonce }}</a><br>
-      Model : {{ reponse.idModel }}<br>
-      Statut : {{ reponse.statut }}<br>
-      <button class="button" ng-click="go('/detailAnnonce/'+reponse.idAnnonce)">Voir les détails</button>
+
+    <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
+      {{reponse.annonce.title}} <br>
+      Modele : {{reponse.model.name}}  {{reponse.model.lastName}}<br>
+      Statut : {{reponse.statut}}<br>
+      <div ng-if="reponse.statusAccessory1">
+        Accessoire 1 :  {{reponse.statusAccessory1}} <br>
+      </div>
+      <div ng-if="reponse.statusAccessory2">
+        Accessoire 2 :  {{reponse.statusAccessory2}} <br>
+      </div>
+      <div ng-if="reponse.statusAccessory3">
+        Accessoire 3 :  {{reponse.statusAccessory3}} <br>
+      </div>
+      <div ng-if="reponse.statusAccessory4">
+        Accessoire 4 :  {{reponse.statusAccessory4}} <br>
+      </div>
+      <div ng-if="reponse.statusAccessory4">
+       Accessoire 5 :  {{reponse.statusAccessory5}} <br>
+      </div>
     </div>
   </div>
 </div>
