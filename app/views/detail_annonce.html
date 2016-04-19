@@ -28,10 +28,13 @@
         {{$scope.annonce.title}}
         ID : {{id}}<br>
         Postée par l'etudiant n° : {{etudiant_id}}<br>
-        Id du groupe d'accessoire : {{groupe_accessoire_id}}<br>
+        Accessoires :<br>
+        <ul class="listeAPuce">
+          <li data-ng-repeat="accessorie in accessories" ng-if="accessorie != null">{{accessorie}}</li>
+        </ul>
         Titre : {{ titre }}<br>
         Date début : {{ date_debut }}<br>
-        Duree : {{ duree }}<br>
+        Date fin : {{ date_fin }}<br>
         Catégorie prestation : {{ categorie_prestation }}<br>
         Thème prestation : {{ theme_prestation }}<br>
         Carnation de peau : {{carnation_peau}}<br>
@@ -42,6 +45,8 @@
         Taille modèle max : {{taille_max}}<br>
         Commentaire : {{commentaire}}<br>
     </div>
-    <button class="button" ng-click="go('/updateAnnonce/'+id)">Editer annonce</button>
+    <button class="button" ng-click="go('/updateAnnonce/'+id)">Editer annonce</button><br>
+    <button class="button" ng-click="go('/suggestionModel/'+carnation_peau+'/'+couleur_cheveux+'/'+couleur_yeux+'/'+longueur_cheveux+'/'+taille_min+'/'+taille_max)">Voir les suggestions de modèles</button><br>
+    <button class="button" ng-click="go('/apply/'+id)">Postuler</button><br>
   </div>
 </div>

@@ -1,0 +1,21 @@
+<div ng-app="modelFinderApp" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <div ng-controller="ApplyCtrl" ng-init="getDetailAnnonce()">
+    <h1>{{titre}}</h1>
+    <div class="card">
+      <form name="applyForm" ng-controller="ApplyCtrl">
+        <label>ID modèle :
+          <input type="number" ng-model="idModel">
+        </label><br>
+        <span ng-repeat="accessory in checkList">
+          <input type="checkbox" ng-model="accessory.checked"
+                 ng-true-value="1" ng-false-value="0">  {{accessory.name}}<br>
+        </span>
+        <label>Commentaire :
+          <textarea ng-model="comment"></textarea>
+        </label><br>
+        <input class="button" type="submit" ng-click="postApplication()" value="Valider">
+      </form>
+    </div>
+    <p align="center">{{etatDemande}}</p>
+  </div>
+</div>

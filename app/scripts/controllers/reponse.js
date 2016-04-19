@@ -19,16 +19,4 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
       alert("error");
   });
 
-
-
-/*    $http({
-      method: 'GET',
-      url: 'http://localhost:8080/annonceList',
-    }).success(function (data) {
-      $scope.students = data;
-    }).error(function () {
-      alert("error");
-    });
-*/
-
   });

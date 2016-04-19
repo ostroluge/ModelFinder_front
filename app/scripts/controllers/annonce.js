@@ -32,32 +32,39 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
 
   $scope.createAnnonce = function () {
 
-    var postObject = new Object();
-    postObject.title = $scope.titleAnnonce;
-    postObject.themeService = $scope.themeAnnonce;
-    postObject.categoryService = $scope.categoryAnnonce;
-    postObject.dateBegin = $scope.dateBeginAnnonce;
-    postObject.dateEnd = $scope.dateEndAnnonce;
-    postObject.accessories = $scope.accessoriesAnnonce;
-    postObject.hairColor = $scope.hairColorAnnonce;
-    postObject.lengthHair = $scope.lengthHairAnnonce;
-    postObject.skinTone = $scope.skinToneAnnonce;
-    postObject.heightMin = $scope.heightMinAnnonce;
-    postObject.heightMax = $scope.heightMaxAnnonce;
-    postObject.eyeColor = $scope.eyeColorAnnonce;
-    postObject.comment = $scope.comment;
+    var postObjectAnnonce = new Object();
+    postObjectAnnonce.title = $scope.titleAnnonce;
+    postObjectAnnonce.themeService = $scope.themeAnnonce;
+    postObjectAnnonce.categoryService = $scope.categoryAnnonce;
+    postObjectAnnonce.dateBegin = $scope.dateBeginAnnonce;
+    postObjectAnnonce.dateEnd = $scope.dateEndAnnonce;
+    postObjectAnnonce.hairColor = $scope.hairColorAnnonce;
+    postObjectAnnonce.accessories = 1;
+    postObjectAnnonce.lengthHair = $scope.lengthHairAnnonce;
+    postObjectAnnonce.skinTone = $scope.skinToneAnnonce;
+    postObjectAnnonce.heightMin = $scope.heightMinAnnonce;
+    postObjectAnnonce.heightMax = $scope.heightMaxAnnonce;
+    postObjectAnnonce.eyeColor = $scope.eyeColorAnnonce;
+    postObjectAnnonce.comment = $scope.comment;
+
+    var postObjectAccessories = new Object();
+    postObjectAccessories.accessory1 = $scope.accessorie1;
+    postObjectAccessories.accessory2 = $scope.accessorie2;
+    postObjectAccessories.accessory3 = $scope.accessorie3;
+    postObjectAccessories.accessory4 = $scope.accessorie4;
+    postObjectAccessories.accessory5 = $scope.accessorie5;
 
     $http({
       url: "http://localhost:8080/createAnnonce",
       method: "POST",
       dataType: "json",
-      data: postObject,
+      data: {annonce: postObjectAnnonce,accessories: postObjectAccessories},
       headers: {
         "Content-Type": "application/json"
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $scope.messageCreation = "Annonce créée"
+          $location.path('/suggestionModel/'+$scope.skinToneAnnonce+'/'+$scope.hairColorAnnonce+'/'+$scope.eyeColorAnnonce+'/'+$scope.lengthHairAnnonce+'/'+$scope.heightMinAnnonce+'/'+$scope.heightMaxAnnonce);
         } else {
           $scope.messageCreation = "Erreur de création"
         }
@@ -65,6 +72,51 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
       .error(function errorCallback(response) {
         $scope.messageCreation = "Error " + response
       });
+  };
+
+  $scope.addAccessorie = function(accessorie){
+    if(!angular.isUndefined(accessorie)){
+        if(!$scope.accessorie1){
+        $scope.accessorie1 = accessorie;
+        angular.element(document.querySelector('#accessorie1')).removeClass('visually-hidden');
+        }
+      else if(!$scope.accessorie2){
+        $scope.accessorie2 = accessorie;
+        angular.element(document.querySelector('#accessorie2')).removeClass('visually-hidden');
+        } else if(!$scope.accessorie3){
+        $scope.accessorie3 = accessorie;
+        angular.element(document.querySelector('#accessorie3')).removeClass('visually-hidden');
+      } else if(!$scope.accessorie4){
+        $scope.accessorie4 = accessorie;
+        angular.element(document.querySelector('#accessorie4')).removeClass('visually-hidden');
+      } else if(!$scope.accessorie5){
+        $scope.accessorie5 = accessorie;
+        angular.element(document.querySelector('#accessorie5')).removeClass('visually-hidden');
+      } else {
+        angular.element(document.querySelector('#messageTooManyAccessories')).removeClass('visually-hidden');
+      }
+    }
+
+  };
+
+  $scope.deleteAccessorie = function(accessorie){
+    angular.element(document.querySelector('#messageTooManyAccessories')).addClass('visually-hidden');
+    if(accessorie == 'accessorie1'){
+          $scope.accessorie1 = null;
+          angular.element(document.querySelector('#accessorie1')).addClass('visually-hidden');
+      } else if(accessorie == 'accessorie2'){
+        $scope.accessorie2 = null;
+        angular.element(document.querySelector('#accessorie2')).addClass('visually-hidden');
+      } else if(accessorie == 'accessorie3'){
+        $scope.accessorie3 = null;
+        angular.element(document.querySelector('#accessorie3')).addClass('visually-hidden');
+      } else if(accessorie == 'accessorie4'){
+        $scope.accessorie4 = null;
+        angular.element(document.querySelector('#accessorie4')).addClass('visually-hidden');
+      } else if(accessorie == 'accessorie5'){
+        $scope.accessorie5 = null;
+        angular.element(document.querySelector('#accessorie5')).addClass('visually-hidden');
+      }
   };
 
   $scope.getCategoriesEnum = function() {

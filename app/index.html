@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <title>Model Finder</title>
@@ -46,4 +47,51 @@
       </div>
       </div>
   </body>
+=======
+<head>
+  <meta charset="utf-8">
+  <title>Model Finder</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="styles/main.css">
+  <link href="styles/bootstrap.min.css" rel="stylesheet">
+  <script src="/bower_components/angular/angular.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/controllers/main.js"></script>
+  <script src="scripts/controllers/student.js"></script>
+  <script src="scripts/controllers/annonce.js"></script>
+  <script src="scripts/controllers/login.js"></script>
+  <script src="scripts/controllers/detail_annonce.js"></script>
+  <script src="scripts/controllers/modify_annonce.js"></script>
+  <script src="scripts/controllers/suggestion_modele.js"></script>
+  <script src="scripts/controllers/apply.js"></script>
+  <script src="scripts/controllers/detail_model.js"></script>
+  <script src="/bower_components/angular-route/angular-route.js"></script>
+</head>
+
+<body ng-app="modelFinderApp">
+<div class="container-fluid">
+  <header class="row">
+    <div class="col-md-12">
+    </div>
+  </header>
+  <div class="content" class="row">
+    <nav class="col-md-2">
+      <ul class="sidebar-nav">
+        <li class="active"><a href="#/main">Home</a></li>
+        <li class="active"><a href="#/student">Students</a></li>
+        <li class="active"><a href="#/annonces">Annonces</a></li>
+        <li class="active"><a href="#/login">Login</a></li>
+        <li class="active"><a href="#/createAnnonce">Créer annonce</a></li>
+
+        <li><a ng-href="#/">About</a></li>
+      </ul>
+    </nav>
+    <section class="col-md-offset-1 col-md-8">
+      <div ng-view="'views/main.html'" ng-controller="MainCtrl"></div>
+    </section>
+  </div>
+</div>
+</body>
+>>>>>>> 6e16cf2197f351ffee61398ef4bcee47c5fa0b84
 </html>
