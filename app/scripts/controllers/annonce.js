@@ -102,19 +102,19 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
   $scope.deleteAccessorie = function(accessorie){
     angular.element(document.querySelector('#messageTooManyAccessories')).addClass('visually-hidden');
     if(accessorie == 'accessorie1'){
-          $scope.accessorie1 = "";
+          $scope.accessorie1 = null;
           angular.element(document.querySelector('#accessorie1')).addClass('visually-hidden');
       } else if(accessorie == 'accessorie2'){
-        $scope.accessorie2 = "";
+        $scope.accessorie2 = null;
         angular.element(document.querySelector('#accessorie2')).addClass('visually-hidden');
       } else if(accessorie == 'accessorie3'){
-        $scope.accessorie3 = "";
+        $scope.accessorie3 = null;
         angular.element(document.querySelector('#accessorie3')).addClass('visually-hidden');
       } else if(accessorie == 'accessorie4'){
-        $scope.accessorie4 = "";
+        $scope.accessorie4 = null;
         angular.element(document.querySelector('#accessorie4')).addClass('visually-hidden');
       } else if(accessorie == 'accessorie5'){
-        $scope.accessorie5 = "";
+        $scope.accessorie5 = null;
         angular.element(document.querySelector('#accessorie5')).addClass('visually-hidden');
       }
   };
