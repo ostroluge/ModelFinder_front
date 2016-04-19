@@ -68,6 +68,10 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
     });
   };
 
+  $scope.go = function (path) {
+    $location.path(path);
+  };
+
   $scope.postApplication = function () {
 
     var postObject = new Object();
@@ -124,17 +128,15 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
         "Content-Type": "application/json"
       }
     }).success(function successCallback(response) {
-      if (response.response == "success") {
-        console.log("OK");
-          $scope.etatDemande = "La demande a été envoyée avec succès."
+        if (response.response == "success") {
+          console.log("OK");
+          $scope.go('/annonces');
         } else {
-        console.log("KO");
-          $scope.etatDemande = "Échec de la demande, veuillez réessayer."
+          console.log("KO");
         }
       })
       .error(function errorCallback(response) {
         console.log("Error");
-        $scope.etatDemande = "Error " + response
       });
   };
 
