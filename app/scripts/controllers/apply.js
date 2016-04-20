@@ -68,6 +68,10 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
     });
   };
 
+  $scope.go = function (path) {
+    $location.path(path);
+  };
+
   $scope.postApplication = function () {
 
     var postObject = new Object();
@@ -115,27 +119,27 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
       }
     }
 
-    $http({
-      url: "http://localhost:8080/apply",
-      method: "POST",
-      dataType: "json",
-      data: postObject,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).success(function successCallback(response) {
-      if (response.response == "success") {
-        console.log("OK");
-          $scope.etatDemande = "La demande a été envoyée avec succès."
-        } else {
-        console.log("KO");
-          $scope.etatDemande = "Échec de la demande, veuillez réessayer."
+    if (postObject.idModel != null) {
+      $http({
+        url: "http://localhost:8080/apply",
+        method: "POST",
+        dataType: "json",
+        data: postObject,
+        headers: {
+          "Content-Type": "application/json"
         }
-      })
-      .error(function errorCallback(response) {
-        console.log("Error");
-        $scope.etatDemande = "Error " + response
-      });
+      }).success(function successCallback(response) {
+          if (response.response == "success") {
+            console.log("OK");
+            $scope.go('/annonces');
+          } else {
+            console.log("KO");
+          }
+        })
+        .error(function errorCallback(response) {
+          console.log("Error");
+        });
+    }
   };
 
 });

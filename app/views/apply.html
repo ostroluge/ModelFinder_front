@@ -4,7 +4,7 @@
     <div class="card">
       <form name="applyForm" ng-controller="ApplyCtrl">
         <label>ID modèle :
-          <input type="number" ng-model="idModel">
+          <input type="number" ng-model="idModel" required>
         </label><br>
         <span ng-repeat="accessory in checkList">
           <input type="checkbox" ng-model="accessory.checked"
@@ -16,6 +16,5 @@
         <input class="button" type="submit" ng-click="postApplication()" value="Valider">
       </form>
     </div>
-    <p align="center">{{etatDemande}}</p>
   </div>
 </div>
