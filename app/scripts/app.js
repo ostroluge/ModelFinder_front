@@ -46,7 +46,6 @@ modelFinderApp.config(['$routeProvider',
       controller: 'ApplyCtrl',
       templateUrl: 'views/apply.html'
     }).
-<<<<<<< HEAD
     when('/followAnnonces', {
       controller:'ReponseCtrl',
       templateUrl:'views/follow_annonces.html'
@@ -56,9 +55,5 @@ modelFinderApp.config(['$routeProvider',
       templateUrl:'views/follow_proposals.html'
     }).
     otherwise({redirectTo:'/'});
-=======
-    otherwise({redirectTo: '/'});
->>>>>>> 6e16cf2197f351ffee61398ef4bcee47c5fa0b84
-
   }
 ]);

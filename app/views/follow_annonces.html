@@ -9,7 +9,7 @@
     </div>
 
     <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
-      {{reponse.annonce.title}} <br>
+      <a ng-href='/#/detailAnnonce/{{reponse.annonce.id}}'>{{reponse.annonce.title}}</a> <br>
       Modele : {{reponse.model.name}}  {{reponse.model.lastName}}<br>
       Statut : {{reponse.statut}}<br>
       <div ng-if="reponse.statusAccessory1">
@@ -26,6 +26,11 @@
       </div>
       <div ng-if="reponse.statusAccessory4">
        Accessoire 5 :  {{reponse.statusAccessory5}} <br>
+      </div>
+      <div class='row' ng-if="reponse.statut=='En attente'">
+      <div class='col-md-6'><input class="button floatRight" type="submit" ng-click="updateStatus(reponse.id,'Validée')" value="Valider"></div>
+
+      <div class='col-md-6 '><input class="button floatLeft" type="submit" ng-click="updateStatus(reponse.id,'Refusée')" value="Refuser"></div>
       </div>
     </div>
   </div>

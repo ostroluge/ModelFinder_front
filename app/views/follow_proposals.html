@@ -1,12 +1,11 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="ReponseCtrl" ng-init="getAllReponse()">
 
-    <h1 class="titre">Suivre ses annonces</h1>
+    <h1 class="titre">Suivre ses propositions</h1>
     <div class="card">
       <label>Id du modele : <input ng-model="search.model.id"></label> <br>
       <label>Prénom du modele : <input ng-model="search.model.name"></label> <br>
       <label>Nom du modele : <input ng-model="search.model.lastName"></label> <br>
-
     </div>
 
     <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
