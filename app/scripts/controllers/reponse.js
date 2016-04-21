@@ -8,7 +8,7 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
+modelFinderApp.controller('ReponseCtrl', function ($scope, $http, $location, $window) {
     
   $http({
       method: 'GET',
@@ -18,6 +18,14 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
     }).error(function () {
       alert("error");
   });
+
+  $scope.go = function (path) {
+    $location.path(path);
+  };
+
+  $scope.reload = function(){
+    $window.location.reload();
+  }
 
   $scope.updateStatus = function (id,new_statut) {
     $http({
@@ -41,6 +49,8 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
       if (response.response == "success") {
         console.log("OK");
           $scope.etatDemande = "La demande a été envoyée avec succès.";
+          $scope.reload();
+
         } else {
         console.log("KO");
           $scope.etatDemande = "Échec de la demande, veuillez réessayer."

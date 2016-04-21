@@ -27,7 +27,7 @@
     <div class="card">
         {{$scope.annonce.title}}
         ID : {{id}}<br>
-        Postée par l'etudiant n° : {{etudiant_id}}<br>
+        Postée par l'etudiant : {{etudiant.firstName}} {{etudiant.lastName}}<br>
         Accessoires :<br>
         <ul class="listeAPuce">
           <li data-ng-repeat="accessorie in accessories" ng-if="accessorie != null">{{accessorie}}</li>

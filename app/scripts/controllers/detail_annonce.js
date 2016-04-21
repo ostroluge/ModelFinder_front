@@ -16,7 +16,7 @@ $http({
   }).success(function(data){
 
   $scope.id = data.annonce.id;
-  $scope.etudiant_id = data.annonce.idStudent;
+  $scope.etudiant = data.annonce.student;
   $scope.groupe_accessoire_id = data.annonce.idAccessories;
   $scope.titre = data.annonce.title;
   $scope.date_debut = data.annonce.dateBegin;
