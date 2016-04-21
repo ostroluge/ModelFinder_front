@@ -15,7 +15,14 @@ $http({
     url: 'http://localhost:8080/suggestionModel/'+$routeParams.carnation_peau+'/'+$routeParams.couleur_yeux+'/'+$routeParams.longueur_cheveux+'/'+$routeParams.taille_min+'/'+$routeParams.taille_max,
     ///modelList
   }).success(function(data){
-    $scope.message = data;
+    console.log(data.length == 0);
+    console.log(eval(data));
+    if (data.length == 0) {
+        $scope.noSuggestion = "Il n'y a pas de modèle correspondant au critères de l'annonce";
+        $scope.message = "";
+    } else {
+        $scope.message = data;
+    }
 
   }).error(function(){
     alert("error");
