@@ -12,7 +12,7 @@ modelFinderApp.controller('DetailAnnonceCtrl', function ($scope, $http, $locatio
 
 $http({
     method: 'GET',
-    url: 'http://localhost:8080/detailAnnonce/'+$routeParams.id_annonce,
+    url: 'http://localhost:8080/detailAnnonce/'+$routeParams.id_annonce
   }).success(function(data){
 
   $scope.id = data.annonce.id;
