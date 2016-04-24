@@ -18,39 +18,39 @@ modelFinderApp.config(['$routeProvider',
     $routeProvider.when('/main', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
-    }).when('/student', {
+    }).when('/students', {
       controller: 'StudentCtrl',
       templateUrl: 'views/student.html',
-    }).when('/annonces', {
+    }).when('/services', {
       controller: 'AnnonceCtrl',
       templateUrl: 'views/list_annonces.html',
     }).when('/login', {
       templateUrl: 'views/login.html',
       controller: 'LoginCtrl'
-    }).when('/detailAnnonce/:id_annonce', {
+    }).when('/services/:id_annonce/show', {
       templateUrl: 'views/detail_annonce.html',
       controller: 'DetailAnnonceCtrl'
-    }).when('/updateAnnonce/:idAnnonce', {
+    }).when('/services/:idAnnonce/edit', {
       controller: 'ModifyAnnonceCtrl',
       templateUrl: 'views/modify_annonce.html'
-    }).when('/createAnnonce', {
+    }).when('/services/new', {
       controller: 'AnnonceCtrl',
       templateUrl: 'views/create_annonce.html'
-    }).when('/suggestionModel/:carnation_peau/:couleur_cheveux/:couleur_yeux/:longueur_cheveux/:taille_min/:taille_max', {
+    }).when('/services/:id_annonce/suggestions', {
       controller: 'SuggestionModelCtrl',
       templateUrl: 'views/suggestion_modele.html'
-    }).when('/detailModel/:id_model', {
+    }).when('/models/:id_model/show', {
       controller: 'DetailModelCtrl',
       templateUrl: 'views/detail_model.html'
-    }).when('/apply/:id_annonce', {
+    }).when('/services/:id_annonce/applications/new', {
       controller: 'ApplyCtrl',
       templateUrl: 'views/apply.html'
     }).
-    when('/followAnnonces', {
+    when('/monitoring/services', {
       controller:'ReponseCtrl',
       templateUrl:'views/follow_annonces.html'
     }).
-    when('/followProposals', {
+    when('/monitoring/proposals', {
       controller:'ReponseCtrl',
       templateUrl:'views/follow_proposals.html'
     }).

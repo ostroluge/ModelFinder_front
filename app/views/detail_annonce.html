@@ -45,8 +45,8 @@
         Taille modèle max : {{taille_max}}<br>
         Commentaire : {{commentaire}}<br>
     </div>
-    <button class="button" ng-click="go('/updateAnnonce/'+id)">Editer annonce</button><br>
-    <button class="button" ng-click="go('/suggestionModel/'+carnation_peau+'/'+couleur_cheveux+'/'+couleur_yeux+'/'+longueur_cheveux+'/'+taille_min+'/'+taille_max)">Voir les suggestions de modèles</button><br>
-    <button class="button" ng-click="go('/apply/'+id)">Postuler</button><br>
+    <button class="button" ng-click="go('/services/'+id+'/edit')">Editer annonce</button><br>
+    <button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button><br>
+    <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button><br>
   </div>
 </div>

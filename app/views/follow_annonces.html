@@ -1,5 +1,5 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="ReponseCtrl" ng-init="getAllReponse()">
+  <div ng-controller="ReponseCtrl" ng-init="getAllResponses()">
 
     <h1 class="titre">Suivre ses annonces</h1>
     <div class="card">
@@ -9,28 +9,30 @@
     </div>
 
     <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
-      <a ng-href='/#/detailAnnonce/{{reponse.annonce.id}}'>{{reponse.annonce.title}}</a> <br>
-      Modele : <a ng-href='/#/detailModel/{{reponse.model.id}}'>{{reponse.model.name}}  {{reponse.model.lastName}}</a><br>
+      <a ng-href='/#/services/{{reponse.annonce.id}}'>{{reponse.annonce.title}}</a> <br>
+      Modele : {{reponse.model.name}} {{reponse.model.lastName}}<br>
       Statut : {{reponse.statut}}<br>
       <div ng-if="reponse.statusAccessory1">
-        Accessoire 1 :  {{reponse.statusAccessory1}} <br>
+        Accessoire 1 : {{reponse.statusAccessory1}} <br>
       </div>
       <div ng-if="reponse.statusAccessory2">
-        Accessoire 2 :  {{reponse.statusAccessory2}} <br>
+        Accessoire 2 : {{reponse.statusAccessory2}} <br>
       </div>
       <div ng-if="reponse.statusAccessory3">
-        Accessoire 3 :  {{reponse.statusAccessory3}} <br>
+        Accessoire 3 : {{reponse.statusAccessory3}} <br>
       </div>
       <div ng-if="reponse.statusAccessory4">
-        Accessoire 4 :  {{reponse.statusAccessory4}} <br>
+        Accessoire 4 : {{reponse.statusAccessory4}} <br>
       </div>
       <div ng-if="reponse.statusAccessory4">
-       Accessoire 5 :  {{reponse.statusAccessory5}} <br>
+        Accessoire 5 : {{reponse.statusAccessory5}} <br>
       </div>
       <div class='row' ng-if="reponse.statut=='En attente'">
-      <div class='col-md-6'><input class="button floatRight" type="submit" ng-click="updateStatus(reponse.id,'Validée')" value="Valider"></div>
+        <div class='col-md-6'><input class="button floatRight" type="submit"
+                                     ng-click="updateStatus(reponse.id,'Validée')" value="Valider"></div>
 
-      <div class='col-md-6 '><input class="button floatLeft" type="submit" ng-click="updateStatus(reponse.id,'Refusée')" value="Refuser"></div>
+        <div class='col-md-6 '><input class="button floatLeft" type="submit"
+                                      ng-click="updateStatus(reponse.id,'Refusée')" value="Refuser"></div>
       </div>
     </div>
   </div>

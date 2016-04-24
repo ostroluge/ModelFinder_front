@@ -10,23 +10,33 @@
 
 modelFinderApp.controller('SuggestionModelCtrl', function ($scope, $http, $location, $routeParams) {
 
-$http({
+  $http({
     method: 'GET',
-    url: 'http://localhost:8080/suggestionModel/'+$routeParams.carnation_peau+'/'+$routeParams.couleur_yeux+'/'+$routeParams.longueur_cheveux+'/'+$routeParams.taille_min+'/'+$routeParams.taille_max,
-    ///modelList
-  }).success(function(data){
-    console.log(data.length == 0);
-    console.log(eval(data));
-    if (data.length == 0) {
+    url: 'http://localhost:8080/detailAnnonce/' + $routeParams.id_annonce,
+  }).success(function(data) {
+    $scope.findSuggestions(data.annonce.skinTone, data.annonce.eyeColor,
+      data.annonce.lengthHair, data.annonce.heightMin, data.annonce.heightMax);
+  });
+
+  $scope.findSuggestions = function (carnation_peau, couleur_yeux, longueur_cheveux, taille_min, taille_max) {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8080/suggestionModel/'+carnation_peau+'/'+couleur_yeux+'/'+longueur_cheveux+'/'+taille_min+'/'+taille_max,
+      ///modelList
+    }).success(function(data){
+      console.log(data.length == 0);
+      console.log(eval(data));
+      if (data.length == 0) {
         $scope.noSuggestion = "Il n'y a pas de modèle correspondant au critères de l'annonce";
         $scope.message = "";
-    } else {
+      } else {
         $scope.message = data;
-    }
+      }
 
-  }).error(function(){
-    alert("error");
-  });
+    }).error(function(){
+      alert("error");
+    });
+  };
 
   $scope.go = function (path) {
     $location.path(path);
