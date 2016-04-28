@@ -45,6 +45,27 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
       }).success(function successCallback(response) {
           if (response.response == "success") {
             console.log("OK");
+          } else {
+            console.log("KO");
+          }
+        })
+    });
+
+    };
+
+
+    $scope.deleteReponse = function (id) {
+        $http({
+        url: "http://localhost:8080/supprimerReponse",
+        method: "POST",
+        dataType: "json",
+        data: id,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).success(function successCallback(response) {
+          if (response.response == "success") {
+            console.log("OK");
             $scope.etatDemande = "La demande a été envoyée avec succès.";
           } else {
             console.log("KO");
@@ -55,8 +76,7 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
           console.log("Error");
           $scope.etatDemande = "Error " + response
         });
-    });
+    };
 
-  };
-
+  
 });

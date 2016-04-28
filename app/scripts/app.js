@@ -42,6 +42,9 @@ modelFinderApp.config(['$routeProvider',
     }).when('/models/:id_model/show', {
       controller: 'DetailModelCtrl',
       templateUrl: 'views/detail_model.html'
+    }).when('/students/:id_student/show', {
+      controller: 'DetailStudentCtrl',
+      templateUrl: 'views/detail_student.html'
     }).when('/services/:id_annonce/applications/new', {
       controller: 'ApplyCtrl',
       templateUrl: 'views/apply.html'

@@ -9,8 +9,8 @@
     </div>
 
     <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
-      <a ng-href='/#/services/{{reponse.annonce.id}}'>{{reponse.annonce.title}}</a> <br>
-      Modele : {{reponse.model.name}} {{reponse.model.lastName}}<br>
+      <a ng-href='/#/services/{{reponse.annonce.id}}/show'>{{reponse.annonce.title}}</a> <br>
+      Modele : <a ng-href='/#/models/{{reponse.model.id}}/show'>{{reponse.model.name}} {{reponse.model.lastName}}</a><br>
       Statut : {{reponse.statut}}<br>
       <div ng-if="reponse.statusAccessory1">
         Accessoire 1 : {{reponse.statusAccessory1}} <br>

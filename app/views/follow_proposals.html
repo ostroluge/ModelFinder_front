@@ -9,8 +9,8 @@
     </div>
 
     <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
-      <a ng-href='/#/detailAnnonce/{{reponse.annonce.id}}'>{{reponse.annonce.title}}</a> <br>
-      Modele : <a ng-href='/#/detailModel/{{reponse.model.id}}'>{{reponse.model.name}}  {{reponse.model.lastName}}</a><br>
+      <a ng-href='/#/services/{{reponse.annonce.id}}/show'>{{reponse.annonce.title}}</a> <br>
+      Modele : <a ng-href='/#/models/{{reponse.model.id}}/show'>{{reponse.model.name}} {{reponse.model.lastName}}</a><br>      
       Statut : {{reponse.statut}}<br>
       <div ng-if="reponse.statusAccessory1">
         Accessoire 1 :  {{reponse.statusAccessory1}} <br>
@@ -27,6 +27,7 @@
       <div ng-if="reponse.statusAccessory4">
        Accessoire 5 :  {{reponse.statusAccessory5}} <br>
       </div>
+      <input class="button" type="submit" ng-click="deleteReponse(reponse.id)" value="Supprimer">
     </div>
   </div>
 </div>
