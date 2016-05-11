@@ -9,7 +9,7 @@
  */
 
 
-modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
+modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location) {
 
   $scope.getAllResponses = function () {
     $http({
@@ -45,10 +45,17 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http) {
       }).success(function successCallback(response) {
           if (response.response == "success") {
             console.log("OK");
+            $scope.etatDemande = "La demande a été envoyée avec succès.";
+            $location.path('/annonces');
           } else {
             console.log("KO");
+            $scope.etatDemande = "Échec de la demande, veuillez réessayer."
           }
         })
+        .error(function errorCallback(response) {
+          console.log("Error");
+          $scope.etatDemande = "Error " + response
+        });
     });
 
     };
