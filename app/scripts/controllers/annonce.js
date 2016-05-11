@@ -46,6 +46,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
     postObjectAnnonce.heightMax = $scope.heightMaxAnnonce;
     postObjectAnnonce.eyeColor = $scope.eyeColorAnnonce;
     postObjectAnnonce.comment = $scope.comment;
+    postObjectAnnonce.status = "Active"
 
     var postObjectAccessories = new Object();
     postObjectAccessories.accessory1 = $scope.accessorie1;

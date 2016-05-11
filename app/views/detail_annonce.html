@@ -1,32 +1,9 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailAnnonceCtrl">
-    <style>
-      .card {
-        background: #FFFFFF;
-        border: 1px solid green;
-        border-bottom: 3px solid darkgreen;
-        padding: 10px;
-        margin: 15px;
-        overflow: hidden;
-      }
-
-      h1 {
-        margin: 15px;
-        color: darkgreen;
-        font-weight: bold;
-      }
-
-      button {
-        display: block;
-        margin: auto;
-        padding: 5px;
-      }
-    </style>
 
     <h1>Détails de l'annonce</h1>
     <div class="card">
-        {{$scope.annonce.title}}
-        ID : {{id}}<br>
+        ID : {{id}} - Status : {{status}}<br>
         Postée par l'etudiant : <a ng-href='/#/students/{{etudiant.idStudent}}/show'>{{etudiant.firstName}} {{etudiant.lastName}}</a><br>
         Accessoires :<br>
         <ul class="listeAPuce">
@@ -48,5 +25,11 @@
     <button class="button" ng-click="go('/services/'+id+'/edit')">Editer annonce</button><br>
     <button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button><br>
     <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button><br>
+    <div class='row' ng-if="status=='Active'">
+        <button class="button" type="submit" ng-click="updateStatus(id,'Inactive')">Désactiver l'annonce</button><br>
+    </div>
+    <div class='row' ng-if="status=='Inactive'">
+        <button class="button" type="submit" ng-click="updateStatus(id,'Active')">Activer l'annonce</button><br>
+    </div>
   </div>
 </div>

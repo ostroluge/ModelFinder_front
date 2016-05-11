@@ -8,7 +8,7 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('DetailAnnonceCtrl', function ($scope, $http, $location, $routeParams) {
+modelFinderApp.controller('DetailAnnonceCtrl', function ($scope, $http, $location, $routeParams, $route) {
 
 $http({
     method: 'GET',
@@ -17,7 +17,6 @@ $http({
 
   $scope.id = data.annonce.id;
   $scope.etudiant = data.annonce.student;
-  $scope.groupe_accessoire_id = data.annonce.idAccessories;
   $scope.titre = data.annonce.title;
   $scope.date_debut = data.annonce.dateBegin;
   $scope.date_fin = data.annonce.dateEnd;
@@ -30,6 +29,7 @@ $http({
   $scope.taille_min = data.annonce.heightMin;
   $scope.taille_max = data.annonce.heightMax;
   $scope.commentaire = data.annonce.comment;
+  $scope.status=data.annonce.status;
   $scope.accessories = {accessory1 : data.accessories.accessory1,accessory2 : data.accessories.accessory2,
     accessory3 : data.accessories.accessory3,accessory4 : data.accessories.accessory4,accessory5 : data.accessories.accessory5};
 
@@ -40,5 +40,43 @@ $http({
   $scope.go = function (path) {
     $location.path(path);
   };
+
+  $scope.updateStatus = function (id, new_status) {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8080/detailAnnonce/' + id,
+    }).success(function (data) {
+
+
+      var postObject = new Object();
+      postObject = data;
+      postObject.annonce.status = new_status;
+
+
+      $http({
+        url: "http://localhost:8080/updateAnnonce",
+        method: "POST",
+        dataType: "json",
+        data: postObject,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).success(function successCallback(response) {
+          if (response.response == "success") {
+            console.log("OK");
+            $scope.etatDemande = "La demande a été envoyée avec succès.";
+            $route.reload();
+          } else {
+            console.log("KO");
+            $scope.etatDemande = "Échec de la demande, veuillez réessayer."
+          }
+        })
+        .error(function errorCallback(response) {
+          console.log("Error");
+          $scope.etatDemande = "Error " + response
+        });
+    });
+
+    };
 
 });
