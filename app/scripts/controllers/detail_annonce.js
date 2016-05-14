@@ -63,9 +63,34 @@ $http({
         }
       }).success(function successCallback(response) {
           if (response.response == "success") {
+            if (new_status=="Inactive"){
+              $http({
+                method: 'GET',
+                url: 'http://localhost:8080/ReponsesByAnnonceAndStatut/' + id +'/En attente',
+                 }).success(function (data) {
+                  var reponsesaRefuser = new Object();
+                  reponsesaRefuser = data;
+                  angular.forEach(reponsesaRefuser,function(reponse,key){
+                    $scope.refuserReponse(reponse.id);
+                  });
+                  $scope.status="Inactive";
+                 });
+              }
+            if (new_status=="Active"){
+              $http({
+                method: 'GET',
+                url: 'http://localhost:8080/ReponsesByAnnonce/' + id,
+                 }).success(function (data) {
+                  var reponsesaSupprimer = new Object();
+                  reponsesaSupprimer = data;
+                  angular.forEach(reponsesaSupprimer,function(reponse,key){
+                    $scope.deleteReponse(reponse.id);
+                  });
+                  $scope.status="Active";
+                 });
+              }
             console.log("OK");
             $scope.etatDemande = "La demande a été envoyée avec succès.";
-            $route.reload();
           } else {
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
@@ -79,4 +104,58 @@ $http({
 
     };
 
+$scope.refuserReponse = function (id) {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8080/OneReponse/' + id,
+    }).success(function (data) {
+
+      var postObject = new Object();
+      postObject = data;
+      postObject.statut = "Refusée";
+
+    $http({
+        url: "http://localhost:8080/modifyReponse",
+        method: "POST",
+        dataType: "json",
+        data: postObject,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).success(function successCallback(response) {
+          if (response.response === "success") {
+            console.log("OK");
+          } else {
+            console.log("KO");
+          }
+        })
+        .error(function errorCallback(response) {
+          console.log("Error");
+          $scope.etatDemande = "Error " + response
+        });
+    });
+
+    };
+
+    $scope.deleteReponse = function (id) {
+        $http({
+        url: "http://localhost:8080/supprimerReponse",
+        method: "POST",
+        dataType: "json",
+        data: id,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).success(function successCallback(response) {
+          if (response.response == "success") {
+            console.log("OK");
+            } else {
+            console.log("KO");
+          }
+        })
+        .error(function errorCallback(response) {
+          console.log("Error");
+          $scope.etatDemande = "Error " + response
+        });
+    };
 });

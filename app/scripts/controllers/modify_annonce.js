@@ -33,6 +33,7 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       $scope.heightMinAnnonce = data.annonce.heightMin;
       $scope.heightMaxAnnonce = data.annonce.heightMax;
       $scope.comment = data.annonce.comment;
+      $scope.status=data.annonce.status;
 
       $scope.idAccessories = data.accessories.idAccessories;
 
