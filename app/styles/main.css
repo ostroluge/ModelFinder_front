@@ -128,3 +128,7 @@ div {
 .center{
   text-align: center;
 }
+
+#slides {
+      display:block;
+    }

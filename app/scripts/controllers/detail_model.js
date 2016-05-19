@@ -55,6 +55,8 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
   function dateDiff(d1, d2) {
     return new Number((d2.getTime() - d1.getTime()) / 31536000000).toFixed(0);
   };
+    
+    
 
 });
 

@@ -1,13 +1,47 @@
+<script>
+$(function(){
+      $("#slides").slidesjs({
+        width: 300,
+        height: 350,
+		navigation: {active:true, effect:"fade", },
+		pagination: {active:false},
+      });
+    });
+    
+    sjs = $('#slides').data('plugin_slidesjs');
+    
+</script>
+
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailModelCtrl">
 
     <h1>Détails du modèle</h1>
-    <div class="card">
-      Nom : {{lastName}} {{name}}<br/>
-      Mail : {{mail}}<br/>
-      Age : {{calculerAge(dateOfBirth)}}<br/>
-      Sexe : {{gender}}<br/>
-    </div>
+      <div class="container-fluid">
+        <div class="card">
+            <div id="slides" class="col-md-5">
+                <img src="{{message.modelPhoto[0].url}}" alt="Photo de mon gite" height="350" width="300">
+                <img src="{{message.modelPhoto[1].url}}" alt="Photo de mon gite" height="350" width="300">
+                <img src="{{message.modelPhoto[2].url}}" alt="Photo de mon gite" height="350" width="300">
+            </div>
+            <div class="col-md-7">
+                Nom : {{lastName}} {{name}}<br/>
+                Mail : {{mail}}<br/>
+                Age : {{calculerAge(dateOfBirth)}}<br/>
+                Sexe : {{gender}}<br/>
+                Numéro Téléphone : {{phoneNumber}}<br/>
+                Couleur de la peau : {{skinTone}}<br/>
+                Couleur des cheveux : {{hairColor}}<br/>
+                Couleur des yeux : {{eyeColor}}<br/>
+                Longueur des cheveux : {{lengthHair}}<br/>
+                Taille : {{height}}<br/>
+                Pointure : {{shoeSize}}<br/>
+                Taille haut : {{highHeight}}<br/>
+                Taille bas : {{lowHeight}}<br/>
+                Description : {{description}}<br/>
+                Commentaire : {{comment}}<br/>
+            </div>
+        </div>
+      </div>
   </div>
 </div>
 <!--{{phoneNumber}}<br/>
