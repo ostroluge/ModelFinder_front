@@ -88,6 +88,15 @@ div {
   overflow: hidden;
 }
 
+.littlecard {
+  background: #FFFFFF;
+  border: 1px solid #222222;
+  border-bottom: 1px solid #22222;
+  padding: 10px;
+  margin: 15px;
+  overflow: hidden;
+}
+
 .titre {
   margin: 15px;
   color: darkgreen;
@@ -132,3 +141,7 @@ div {
 #slides {
       display:block;
     }
+
+.bold{
+  font-weight: bold;
+}

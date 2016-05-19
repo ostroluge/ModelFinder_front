@@ -1,103 +1,112 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="ModifyAnnonceCtrl" data-ng-init="getDetailAnnonce()">
-    <h1>Modification d'une annonce</h1>
-    <form novalidate class="css-form">
-      <p>Titre:
-        <input type="text" ng-model="titleAnnonce" required>
-      </p>
-      <p> Thème:
-        <input type="text" ng-model="themeAnnonce" required>
-      </p>
-      <p data-ng-init="getCategoriesEnum()">
-        Catégories :
-      <select ng-model="categoryAnnonce">
-        <option value=""></option>
-        <option data-ng-repeat="categorie in categoriesEnum" value="{{categorie}}">{{categorie}}</option>
-      </select><br>
-      </p>
-      <p>
-        Date début:
-        <input type="datetime-local" ng-model="dateBeginAnnonce" required>
-      </p>
-      <p>
-        Durée:
-        <input type="datetime-local" ng-model="dateEndAnnonce" required>
-      </p>
-      <span id="messageTooManyAccessories" class="visually-hidden messageError" >Vous ne pouvez pas ajouter plus d'accessoires</span>
-      <p> Accessoires:
-        <input type="text" ng-model="accessoriesAnnonce" required>
-        <button style="background-color:transparent; border-color:transparent;" ng-click="addAccessorie(accessoriesAnnonce)">
-          <img src="images/add_button.png" title="Ajouter un accessoire" height="15"/>
-        </button>
-      </p>
-      <p>
-      <ul>
-        <li>{{accessorie1}}
-          <button id="accessorie1" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie1')" class="visually-hidden">
-            <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
-          </button>
-        </li>
-        <li>{{accessorie2}}
-          <button id="accessorie2" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie2')" class="visually-hidden">
-            <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
-          </button>
-        </li>
-        <li>{{accessorie3}}
-          <button id="accessorie3" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie3')" class="visually-hidden">
-            <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
-          </button>
-        </li>
-        <li>{{accessorie4}}
-          <button id="accessorie4" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie4')" class="visually-hidden">
-            <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
-          </button>
-        </li>
-        <li>{{accessorie5}}
-          <button id="accessorie5" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie5')" class="visually-hidden">
-            <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
-          </button>
-        </li>
-      </ul>
-      </p>
-      <p>
-        Couleur cheveux :
-        <input type="text" ng-model="hairColorAnnonce" required>
-      </p>
-      <p data-ng-init="getLengthHairEnum()">
-        Longueur des cheveux :
-        <select ng-model="lengthHairAnnonce">
-          <option value=""></option>
-          <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
-        </select><br>
-      </p>
-      <p data-ng-init="getSkinToneEnum()">
-        Carnation de peau :
-        <select ng-model="skinToneAnnonce">
-          <option value=""></option>
-          <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
-        </select><br>
-      </p>
-      <p>
-        Taille min :
-        <input type="number" ng-model="heightMinAnnonce" required>
-      </p>
-      <p>
-        Taille max :
-        <input type="number" ng-model="heightMaxAnnonce" required>
-      </p>
-      <p data-ng-init="getEyeColorEnum()">
-        Couleur des yeux :
-        <select ng-model="eyeColorAnnonce">
-          <option value=""></option>
-          <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
-        </select><br>
-      </p>
-      <p>
-        Commentaire :
-        <input type="text" ng-model="comment">
-      </p>
-      <input class="button" type="submit" ng-click="updateAnnonce()" value="Editer l'annonce">
-    </form>
-    <p>{{messageUpdate}}</p>
+  
+    <div class='row' ng-if="status=='Active'">
+              <h1>Modification d'une annonce</h1>
+            <form novalidate class="css-form">
+              <p>Titre:
+                <input type="text" ng-model="titleAnnonce" required>
+              </p>
+              <p> Thème:
+                <input type="text" ng-model="themeAnnonce" required>
+              </p>
+              <p data-ng-init="getCategoriesEnum()">
+                Catégories :
+              <select ng-model="categoryAnnonce">
+                <option value=""></option>
+                <option data-ng-repeat="categorie in categoriesEnum" value="{{categorie}}">{{categorie}}</option>
+              </select><br>
+              </p>
+              <p>
+                Date début:
+                <input type="datetime-local" ng-model="dateBeginAnnonce" required>
+              </p>
+              <p>
+                Durée:
+                <input type="datetime-local" ng-model="dateEndAnnonce" required>
+              </p>
+              <span id="messageTooManyAccessories" class="visually-hidden messageError" >Vous ne pouvez pas ajouter plus d'accessoires</span>
+              <p> Accessoires:
+                <input type="text" ng-model="accessoriesAnnonce" required>
+                <button style="background-color:transparent; border-color:transparent;" ng-click="addAccessorie(accessoriesAnnonce)">
+                  <img src="images/add_button.png" title="Ajouter un accessoire" height="15"/>
+                </button>
+              </p>
+              <p>
+              <ul>
+                <li>{{accessorie1}}
+                  <button id="accessorie1" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie1')" class="visually-hidden">
+                    <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+                  </button>
+                </li>
+                <li>{{accessorie2}}
+                  <button id="accessorie2" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie2')" class="visually-hidden">
+                    <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+                  </button>
+                </li>
+                <li>{{accessorie3}}
+                  <button id="accessorie3" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie3')" class="visually-hidden">
+                    <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+                  </button>
+                </li>
+                <li>{{accessorie4}}
+                  <button id="accessorie4" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie4')" class="visually-hidden">
+                    <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+                  </button>
+                </li>
+                <li>{{accessorie5}}
+                  <button id="accessorie5" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie5')" class="visually-hidden">
+                    <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
+                  </button>
+                </li>
+              </ul>
+              </p>
+              <p>
+                Couleur cheveux :
+                <input type="text" ng-model="hairColorAnnonce" required>
+              </p>
+              <p data-ng-init="getLengthHairEnum()">
+                Longueur des cheveux :
+                <select ng-model="lengthHairAnnonce">
+                  <option value=""></option>
+                  <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
+                </select><br>
+              </p>
+              <p data-ng-init="getSkinToneEnum()">
+                Carnation de peau :
+                <select ng-model="skinToneAnnonce">
+                  <option value=""></option>
+                  <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
+                </select><br>
+              </p>
+              <p>
+                Taille min :
+                <input type="number" ng-model="heightMinAnnonce" required>
+              </p>
+              <p>
+                Taille max :
+                <input type="number" ng-model="heightMaxAnnonce" required>
+              </p>
+              <p data-ng-init="getEyeColorEnum()">
+                Couleur des yeux :
+                <select ng-model="eyeColorAnnonce">
+                  <option value=""></option>
+                  <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
+                </select><br>
+              </p>
+              <p>
+                Commentaire :
+                <input type="text" ng-model="comment">
+              </p>
+              <input class="button" type="submit" ng-click="updateAnnonce()" value="Editer l'annonce">
+            </form>
+            <p>{{messageUpdate}}</p>
+    </div>
+    <div class='row card center' ng-if="status=='Inactive'">
+        L'annonce est inactive, vous ne pouvez donc pas la modifier.
+    </div>
+
+
+    
   </div>
 </div>

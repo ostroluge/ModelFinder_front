@@ -28,13 +28,27 @@
         </select>
       </label>
     </div>
-    <div class="card" ng-repeat="annonce in message | filter:search:strict">
-      {{ annonce.title }}<br>
-      Date début : {{ annonce.dateBegin }}<br>
-      Date fin : {{ annonce.dateEnd }}<br>
-      Catégorie prestation : {{ annonce.categoryService }}<br>
-      Thème prestation : {{ annonce.themeService }}<br>
-      <button class="button" ng-click="go('/services/'+annonce.id+'/show')">Voir les détails</button>
+    <div ng-repeat="annonce in message | filter:search:strict">
+      <div class='row card' ng-if="annonce.status=='Active'">
+        {{ annonce.title }}<br>
+        Date début : {{ annonce.dateBegin }}<br>
+        Date fin : {{ annonce.dateEnd }}<br>
+        Catégorie prestation : {{ annonce.categoryService }}<br>
+        Thème prestation : {{ annonce.themeService }}<br>
+        <button class="button" ng-click="go('/services/'+annonce.id+'/show')">Voir les détails</button>
+      </div>
+    </div>
+    <h1 class="titre">Annonces Inactives</h1>
+    <div ng-repeat="annonce in message | filter:search:strict">
+      <div class='row card' ng-if="annonce.status=='Inactive'">
+        {{annonce.status}}
+        {{ annonce.title }}<br>
+        Date début : {{ annonce.dateBegin }}<br>
+        Date fin : {{ annonce.dateEnd }}<br>
+        Catégorie prestation : {{ annonce.categoryService }}<br>
+        Thème prestation : {{ annonce.themeService }}<br>
+        <button class="button" ng-click="go('/services/'+annonce.id+'/show')">Voir les détails</button>
+      </div>
     </div>
   </div>
 </div>

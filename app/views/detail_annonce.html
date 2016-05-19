@@ -22,10 +22,10 @@
         Taille modèle max : {{taille_max}}<br>
         Commentaire : {{commentaire}}<br>
     </div>
-    <button class="button" ng-click="go('/services/'+id+'/edit')">Editer annonce</button><br>
-    <button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button><br>
-    <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button><br>
-    <div class='row' ng-if="status=='Active'">
+     <div class='row' ng-if="status=='Active'">
+        <button class="button" ng-click="go('/services/'+id+'/edit')">Editer annonce</button><br>
+        <button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button><br>
+        <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button><br>
         <button class="button" type="submit" ng-click="updateStatus(id,'Inactive')">Désactiver l'annonce</button><br>
     </div>
     <div class='row' ng-if="status=='Inactive'">

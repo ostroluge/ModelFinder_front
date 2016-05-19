@@ -17,6 +17,7 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
     }).success(function (data) {
 
       $scope.titre = data.annonce.title;
+      $scope.status = data.annonce.status;
       $scope.accessories = {
         accessory1: data.accessories.accessory1,
         accessory2: data.accessories.accessory2,
@@ -132,6 +133,8 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
           if (response.response == "success") {
             console.log("OK");
             $scope.go('/annonces');
+          } else if(response.response == "already apply"){
+            $scope.alreadyApply = "Already Apply";
           } else {
             console.log("KO");
           }
