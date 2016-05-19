@@ -9,12 +9,12 @@
  */
 
 modelFinderApp.controller('MainCtrl', function ($scope, $http) {
-  $http({
-    method: 'GET',
-    url: 'http://localhost:8080/adminList',
-  }).success(function(data){
-    $scope.message = data;
-  }).error(function(){
-    alert("error");
-  });
+  //$http({
+  //  method: 'GET',
+  //  url: 'http://localhost:8080/adminList',
+  //}).success(function(data){
+  //  $scope.message = data;
+  //}).error(function(){
+  //  alert("error");
+  //});
 });
