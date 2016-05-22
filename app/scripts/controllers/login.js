@@ -35,7 +35,7 @@ modelFinderApp.controller('LoginCtrl', function ($scope, $http) {
         }
       })
       .error(function errorCallback(response) {
-        $scope.messageAuth = "Error " + response
+        $scope.messageAuth = "Error " + response;
       });
   };
 });
