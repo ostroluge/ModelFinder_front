@@ -138,6 +138,10 @@ div {
   text-align: center;
 }
 
+#slides {
+      display:block;
+    }
+
 .bold{
   font-weight: bold;
 }
