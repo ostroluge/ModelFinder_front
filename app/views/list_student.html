@@ -1,0 +1,21 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="StudentCtrl" ng-init="getAllStudents()">
+    <h1 class="titre">Liste des étudiants</h1>
+    <div class="card">
+      <label>Prénom : <input ng-model="search.firstName"></label> <br>
+      <label>Nom : <input ng-model="search.lastName"></label> <br>
+      <label>Adresse mail : <input ng-model="search.mail"></label> <br>
+    </div>
+    <div class="card" ng-repeat="student in students | filter:search:strict">
+        {{student.firstName}} {{student.lastName}}<br>
+        Adresse mail : {{student.mail}}
+        <div ng-if="student.isValidated">
+          Etat : Compte validé
+        </div>
+        <div ng-if="!student.isValidated">
+          Etat : Compte en attente de validation
+        </div>
+        <button class="button" ng-click="go('/students/'+student.idStudent+'/show')">Voir les détails</button>
+      </div>
+  </div>
+</div>

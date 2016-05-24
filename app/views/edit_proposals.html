@@ -1,0 +1,22 @@
+<div ng-app="modelFinderApp" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+  <div ng-controller="ModifyReponseCtrl" ng-init="getReponseDetailAnnonce()">
+    <div class='row' ng-if="laReponse.statut=='En attente'">
+      <h1>{{titre}}</h1>
+      <div class="card">
+        <form name="applyForm" ng-controller="ApplyCtrl">
+          <span ng-repeat="accessory in checkList">
+            <input type="checkbox" ng-model="accessory.checked"
+                   ng-true-value="1" ng-false-value="0">  {{accessory.name}}<br>
+          </span>
+          <label>Commentaire :
+            <textarea ng-model="laReponse.comment"></textarea>
+          </label><br>
+          <input class="button" type="submit" ng-click="modifyReponse()" value="Valider">
+        </form>
+      </div>
+    </div>
+    <div class='row card center' ng-if="laReponse.statut!='En attente'">
+        L'étudiant a déjà répondu à votre candidature, vous ne pouvez donc pas la modifier.
+    </div>
+  </div>
+</div>

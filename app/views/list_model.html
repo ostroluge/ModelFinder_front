@@ -1,0 +1,38 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="ModelCtrl" ng-init="getAllModels()">
+    <h1 class="titre">Liste des modèles</h1>
+    <div class="card">
+      <label class="col-md-6">Prénom : <input ng-model="search.name"></label> 
+      <label class="col-md-6">Nom : <input ng-model="search.lastName"></label> <br>
+      <label class="col-md-6">Age minimum : <input type="text" ng-model="lowerAge" /></label>
+      <label class="col-md-6">Age maximum : <input type="text" ng-model="higherAge" /></label><br>
+      <label class="col-md-6">Taille minimum : <input type="text" ng-model="lowerHeight" /> cm</label>
+      <label class="col-md-6">Taille maximum : <input type="text" ng-model="higherHeight" /> cm</label><br>
+      <br>
+      <label class="col-md-6" data-ng-init="getLengthHairEnum()">Longueur des cheveux :
+        <select ng-model="search.lengthHair">
+        <option value=""></option>
+        <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
+        </select>
+      </label> 
+      <label class="col-md-6" data-ng-init="getSkinToneEnum()">Carnation de la peau :
+        <select ng-model="search.skinTone">
+          <option value=""></option>
+          <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
+        </select>
+      </label><br>
+      <label class="col-md-6"> Sexe :
+        <select ng-model="sexeSelectionne">
+          <option data-ng-repeat="sexeSelectionne in sexes" value="{{sexeSelectionne}}">{{sexeSelectionne}}</option>
+        </select>
+      </label>
+    </div>
+    <div class="card" ng-repeat="model in models |filter:search:strict| filter:ageBetween | filter:heightBetween | filter:sexeIn">
+        {{model.name}} {{model.lastName}}<br>
+        Adresse mail : {{model.mail}}<br>
+        Age : {{calculerAge(model.dateOfBirth)}} ans<br>
+        Taille : {{model.height}} cm
+        <button class="button" ng-click="go('/models/'+model.id+'/show')">Voir les détails</button>
+      </div>
+  </div>
+</div>
