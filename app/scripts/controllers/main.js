@@ -8,7 +8,7 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('MainCtrl', function ($scope, $http) {
+modelFinderApp.controller('MainCtrl', function ($scope, $cookies) {
   //$http({
   //  method: 'GET',
   //  url: 'http://localhost:8080/adminList',
@@ -17,4 +17,7 @@ modelFinderApp.controller('MainCtrl', function ($scope, $http) {
   //}).error(function(){
   //  alert("error");
   //});
+
+  $scope.cookieValue = $cookies.getObject('authenticatedUser');
+
 });

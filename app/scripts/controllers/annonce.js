@@ -8,9 +8,16 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
+modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $cookies) {
 
   $scope.getAllAnnonces = function () {
+
+    if ($cookies.getObject('authenticatedUser') != null) {
+      console.log($cookies.getObject('authenticatedUser').role);
+    } else {
+      console.log('Personne n\'est identifié ma petite gueule');
+    }
+
     $http({
       method: 'GET',
       url: 'http://localhost:8080/annonceList',

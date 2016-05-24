@@ -9,11 +9,10 @@
  * Main module of the application.
  */
 
-var modelFinderApp = angular.module('modelFinderApp', ['ngRoute']);
+var modelFinderApp = angular.module('modelFinderApp', ['ngRoute','ngCookies']);
 
 modelFinderApp.config(['$routeProvider',
   function ($routeProvider) {
-
 
     $routeProvider.when('/main', {
       templateUrl: 'views/main.html',
@@ -27,6 +26,9 @@ modelFinderApp.config(['$routeProvider',
     }).when('/login', {
       templateUrl: 'views/login.html',
       controller: 'LoginCtrl'
+    }).when('/logout', {
+      templateUrl: 'views/logout.html',
+      controller: 'LogoutCtrl'
     }).when('/services/:id_annonce/show', {
       templateUrl: 'views/detail_annonce.html',
       controller: 'DetailAnnonceCtrl'
