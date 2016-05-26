@@ -1,0 +1,89 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="ModelCtrl">
+    <h1 class="titre">Création d'un compte</h1>
+    <div class="card">
+    <form novalidate class="css-form">
+      <p>Nom:
+        <input type="text" ng-model="lastName" required>
+      </p>
+      <p> Prenom:
+        <input type="text" ng-model="name" required>
+      </p>
+      <p> Mail:
+        <input type="email" ng-model="mail" required>
+      </p>
+      <p> Mot de Passe:
+        <input type="password" ng-model="password" required>
+      </p>
+      <p>
+        Date de naissance:
+        <input type="date" ng-model="dateOfBirth" required>
+      </p>
+      <p> Sexe:
+        <input type="text" ng-model="gender" required>
+      </p>    
+      <p> Telephone:
+        <input type="tel" ng-model="phoneNumber" required>
+      </p>    
+      <p data-ng-init="getSkinToneEnum()">
+        Carnation de peau :
+        <select ng-model="skinToneModel">
+          <option value=""></option>
+          <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
+        </select><br>
+      </p>  
+      <p>
+        Couleur cheveux :
+        <input type="text" ng-model="hairColor" required>
+      </p>
+      <p data-ng-init="getLengthHairEnum()">
+        Longueur des cheveux :
+        <select ng-model="lengthHairModel">
+          <option value=""></option>
+          <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
+        </select><br>
+      </p>
+      <p data-ng-init="getEyeColorEnum()">
+        Couleur des yeux :
+        <select ng-model="eyeColorModel">
+          <option value=""></option>
+          <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
+        </select><br>
+      </p>
+      <p>
+        Taille :
+        <input type="number" min="0" ng-model="height" required>
+      </p>
+      <p>
+        Pointure :
+        <input type="number" min="0" ng-model="shoeSize" required>
+      </p>
+      <p>
+        Taille haut :
+        <input type="number" min="0" ng-model="highHeight" required>
+      </p>
+      <p>
+        Taille bas :
+        <input type="number" min="0" ng-model="lowHeight" required>
+      </p>
+      <p>
+        Description :
+        <input type="text" ng-model="description">
+      </p>
+      <p>
+        Commentaire :
+        <input type="text" ng-model="comment">
+      </p>
+      <p>
+        Photos :
+          <input type="file" onchange="previewFile()"><br>
+            <img src="" height="200" alt="Image preview...">
+        <button ng-click="add()">Charger les photos</button>   
+      </p>  
+      <input class="button" type="submit" ng-click="createModel()" value="Valider">
+    </form>
+    </div>
+    <p>{{messageCreation}}</p>
+      <p>{{aa}}</p>
+  </div>
+</div>
