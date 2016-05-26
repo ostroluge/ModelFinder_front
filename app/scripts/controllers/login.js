@@ -26,6 +26,14 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
       postObject.mail = $scope.userName;
       postObject.password = $scope.userPassword;
 
+      var f = function() {
+        $http.get('http://localhost:8080/user').success(function successCallback(response) {
+          console.log(response);
+        }).error(function() {
+          console.log('error');
+        })
+      };
+
       $http({
         url: "http://localhost:8080/login",
         method: "POST",
@@ -37,7 +45,7 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
       }).success(function successCallback(response, status) {
           if (status == 200) {
             $scope.messageAuth = "Login successful"
-
+            f();
             var user = new Object();
             user.mail = response.mail;
             user.role = response.role;

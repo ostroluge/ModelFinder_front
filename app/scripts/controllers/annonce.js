@@ -12,17 +12,26 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $co
 
   $scope.getAllAnnonces = function () {
 
-    if ($cookies.getObject('authenticatedUser') != null) {
-      console.log($cookies.getObject('authenticatedUser').role);
-    } else {
-      console.log('Personne n\'est identifié ma petite gueule');
-    }
+    //if ($cookies.getObject('authenticatedUser') != null) {
+    //  console.log($cookies.getObject('authenticatedUser').role);
+    //} else {
+    //  console.log('Personne n\'est identifié ma petite gueule');
+    //}
+
+    var f = function() {
+      $http.get('http://localhost:8080/user').success(function successCallback(response) {
+        console.log(response);
+      }).error(function() {
+        console.log('error');
+      })
+    };
 
     $http({
       method: 'GET',
       url: 'http://localhost:8080/annonceList',
     }).success(function (data) {
       $scope.message = data;
+      f();
     }).error(function () {
       alert("error");
     });
