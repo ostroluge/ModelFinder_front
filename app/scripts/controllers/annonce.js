@@ -156,6 +156,8 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
     })
   };
 
+  
+
 });
 
 

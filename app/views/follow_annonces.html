@@ -1,6 +1,5 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="ReponseCtrl" ng-init="getAllResponses()">
-
     <h1 class="titre">Suivre ses annonces</h1>
     <div class="card">
       <label>Id de l'étudiant : <input ng-model="search.annonce.student.idStudent"></label> <br>
@@ -8,6 +7,8 @@
       <label>Nom de l'étudiant : <input ng-model="search.annonce.student.lastName"></label> <br>
     </div>
     <div class="card" ng-repeat="annonce in annonces | filter:search:strict | orderBy:'status'">
+    <div ng-repeat="groupeAccessoires in accessoires">
+    <div ng-if="annonce.accessoriesId==groupeAccessoires.idAccessories">
       <a  ng-href='/#/services/{{annonce.id}}/show'><h4 class="titre">{{annonce.title}}</h4></a>
       <div class="row">
           <div class="col-md-offset-2 col-md-2 bold">
@@ -22,28 +23,27 @@
             <div class="col-md-3 center">Attention, toutes les candidatures seront refusées.</div>
           </div>
         </div>
-
         <div ng-repeat="reponse in reponses | orderBy:'statutOrder'">
         <div class="littlecard" ng-if="annonce.id==reponse.annonce.id">
           Modele : <a ng-href='/#/models/{{reponse.model.id}}/show'>{{reponse.model.name}} {{reponse.model.lastName}}</a><br>
           Statut : {{reponse.statut}}<br>
-          <div ng-if="reponse.statusAccessory1">
-            Accessoire 1 : {{reponse.statusAccessory1}} <br>
+          <div ng-if="groupeAccessoires.accessory1">
+            {{groupeAccessoires.accessory1}} : {{reponse.statusAccessory1}} <br>
           </div>
-          <div ng-if="reponse.statusAccessory2">
-            Accessoire 2 : {{reponse.statusAccessory2}} <br>
+          <div ng-if="groupeAccessoires.accessory2">
+            {{groupeAccessoires.accessory2}} : {{reponse.statusAccessory2}} <br>
           </div>
-          <div ng-if="reponse.statusAccessory3">
-            Accessoire 3 : {{reponse.statusAccessory3}} <br>
+          <div ng-if="groupeAccessoires.accessory3">
+            {{groupeAccessoires.accessory3}} : {{reponse.statusAccessory3}} <br>
           </div>
-          <div ng-if="reponse.statusAccessory4">
-            Accessoire 4 : {{reponse.statusAccessory4}} <br>
+          <div ng-if="groupeAccessoires.accessory4">
+            {{groupeAccessoires.accessory4}} : {{reponse.statusAccessory4}} <br>
           </div>
-          <div ng-if="reponse.statusAccessory4">
-            Accessoire 5 : {{reponse.statusAccessory5}} <br>
+          <div ng-if="groupeAccessoires.accessory5">
+            {{groupeAccessoires.accessory5}} : {{reponse.statusAccessory5}} <br>
           </div>
           <div ng-if="reponse.comment">
-            Accessoire 5 : {{reponse.comment}} <br>
+            Commentaire : {{reponse.comment}} <br>
           </div>
           <div class='row' ng-if="reponse.statut=='En attente'">
             <div class='col-md-6'><input class="button floatRight" type="submit"
@@ -52,6 +52,8 @@
             <div class='col-md-6 '><input class="button floatLeft" type="submit"
                                           ng-click="refuserReponse(reponse.id)" value="Refuser"></div>
           </div>
+        </div>
+        </div>
         </div>
         </div>
       </div>

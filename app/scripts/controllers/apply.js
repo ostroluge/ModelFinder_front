@@ -82,7 +82,7 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
 
     if ($scope.checkList[0] != null) {
       if ($scope.checkList[0].checked == 0) {
-        postObject.accessory1 = null;
+        postObject.accessory1 = "Ko";
       } else if ($scope.checkList[0].checked == 1) {
         postObject.accessory1 = "Ok";
       }
@@ -90,7 +90,7 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
 
     if ($scope.checkList[1] != null) {
       if ($scope.checkList[1].checked == 0) {
-        postObject.accessory2 = null;
+        postObject.accessory2 = "Ko";
       } else if ($scope.checkList[1].checked == 1) {
         postObject.accessory2 = "Ok";
       }
@@ -98,7 +98,7 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
 
     if ($scope.checkList[2] != null) {
       if ($scope.checkList[2].checked == 0) {
-        postObject.accessory3 = null;
+        postObject.accessory3 = "Ko";
       } else if ($scope.checkList[2].checked == 1) {
         postObject.accessory3 = "Ok";
       }
@@ -106,7 +106,7 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
 
     if ($scope.checkList[3] != null) {
       if ($scope.checkList[3].checked == 0) {
-        postObject.accessory4 = null;
+        postObject.accessory4 = "Ko";
       } else if ($scope.checkList[3].checked == 1) {
         postObject.accessory4 = "Ok";
       }
@@ -114,7 +114,7 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
 
     if ($scope.checkList[4] != null) {
       if ($scope.checkList[4].checked == 0) {
-        postObject.accessory5 = null;
+        postObject.accessory5 = "Ko";
       } else if ($scope.checkList[0].checked == 1) {
         postObject.accessory5 = "Ok";
       }

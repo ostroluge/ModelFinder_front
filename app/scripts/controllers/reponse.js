@@ -32,12 +32,19 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
                 reponse.statutOrder=3;
               };
       });
+      $http({
+      method: 'GET',
+      url: 'http://localhost:8080/accessoireList',
+      }).success(function (accessL) {
+        $scope.accessoires=accessL;
+      })
     }).error(function () {
       alert("error");
     });
   };
 
-  function annonceInCollection(annonce) {
+
+ function annonceInCollection(annonce) {
   for (var i = 0; i < $scope.annonces.length; i++) {
     if ($scope.annonces[i].id == annonce.id) {
       return true;
@@ -45,6 +52,10 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
   }
   return false;
 };
+
+  $scope.go = function (path) {
+    $location.path(path);
+  };
 
   function indexReponseInResponses(id) {
   for (var i = 0; i < $scope.reponses.length; i++) {

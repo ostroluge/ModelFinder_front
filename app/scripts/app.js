@@ -18,9 +18,6 @@ modelFinderApp.config(['$routeProvider',
     $routeProvider.when('/main', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
-    }).when('/students', {
-      controller: 'StudentCtrl',
-      templateUrl: 'views/student.html',
     }).when('/services', {
       controller: 'AnnonceCtrl',
       templateUrl: 'views/list_annonces.html',
@@ -60,6 +57,17 @@ modelFinderApp.config(['$routeProvider',
     when('/models/new', {
       controller:'ModelCtrl',
       templateUrl:'views/create_model.html'
+    when('/proposals/:id_reponse/edit', {
+      controller:'ModifyReponseCtrl',
+      templateUrl:'views/edit_proposals.html'
+    }).
+    when('/students', {
+      controller:'StudentCtrl',
+      templateUrl:'views/list_student.html'
+    }).
+    when('/models', {
+      controller:'ModelCtrl',
+      templateUrl:'views/list_model.html'
     }).
     otherwise({redirectTo:'/'});
   }
