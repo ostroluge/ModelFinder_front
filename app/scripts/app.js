@@ -45,32 +45,30 @@ modelFinderApp.config(['$routeProvider',
     }).when('/services/:id_annonce/applications/new', {
       controller: 'ApplyCtrl',
       templateUrl: 'views/apply.html'
-    }).
-    when('/monitoring/services', {
+    }).when('/monitoring/services', {
       controller:'ReponseCtrl',
       templateUrl:'views/follow_annonces.html'
-    }).
-    when('/monitoring/proposals', {
+    }).when('/monitoring/proposals', {
       controller:'ReponseCtrl',
       templateUrl:'views/follow_proposals.html'
-    }).
-    when('/models/new', {
+    }).when('/models/new', {
       controller:'ModelCtrl',
       templateUrl:'views/create_model.html'
-    when('/proposals/:id_reponse/edit', {
+    }).when('/proposals/:id_reponse/edit', {
       controller:'ModifyReponseCtrl',
       templateUrl:'views/edit_proposals.html'
-    }).
-    when('/students', {
+    }).when('/students', {
       controller:'StudentCtrl',
       templateUrl:'views/list_student.html'
-    }).
-    when('/models', {
+    }).when('/models', {
       controller:'ModelCtrl',
       templateUrl:'views/list_model.html'
     }).when('/students/:id_student/edit', {
       controller: 'DetailStudentCtrl',
       templateUrl: 'views/modify_student.html'
+    }).when('/models/:id_model/edit', {
+      controller: 'DetailModelCtrl',
+      templateUrl: 'views/modify_model.html'
     })
     .otherwise({redirectTo:'/'});
   }

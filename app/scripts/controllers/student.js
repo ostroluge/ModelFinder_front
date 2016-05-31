@@ -59,7 +59,7 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
     }).success(function (response) {
           if (response.response === "success") {
             console.log("OK");
-            go('/students');
+            $scope.getAllStudents();
           } else {
             console.log("KO");
           }
@@ -69,5 +69,7 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
           $scope.etatDemande = "Error " + response
         });
   };
+
+
   
 });

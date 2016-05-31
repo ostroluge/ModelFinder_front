@@ -18,28 +18,34 @@ $(function(){
     <h1>Détails du modèle</h1>
       <div class="container-fluid">
         <div class="card">
+            <div class="row">
             <div id="slides" class="col-md-5">
-                <img src="{{message.modelPhoto[0].url}}" alt="Photo de mon gite" height="350" width="300">
-                <img src="{{message.modelPhoto[1].url}}" alt="Photo de mon gite" height="350" width="300">
-                <img src="{{message.modelPhoto[2].url}}" alt="Photo de mon gite" height="350" width="300">
+                <img src="{{model.modelPhoto[0].url}}" alt="Photo de mon gite" height="350" width="300">
+                <img src="{{model.modelPhoto[1].url}}" alt="Photo de mon gite" height="350" width="300">
+                <img src="{{model.modelPhoto[2].url}}" alt="Photo de mon gite" height="350" width="300">
             </div>
             <div class="col-md-7">
-                Nom : {{lastName}} {{name}}<br/>
-                Mail : {{mail}}<br/>
-                Age : {{calculerAge(dateOfBirth)}}<br/>
-                Sexe : {{gender}}<br/>
-                Numéro Téléphone : {{phoneNumber}}<br/>
-                Couleur de la peau : {{skinTone}}<br/>
-                Couleur des cheveux : {{hairColor}}<br/>
-                Couleur des yeux : {{eyeColor}}<br/>
-                Longueur des cheveux : {{lengthHair}}<br/>
-                Taille : {{height}}<br/>
-                Pointure : {{shoeSize}}<br/>
-                Taille haut : {{highHeight}}<br/>
-                Taille bas : {{lowHeight}}<br/>
-                Description : {{description}}<br/>
-                Commentaire : {{comment}}<br/>
+                Nom : {{model.lastName}} {{model.name}}<br/>
+                Mail : {{model.mail}}<br/>
+                Age : {{calculerAge(model.dateOfBirth)}}<br/>
+                Sexe : {{sexe}}<br/>
+                Numéro Téléphone : {{model.phoneNumber}}<br/>
+                Couleur de la peau : {{model.skinTone}}<br/>
+                Couleur des cheveux : {{model.hairColor}}<br/>
+                Couleur des yeux : {{model.eyeColor}}<br/>
+                Longueur des cheveux : {{model.lengthHair}}<br/>
+                Taille : {{model.height}}<br/>
+                Pointure : {{model.shoeSize}}<br/>
+                Taille haut : {{model.highHeight}}<br/>
+                Taille bas : {{model.lowHeight}}<br/>
+                Description : {{model.description}}<br/>
+                Commentaire : {{model.comment}}<br/>
             </div>
+            </div>
+            <div class='row'>
+                <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer le modèle</button></div>
+                <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button></div>
+        </div>
         </div>
       </div>
   </div>

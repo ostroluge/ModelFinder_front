@@ -49,8 +49,6 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     } else {
       postObjectModel.gender = "2";
     }
-    
-    
     $http({
       url: "http://localhost:8080/createModel",
       method: "POST",
@@ -79,6 +77,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     }).success(function(eyeColor){
       $scope.eyeColorEnum = eyeColor;
     })
+  }
 
    $scope.getAllModels = function () {
 	    $http({
@@ -120,7 +119,6 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     })
   };
 
-<<<<<<< HEAD
     $scope.add = function(){
       var f = document.getElementById('file').files[0],
           r = new FileReader();
@@ -129,10 +127,10 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       }
       r.readAsArrayBuffer(f);
     }
-});
 
 
-=======
+
+
   $scope.calculerAge = function (dateOfBirth) {
     var maintenant = new Date();
     var birth = new Date(dateOfBirth);
@@ -197,5 +195,22 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     	}
     };
 
+    $scope.deleteModel = function (id) {
+      $http({
+        method: 'GET',
+        url: 'http://localhost:8080/DeleteModel/' + id,
+      }).success(function (response) {
+            if (response.response === "success") {
+              console.log("OK");
+              $scope.getAllModels();
+            } else {
+              console.log("KO");
+            }
+          })
+          .error(function errorCallback(response) {
+            console.log("Error");
+            $scope.etatDemande = "Error " + response
+          });
+    };
+
 });
->>>>>>> b0703b631144e734494c505795bd32bbbf82fae8
