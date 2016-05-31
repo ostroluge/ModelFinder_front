@@ -54,6 +54,9 @@ modelFinderApp.config(['$routeProvider',
       controller:'ReponseCtrl',
       templateUrl:'views/follow_proposals.html'
     }).
+    when('/models/new', {
+      controller:'ModelCtrl',
+      templateUrl:'views/create_model.html'
     when('/proposals/:id_reponse/edit', {
       controller:'ModifyReponseCtrl',
       templateUrl:'views/edit_proposals.html'
