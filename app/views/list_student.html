@@ -9,13 +9,24 @@
     <div class="card" ng-repeat="student in students | filter:search:strict">
         {{student.firstName}} {{student.lastName}}<br>
         Adresse mail : {{student.mail}}
-        <div ng-if="student.isValidated">
-          Etat : Compte validé
-        </div>
+        
         <div ng-if="!student.isValidated">
-          Etat : Compte en attente de validation
+          Etat : Compte en attente de validation<br><br>
+          <div class='row'>
+          <div class='col-md-6'> <button class="button floatRight" ng-click="go('/students/'+student.id+'/show')">Voir les détails</button></div>
+          <div class='col-md-6'> <button class="button floatLeft" type="submit" ng-click="enableStudent(student.id)">Activer l'étudiant</button></div>
+          </div>
         </div>
-        <button class="button" ng-click="go('/students/'+student.idStudent+'/show')">Voir les détails</button>
+
+        <div ng-if="student.isValidated">
+          Etat : Compte validé<br><br>
+          <div class='row'>
+          <div class='col-md-4'><button class="button floatRight" ng-click="go('/students/'+student.id+'/show')">Voir les détails</button></div>
+          <div class='col-md-4'><button class="button" type="submit" ng-click="go('/students/'+student.id+'/edit')">Editer l'étudiant</button></div>
+          <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
+          </div>
+        </div>
+       
       </div>
   </div>
 </div>

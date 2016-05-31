@@ -20,8 +20,8 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             $scope.higherAge = null;
 		    $scope.lowerHeight = null;
             $scope.higherHeight = null;
-            $scope.sexes=['Homme','Femme','Indifférent'];
-            $scope.sexeSelectionne='Indifférent';
+            $scope.sexes=['','Femme','Homme'];
+            $scope.sexeSelectionne='';
 		  }).error(function(){
 		    alert("error");
 		  });
@@ -100,7 +100,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     };
 
      $scope.sexeIn = function (item) {
-    	if ($scope.sexeSelectionne=='Indifférent'){
+    	if ($scope.sexeSelectionne==''){
     		return item;
     	}else{
     		if ($scope.sexeSelectionne=='Homme'){
