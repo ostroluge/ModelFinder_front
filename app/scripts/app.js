@@ -9,14 +9,14 @@
  * Main module of the application.
  */
 
-var modelFinderApp = angular.module('modelFinderApp', ['ngRoute','ngCookies']);
+var modelFinderApp = angular.module('modelFinderApp', ['ngRoute', 'ngCookies']);
 
-modelFinderApp.config( function ($routeProvider, $httpProvider) {
+modelFinderApp.config(function ($routeProvider, $httpProvider) {
 
-  $httpProvider.defaults.useXDomain = true;
-  $httpProvider.defaults.withCredentials = true;
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = true;
 
-  $routeProvider.when('/main', {
+    $routeProvider.when('/main', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
     }).when('/students', {
@@ -52,16 +52,13 @@ modelFinderApp.config( function ($routeProvider, $httpProvider) {
     }).when('/services/:id_annonce/applications/new', {
       controller: 'ApplyCtrl',
       templateUrl: 'views/apply.html'
-    }).
-    when('/monitoring/services', {
-      controller:'ReponseCtrl',
-      templateUrl:'views/follow_annonces.html'
-    }).
-    when('/monitoring/proposals', {
-      controller:'ReponseCtrl',
-      templateUrl:'views/follow_proposals.html'
-    }).
-    otherwise({redirectTo:'/'});
+    }).when('/monitoring/services', {
+      controller: 'ReponseCtrl',
+      templateUrl: 'views/follow_annonces.html'
+    }).when('/monitoring/proposals', {
+      controller: 'ReponseCtrl',
+      templateUrl: 'views/follow_proposals.html'
+    }).otherwise({redirectTo: '/'});
   }
 );
 

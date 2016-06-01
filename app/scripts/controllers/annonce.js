@@ -13,7 +13,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $co
 
   var f = function() {
     $http.get('http://localhost:8080/user').success(function successCallback(response) {
-      console.log("Annonce user : " + response);
+      console.log("Annonce user : " + response.response);
     }).error(function() {
       console.log('error');
     })

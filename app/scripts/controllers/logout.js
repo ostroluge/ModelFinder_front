@@ -8,13 +8,21 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('LogoutCtrl', ['$scope', '$cookies', '$location',
-  function($scope, $cookies, $location) {
+modelFinderApp.controller('LogoutCtrl', ['$scope', '$cookies', '$location', '$http',
+  function ($scope, $cookies, $location, $http) {
     if ($cookies.getObject('authenticatedUser') != null) {
       $cookies.remove('authenticatedUser');
     }
 
-    $scope.messageLogout = "La déconnexion a fonctionné";
+    $http.get('http://localhost:8080/invalidateSession').success(function successCallback(response, status) {
+        if (status == 200) {
+          $scope.messageLogout = "La déconnexion a fonctionné";
+          $scope.go('/login');
+        }
+      })
+      .error(function errorCallback(error, status) {
+        $scope.messageLogout = error;
+      });
 
     $scope.go = function (path) {
       $location.path(path);
