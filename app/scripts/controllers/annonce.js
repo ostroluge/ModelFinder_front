@@ -10,6 +10,15 @@
 
 modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $cookies) {
 
+
+  var f = function() {
+    $http.get('http://localhost:8080/user').success(function successCallback(response) {
+      console.log("Annonce user : " + response);
+    }).error(function() {
+      console.log('error');
+    })
+  };
+
   $scope.getAllAnnonces = function () {
 
     //if ($cookies.getObject('authenticatedUser') != null) {
@@ -17,14 +26,6 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $co
     //} else {
     //  console.log('Personne n\'est identifié ma petite gueule');
     //}
-
-    var f = function() {
-      $http.get('http://localhost:8080/user').success(function successCallback(response) {
-        console.log(response);
-      }).error(function() {
-        console.log('error');
-      })
-    };
 
     $http({
       method: 'GET',
@@ -171,6 +172,8 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $co
       $scope.skinToneEnum = skinTone;
     })
   };
+
+
 
 });
 

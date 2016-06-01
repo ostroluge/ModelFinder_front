@@ -11,10 +11,12 @@
 
 var modelFinderApp = angular.module('modelFinderApp', ['ngRoute','ngCookies']);
 
-modelFinderApp.config(['$routeProvider',
-  function ($routeProvider) {
+modelFinderApp.config( function ($routeProvider, $httpProvider) {
 
-    $routeProvider.when('/main', {
+  $httpProvider.defaults.useXDomain = true;
+  $httpProvider.defaults.withCredentials = true;
+
+  $routeProvider.when('/main', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
     }).when('/students', {
@@ -61,4 +63,5 @@ modelFinderApp.config(['$routeProvider',
     }).
     otherwise({redirectTo:'/'});
   }
-]);
+);
+

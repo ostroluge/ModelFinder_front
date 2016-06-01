@@ -28,7 +28,7 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
 
       var f = function() {
         $http.get('http://localhost:8080/user').success(function successCallback(response) {
-          console.log(response);
+          console.log("Reponse login user : "  + response);
         }).error(function() {
           console.log('error');
         })
@@ -53,7 +53,7 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
 
             $cookies.putObject('authenticatedUser', user);
 
-            $scope.go('/services');
+           // $scope.go('/services');
           }
         })
         .error(function errorCallback(error, status) {
