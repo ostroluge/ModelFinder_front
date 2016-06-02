@@ -28,6 +28,9 @@ modelFinderApp.config(function ($routeProvider, $httpProvider) {
     }).when('/login', {
       templateUrl: 'views/login.html',
       controller: 'LoginCtrl'
+    }).when('/login?logout', {
+      templateUrl: 'views/login.html',
+      controller: 'LoginCtrl'
     }).when('/logout', {
       templateUrl: 'views/logout.html',
       controller: 'LogoutCtrl'

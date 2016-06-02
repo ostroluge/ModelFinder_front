@@ -14,7 +14,13 @@ modelFinderApp.controller('LogoutCtrl', ['$scope', '$cookies', '$location', '$ht
       $cookies.remove('authenticatedUser');
     }
 
-    $http.get('http://localhost:8080/invalidateSession').success(function successCallback(response, status) {
+    $http({
+      url: "http://localhost:8080/logout",
+      method: "POST",
+      dataType: "json",
+      headers: {
+        "Content-Type": "application/json"
+      }}).success(function successCallback(response, status) {
         if (status == 200) {
           $scope.messageLogout = "La déconnexion a fonctionné";
           $scope.go('/login');
@@ -27,4 +33,5 @@ modelFinderApp.controller('LogoutCtrl', ['$scope', '$cookies', '$location', '$ht
     $scope.go = function (path) {
       $location.path(path);
     };
+
   }]);
