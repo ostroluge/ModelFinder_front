@@ -21,12 +21,16 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
       $scope.etat = "Compte en attente de validation";
     } else {
       $scope.etat = "Compte validé";
-    }    
+    }
     $scope.idStudent = data.idStudent;
     $scope.mail = data.mail;
     $scope.birthDate = data.birthDate;
-  }).error(function () {
-    alert("error");
+  }).error(function (data, status) {
+    if(data.message == "Accès refusé"){
+      $location.path("/accessDenied");
+    }else{
+      $location.path("/error");
+    }
   });
 
   $scope.calculerAge = function (dateOfBirth) {

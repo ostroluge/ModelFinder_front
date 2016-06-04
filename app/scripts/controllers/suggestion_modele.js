@@ -16,6 +16,12 @@ modelFinderApp.controller('SuggestionModelCtrl', function ($scope, $http, $locat
   }).success(function(data) {
     $scope.findSuggestions(data.annonce.skinTone, data.annonce.eyeColor,
       data.annonce.lengthHair, data.annonce.heightMin, data.annonce.heightMax);
+  }).error(function (data, status) {
+    if(data.message == "Accès refusé"){
+      $location.path("/accessDenied");
+    }else{
+      $location.path("/error");
+    }
   });
 
   $scope.findSuggestions = function (carnation_peau, couleur_yeux, longueur_cheveux, taille_min, taille_max) {
@@ -33,8 +39,12 @@ modelFinderApp.controller('SuggestionModelCtrl', function ($scope, $http, $locat
         $scope.message = data;
       }
 
-    }).error(function(){
-      alert("error");
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");  
+      }else{
+        $location.path("/error");
+      }
     });
   };
 

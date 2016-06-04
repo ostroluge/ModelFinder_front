@@ -32,8 +32,12 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
                 reponse.statutOrder=3;
               };
       });
-    }).error(function () {
-      alert("error");
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
     });
   };
 
@@ -94,15 +98,18 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
+        }).error(function (data, status) {
+        $scope.etatDemande = "Error " + response
+          if(data.message == "Accès refusé"){
+            $location.path("/accessDenied");
+          }else{
+            $location.path("/error");
+          }
         });
 
 
-         });
-    };
+    });
+  };
 
 
 
@@ -133,12 +140,20 @@ $scope.refuserReponse = function (id) {
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
+        }).error(function (data, status) {
+            if(data.message == "Accès refusé"){
+              $location.path("/accessDenied");
+            }else{
+              $location.path("/error");
+            }
+          });
+    }).error(function (data, status) {
+          if(data.message == "Accès refusé"){
+            $location.path("/accessDenied");
+          }else{
+            $location.path("/error");
+          }
         });
-    });
 
     };
 
@@ -163,10 +178,12 @@ $scope.refuserReponse = function (id) {
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
+        }).error(function (data, status) {
+          if(data.message == "Accès refusé"){
+            $location.path("/accessDenied");
+          }else{
+            $location.path("/error");
+          }
         });
     };
 
@@ -226,14 +243,16 @@ $scope.refuserReponse = function (id) {
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
+        }).error(function (data, status) {
+        if(data.message == "Accès refusé"){
+          $location.path("/accessDenied");
+        }else{
+          $location.path("/error");
+        }
         });
     });
 
     };
 
-  
+
 });

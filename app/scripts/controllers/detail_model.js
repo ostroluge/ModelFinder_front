@@ -36,8 +36,12 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     $scope.description = data.description;
     $scope.comment = data.comment;
 
-  }).error(function () {
-    alert("error");
+  }).error(function (data, status) {
+    if(data.message == "Accès refusé"){
+      $location.path("/accessDenied");
+    }else{
+      $location.path("/error");
+    }
   });
 
   $scope.go = function (path) {

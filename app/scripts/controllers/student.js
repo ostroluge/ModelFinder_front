@@ -14,7 +14,11 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http) {
     url: 'http://localhost:8080/studentList',
   }).success(function(data){
     $scope.message = data;
-  }).error(function(){
-    alert("error");
+  }).error(function (data, status) {
+    if(data.message == "Accès refusé"){
+      $location.path("/accessDenied");
+    }else{
+      $location.path("/error");
+    }
   });
 });

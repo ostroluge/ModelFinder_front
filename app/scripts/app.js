@@ -61,7 +61,12 @@ modelFinderApp.config(function ($routeProvider, $httpProvider) {
     }).when('/monitoring/proposals', {
       controller: 'ReponseCtrl',
       templateUrl: 'views/follow_proposals.html'
-    }).otherwise({redirectTo: '/'});
+    }).when('/error' , {
+      templateUrl : 'views/error.html'
+    }).when('/accessDenied', {
+       templateUrl: 'views/access_denied.html'
+    })
+      .otherwise({redirectTo: 'views/error.html'});
   }
 );
 
