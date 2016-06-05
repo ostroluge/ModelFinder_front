@@ -33,9 +33,13 @@ $http({
   $scope.accessories = {accessory1 : data.accessories.accessory1,accessory2 : data.accessories.accessory2,
     accessory3 : data.accessories.accessory3,accessory4 : data.accessories.accessory4,accessory5 : data.accessories.accessory5};
 
-  }).error(function(){
-    alert("error");
-  });
+  }).error(function (data, status) {
+  if(data.message == "Accès refusé"){
+    $location.path("/accessDenied");
+  }else{
+    $location.path("/error");
+  }
+});
 
   $scope.go = function (path) {
     $location.path(path);
@@ -95,16 +99,24 @@ $http({
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
-        });
+        }).error(function (data, status) {
+            if(data.message == "Accès refusé"){
+              $location.path("/accessDenied");
+            }else{
+              $location.path("/error");
+            }
+          });
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
     });
 
     };
 
-$scope.refuserReponse = function (id) {
+  $scope.refuserReponse = function (id) {
     $http({
       method: 'GET',
       url: 'http://localhost:8080/OneReponse/' + id,
@@ -128,17 +140,21 @@ $scope.refuserReponse = function (id) {
           } else {
             console.log("KO");
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
-        });
+        }).error(function (data, status) {
+            $scope.etatDemande = "Error " + response
+
+           if(data.message == "Accès refusé"){
+              $location.path("/accessDenied");
+            }else{
+              $location.path("/error");
+            }
+          });
     });
 
-    };
+  };
 
     $scope.deleteReponse = function (id) {
-        $http({
+      $http({
         url: "http://localhost:8080/supprimerReponse",
         method: "POST",
         dataType: "json",
@@ -152,10 +168,14 @@ $scope.refuserReponse = function (id) {
             } else {
             console.log("KO");
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
+        }).error(function (data, status) {
           $scope.etatDemande = "Error " + response
+
+           if(data.message == "Accès refusé"){
+            $location.path("/accessDenied");
+          }else{
+            $location.path("/error");
+          }
         });
     };
 });

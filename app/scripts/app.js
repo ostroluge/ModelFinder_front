@@ -9,11 +9,12 @@
  * Main module of the application.
  */
 
-var modelFinderApp = angular.module('modelFinderApp', ['ngRoute']);
+var modelFinderApp = angular.module('modelFinderApp', ['ngRoute', 'ngCookies']);
 
-modelFinderApp.config(['$routeProvider',
-  function ($routeProvider) {
+modelFinderApp.config(function ($routeProvider, $httpProvider) {
 
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.withCredentials = true;
 
     $routeProvider.when('/main', {
       templateUrl: 'views/main.html',
@@ -24,6 +25,12 @@ modelFinderApp.config(['$routeProvider',
     }).when('/login', {
       templateUrl: 'views/login.html',
       controller: 'LoginCtrl'
+    }).when('/login?logout', {
+      templateUrl: 'views/login.html',
+      controller: 'LoginCtrl'
+    }).when('/logout', {
+      templateUrl: 'views/logout.html',
+      controller: 'LogoutCtrl'
     }).when('/services/:id_annonce/show', {
       templateUrl: 'views/detail_annonce.html',
       controller: 'DetailAnnonceCtrl'
@@ -69,7 +76,12 @@ modelFinderApp.config(['$routeProvider',
     }).when('/models/:id_model/edit', {
       controller: 'DetailModelCtrl',
       templateUrl: 'views/modify_model.html'
+    }).when('/error' , {
+      templateUrl : 'views/error.html'
+    }).when('/accessDenied', {
+       templateUrl: 'views/access_denied.html'
     })
-    .otherwise({redirectTo:'/'});
+      .otherwise({redirectTo: 'views/error.html'});
   }
-]);
+);
+

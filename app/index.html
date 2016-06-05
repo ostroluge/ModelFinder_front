@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+<<<<<<< HEAD
   <head>
     <meta charset="utf-8">
     <title>Model Finder</title>
@@ -7,8 +8,8 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="styles/main.css">
     <link href="styles/bootstrap.min.css" rel="stylesheet">
-    <script src="scripts/jquery-2.2.3.js"></script>  
-    <script src="scripts/jquery.slides.js"></script>  
+    <script src="scripts/jquery-2.2.3.js"></script>
+    <script src="scripts/jquery.slides.js"></script>
     <script src="scripts/jquery.slides.min.js"></script>
     <script src="/bower_components/angular/angular.js"></script>
     <script src="scripts/app.js"></script>
@@ -26,11 +27,13 @@
     <script src="scripts/controllers/modify_reponse.js"></script>
     <script src="scripts/controllers/detail_model.js"></script>
     <script src="scripts/controllers/suggestion_modele.js"></script>
+    <script src="scripts/controllers/logout.js"></script>
     <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="scripts/controllers/model.js"></script>
-      
 
-      
+
+
   </head>
 
   <body ng-app="modelFinderApp">
@@ -42,18 +45,17 @@
       <div class="content" class="row">
         <nav class="col-md-2">
           <ul class="sidebar-nav">
-            <!-- <li class="active"><a href="#/main">Home</a></li>
-            <li class="active"><a href="#/student">Students</a></li> -->
+            <li class="active"><a href="#/student">Students</a></li>
+            <li class="active"><a href="#/login">Se connecter</a></li>
+            <li class="active"><a href="#/logout">Se déconnecter</a></li>
             <li class="active"><a href="#/services">Liste des annonces</a></li>
             <li class="active"><a href="#/students">Liste des étudiants</a></li>
             <li class="active"><a href="#/models">Liste des modèles</a></li>
             <li class="active"><a href="#/services/new">Créer annonce</a></li>
-<!-- Acces par les annonces  <li class="active"><a href="#/suggestionModele">Suggestion Modele</a></li>-->
             <li class="active"><a href="#/monitoring/proposals">Suivre ses propositions</a></li>
             <li class="active"><a href="#/monitoring/services">Suivre ses annonces</a></li>
             <li class="active"><a href="#/models/new">Creer un compte</a></li>
-<!--             <li><a ng-href="#/">About</a></li>
- -->          </ul>
+          </ul>
         </nav>
         <section class="col-md-offset-1 col-md-8">
           <div ng-view="'views/main.html'" ng-controller="MainCtrl"></div>

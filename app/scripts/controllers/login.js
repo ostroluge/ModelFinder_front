@@ -8,34 +8,63 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('LoginCtrl', function ($scope, $http) {
-  $scope.user = {};
-  $scope.userName = "";
-  $scope.userPassword = "";
+modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$location',
+  function ($scope, $http, $cookies, $location) {
+    $scope.user = {};
+    $scope.userName = "";
+    $scope.userPassword = "";
 
-  $scope.authenticate = function () {
+    $scope.isAuthenticated = ($cookies.getObject('authenticatedUser') != null);
 
-    var postObject = new Object();
-    postObject.mail = $scope.userName;
-    postObject.password = $scope.userPassword;
+    if ($scope.isAuthenticated) {
+      $scope.userToShow = $cookies.getObject('authenticatedUser');
+    }
 
-    $http({
-      url: "http://localhost:8080/login",
-      method: "POST",
-      dataType: "json",
-      data: postObject,
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).success(function successCallback(response) {
-        if (response.response == "success") {
-          $scope.messageAuth = "Login successful"
-        } else {
-          $scope.messageAuth = "Login failed"
+    $scope.authenticate = function () {
+
+      var postObject = new Object();
+      postObject.mail = $scope.userName;
+      postObject.password = $scope.userPassword;
+
+      var f = function() {
+        $http.get('http://localhost:8080/user').success(function successCallback(response) {
+          console.log("Reponse login user : "  + response.response);
+          $scope.go('/services');
+        }).error(function() {
+          console.log('error');
+        })
+      };
+
+      $http({
+        url: "http://localhost:8080/login",
+        method: "POST",
+        dataType: "json",
+        data: postObject,
+        headers: {
+          "Content-Type": "application/json"
         }
-      })
-      .error(function errorCallback(response) {
-        $scope.messageAuth = "Error " + response
-      });
-  };
-});
+      }).success(function successCallback(response, status) {
+          if (status == 200) {
+            $scope.messageAuth = "Login successful"
+            f();
+            var user = new Object();
+            user.mail = response.mail;
+            user.role = response.role;
+            user.isValidated = response.isValidated;
+
+            $cookies.putObject('authenticatedUser', user);
+          }
+        })
+        .error(function errorCallback(error, status) {
+          if (status == 401) {
+            $scope.messageAuth = "Mauvaise combinaison login/mot de passe";
+          } else {
+            $scope.messageAuth = "Error " + response;
+          }
+        });
+    };
+
+    $scope.go = function (path) {
+      $location.path(path);
+    };
+  }]);

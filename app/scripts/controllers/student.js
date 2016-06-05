@@ -16,9 +16,13 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
 	    url: 'http://localhost:8080/studentList',
 		  }).success(function(data){
 		    $scope.students = data;
-		  }).error(function(){
-		    alert("error");
-		  });
+		  }).error(function (data, status) {
+        if(data.message == "Accès refusé"){
+          $location.path("/accessDenied");
+        }else{
+          $location.path("/error");
+        }
+      });
   };
 
   $scope.go = function (path) {
@@ -45,11 +49,13 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
           } else {
             console.log("KO");
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
-        });
+        }).error(function (data, status) {
+            if(data.message == "Accès refusé"){
+              $location.path("/accessDenied");
+            }else{
+              $location.path("/error");
+            }
+          });
   };
 
   $scope.deleteStudent = function (id) {
@@ -63,13 +69,15 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
           } else {
             console.log("KO");
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
-        });
+        }).error(function (data, status) {
+            if(data.message == "Accès refusé"){
+              $location.path("/accessDenied");
+            }else{
+              $location.path("/error");
+            }
+          });
   };
 
 
-  
+
 });

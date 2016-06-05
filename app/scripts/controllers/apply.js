@@ -64,8 +64,12 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
         $scope.checkList.push(element5);
       }
 
-    }).error(function () {
-      alert("Error");
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
     });
   };
 
@@ -138,9 +142,12 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
           } else {
             console.log("KO");
           }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
+        }).error(function (data, status) {
+            if(data.message == "Accès refusé"){
+              $location.path("/accessDenied");
+            }else{
+              $location.path("/error");
+            }
         });
     }
   };

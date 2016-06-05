@@ -54,8 +54,12 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
         angular.element(document.querySelector('#accessorie5')).removeClass('visually-hidden');
       }
 
-    }).error(function () {
-      alert("error");
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
     });
   };
 
@@ -99,10 +103,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
         } else {
           $scope.messageUpdate = "Erreur d'édition"
         }
-      })
-      .error(function errorCallback(response) {
-        $scope.messageUpdate= "Error " + response
-      });
+      }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
 
@@ -112,7 +119,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getCategoriesEnum',
     }).success(function(categories){
       $scope.categoriesEnum = categories;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getEyeColorEnum = function() {
@@ -121,7 +134,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getEyeColorEnum',
     }).success(function(eyeColor){
       $scope.eyeColorEnum = eyeColor;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getLengthHairEnum = function() {
@@ -130,7 +149,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getLengthHairEnum',
     }).success(function(length){
       $scope.lengthHairEnum = length;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getSkinToneEnum = function() {
@@ -139,7 +164,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getSkinToneEnum',
     }).success(function(skinTone){
       $scope.skinToneEnum = skinTone;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.addAccessorie = function(accessorie){

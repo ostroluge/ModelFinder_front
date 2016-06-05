@@ -14,9 +14,13 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
     method: 'GET',
     url: 'http://localhost:8080/StudentById/' + $routeParams.id_student
   }).success(function (data) {
-    $scope.student = data;   
-  }).error(function () {
-    alert("error");
+    $scope.student = data;
+  }).error(function (data, status) {
+    if(data.message == "Accès refusé"){
+      $location.path("/accessDenied");
+    }else{
+      $location.path("/error");
+    }
   });
 
   $scope.calculerAge = function (dateOfBirth) {

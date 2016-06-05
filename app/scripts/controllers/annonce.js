@@ -8,22 +8,32 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
+modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $cookies) {
 
   $scope.getAllAnnonces = function () {
+
+    //if ($cookies.getObject('authenticatedUser') != null) {
+    //  console.log($cookies.getObject('authenticatedUser').role);
+    //} else {
+    //  console.log('Personne n\'est identifié ma petite gueule');
+    //}
+
+    $scope.go = function (path) {
+      $location.path(path);
+    };
+
     $http({
       method: 'GET',
       url: 'http://localhost:8080/annonceList',
     }).success(function (data) {
       $scope.message = data;
-    }).error(function () {
-      alert("error");
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
     });
-  };
-
-
-  $scope.go = function (path) {
-    $location.path(path);
   };
 
   $scope.getIndex = function (annonce) {
@@ -70,8 +80,12 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
           $scope.messageCreation = "Erreur de création"
         }
       })
-      .error(function errorCallback(response) {
-        $scope.messageCreation = "Error " + response
+      .error(function (data, status) {
+        if(data.message == "Accès refusé"){
+          $location.path("/accessDenied");
+        }else{
+          $location.path("/error");
+        }
       });
   };
 
@@ -126,7 +140,13 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
       url: 'http://localhost:8080/getCategoriesEnum',
     }).success(function(categories){
       $scope.categoriesEnum = categories;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getEyeColorEnum = function() {
@@ -135,7 +155,13 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
       url: 'http://localhost:8080/getEyeColorEnum',
     }).success(function(eyeColor){
       $scope.eyeColorEnum = eyeColor;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getLengthHairEnum = function() {
@@ -144,7 +170,13 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
       url: 'http://localhost:8080/getLengthHairEnum',
     }).success(function(length){
       $scope.lengthHairEnum = length;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getSkinToneEnum = function() {
@@ -153,7 +185,13 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location) {
       url: 'http://localhost:8080/getSkinToneEnum',
     }).success(function(skinTone){
       $scope.skinToneEnum = skinTone;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   
