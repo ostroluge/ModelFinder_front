@@ -16,7 +16,11 @@ modelFinderApp.config(function ($routeProvider, $httpProvider) {
     $httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.withCredentials = true;
 
-    $routeProvider.when('/main', {
+    $routeProvider.when('/', {
+      templateUrl: 'views/login.html',
+      controller: 'LoginCtrl'
+    })
+      .when('/main', {
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
     }).when('/services', {
