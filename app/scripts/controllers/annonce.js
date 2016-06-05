@@ -75,7 +75,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $co
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $location.path('/suggestionModel/'+$scope.skinToneAnnonce+'/'+$scope.hairColorAnnonce+'/'+$scope.eyeColorAnnonce+'/'+$scope.lengthHairAnnonce+'/'+$scope.heightMinAnnonce+'/'+$scope.heightMaxAnnonce);
+          $location.path('/services/'+$scope.idAnnonce+'/suggestions');
         } else {
           $scope.messageCreation = "Erreur de création"
         }
@@ -194,7 +194,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $co
     });
   };
 
-  
+
 
 });
 
