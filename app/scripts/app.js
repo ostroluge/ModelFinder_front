@@ -80,6 +80,9 @@ modelFinderApp.config(function ($routeProvider, $httpProvider) {
     }).when('/models/:id_model/edit', {
       controller: 'DetailModelCtrl',
       templateUrl: 'views/modify_model.html'
+    }).when('/profile', {
+      controller: 'ProfileCtrl',
+      templateUrl: 'views/profile.html'
     }).when('/error' , {
       templateUrl : 'views/error.html'
     }).when('/accessDenied', {

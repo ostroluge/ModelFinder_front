@@ -14,12 +14,6 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
     $scope.userName = "";
     $scope.userPassword = "";
 
-    $scope.isAuthenticated = ($cookies.getObject('authenticatedUser') != null);
-
-    if ($scope.isAuthenticated) {
-      $scope.userToShow = $cookies.getObject('authenticatedUser');
-    }
-
     $scope.authenticate = function () {
 
       var postObject = new Object();
@@ -48,6 +42,7 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
             $scope.messageAuth = "Login successful"
             f();
             var user = new Object();
+            user.id = response.id;
             user.mail = response.mail;
             user.role = response.role;
             user.isValidated = response.isValidated;
