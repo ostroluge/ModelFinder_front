@@ -12,7 +12,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
 
   $http({
     method: 'GET',
-    url: 'http://localhost:8080/StudentById/' + $routeParams.id_student
+    url: 'http://localhost:8080/studentById/' + $routeParams.id_student
   }).success(function (data) {
     $scope.student = data;
   }).error(function (data, status) {
@@ -42,7 +42,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
   $scope.enableStudent = function (id) {
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/ValidateStudent/' + id,
+      url: 'http://localhost:8080/validateStudent/' + id,
     }).success(function (response) {
           if (response.response === "success") {
             console.log("OK");
@@ -60,7 +60,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
   $scope.deleteStudent = function (id) {
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/DeleteStudent/' + id,
+      url: 'http://localhost:8080/deleteStudent/' + id,
     }).success(function (response) {
           if (response.response === "success") {
             console.log("OK");
@@ -77,7 +77,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
 
   $scope.modifyStudent = function () {
     $http({
-          url: "http://localhost:8080/SaveStudent",
+          url: "http://localhost:8080/saveStudent",
           method: "POST",
           dataType: "json",
           data: $scope.student,
