@@ -15,13 +15,17 @@
       <p> Mot de Passe:
         <input type="password" ng-model="password" required>
       </p>
+      <p> Confirmation de Mot de Passe:
+        <input type="password" ng-model="passwordConf" required>
+      </p>
       <p>
         Date de naissance:
         <input type="date" ng-model="dateOfBirth" required>
       </p>
       <p> Sexe:
-        <input type="text" ng-model="gender" required>
+        <select ng-model="sexe">
           <option data-ng-repeat="sexe in sexes" value="{{sexe}}">{{sexe}}</option>
+        </select>
       </p>    
       <p> Telephone:
         <input type="tel" ng-model="phoneNumber" required>
@@ -80,10 +84,9 @@
           <input type="file" ng-model="photo" onchange="previewFile()"><br>
             <img src="" height="50" alt="Image preview...">  
       </p>  
-      <input class="button" type="submit" ng-click="createModel()" value="Valider">
+      <input class="button" type="submit" ng-click="checkPwd(password, passwordConf)" value="Valider">
     </form>
     </div>
     <p>{{messageCreation}}</p>
-      <p>{{sexes}}</p>
   </div>
 </div>

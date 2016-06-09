@@ -15,11 +15,14 @@
       <p> Mot de Passe:
         <input type="password" ng-model="password" required>
       </p>
+      <p> Confirmation de Mot de Passe:
+        <input type="password" ng-model="passwordConf" required>
+      </p>
       <p>
         Date de naissance:
         <input type="date" ng-model="birthDate" required>
       </p>
-        <input class="button" type="submit" ng-click="createStudent()" value="Valider">
+        <input class="button" type="submit" ng-click="checkPwd(password, passwordConf)" value="Valider">
     </form>
     </div>
     <p>{{messageCreation}}</p>

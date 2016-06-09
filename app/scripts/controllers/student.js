@@ -82,17 +82,23 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
 
 
     var postObjectStudent = new Object();
-    postObjectStudent.password = $scope.password;
     postObjectStudent.lastName = $scope.lastName;
     postObjectStudent.firstName = $scope.firstName;
-    postObjectStudent.mail = $scope.mail;
-    postObjectStudent.birthDate = $scope.birthDate;
-    postObjectStudent.isValidated = "false";
+    postObjectStudent.birthDate = new Date($scope.birthDate);
+    
+    var postObjectUser = new Object();
+    postObjectUser.password = $scope.password;
+    postObjectUser.role = "student";
+    postObjectUser.mail = $scope.mail;
+    postObjectUser.isValidated = "false";
+        
+        
+        
     $http({
-      url: "http://localhost:8080/SaveStudent",
+      url: "http://localhost:8080/saveStudent",
       method: "POST",
       dataType: "json",
-      data: postObjectStudent,
+      data: {user: postObjectUser, student: postObjectStudent},
       headers: {
         "Content-Type": "application/json"
       }
@@ -108,4 +114,10 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
       });
     };
   
+    $scope.checkPwd = function(pwd1, pwd2) {
+        if(pwd1==pwd2){
+            $scope.createStudent();
+        }
+    };
+    
 });
