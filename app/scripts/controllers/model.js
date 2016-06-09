@@ -41,7 +41,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectModel.height = $scope.height;
     postObjectModel.highHeight = $scope.highHeight;
     postObjectModel.lowHeight = $scope.lowHeight;
-    postObjectModel.shoeSize = $scope.shoeSize;  
+    postObjectModel.shoeSize = $scope.shoeSize;
     postObjectModel.comment = $scope.comment;
     postObjectModel.description = $scope.description;
     if ($scope.gender = "Homme") {
@@ -202,7 +202,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     $scope.deleteModel = function (id) {
       $http({
         method: 'GET',
-        url: 'http://localhost:8080/DeleteModel/' + id,
+        url: 'http://localhost:8080/deleteModel/' + id,
       }).success(function (response) {
             if (response.response === "success") {
               console.log("OK");

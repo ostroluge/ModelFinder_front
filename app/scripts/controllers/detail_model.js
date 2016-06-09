@@ -22,8 +22,12 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
       $scope.sexe = "Femme";
     }
     $scope.sexes=['Femme','Homme'];
-  }).error(function () {
-    alert("error");
+  }).error(function (data, status) {
+    if(data.message == "Accès refusé"){
+      $location.path("/accessDenied");
+    }else{
+      $location.path("/error");
+    }
   });
 
   $scope.go = function (path) {
@@ -50,7 +54,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
   function dateDiff(d1, d2) {
     return new Number((d2.getTime() - d1.getTime()) / 31536000000).toFixed(0);
   };
-    
+
   $scope.modifyModel = function () {
     if ($scope.sexe = "Homme") {
       $scope.model.gender == 1;
@@ -108,7 +112,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     $scope.deleteModel = function (id) {
       $http({
         method: 'GET',
-        url: 'http://localhost:8080/DeleteModel/' + id,
+        url: 'http://localhost:8080/deleteModel/' + id,
       }).success(function (response) {
             if (response.response === "success") {
               console.log("OK");
@@ -123,7 +127,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
           });
     };
 
-    
+
 
 });
 

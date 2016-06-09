@@ -37,25 +37,18 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
 
       $scope.idAccessories = data.accessories.idAccessories;
 
-      if(data.accessories.accessory1 != null) {
-        $scope.accessorie1 = data.accessories.accessory1;
-        angular.element(document.querySelector('#accessorie1')).removeClass('visually-hidden');
-      } if(data.accessories.accessory2 != null){
-        $scope.accessorie2 = data.accessories.accessory2;
-        angular.element(document.querySelector('#accessorie2')).removeClass('visually-hidden');
-      } if(data.accessories.accessory3 != null){
-        $scope.accessorie3 = data.accessories.accessory3;
-        angular.element(document.querySelector('#accessorie3')).removeClass('visually-hidden');
-      } if(data.accessories.accessory4 != null){
-        $scope.accessorie4 = data.accessories.accessory4;
-        angular.element(document.querySelector('#accessorie4')).removeClass('visually-hidden');
-      } if(data.accessories.accessory5 != null){
-        $scope.accessorie5 = data.accessories.accessory5;
-        angular.element(document.querySelector('#accessorie5')).removeClass('visually-hidden');
-      }
+      $scope.accessorie1 = data.accessories.accessory1;
+      $scope.accessorie2 = data.accessories.accessory2;
+      $scope.accessorie3 = data.accessories.accessory3;
+      $scope.accessorie4 = data.accessories.accessory4;
+      $scope.accessorie5 = data.accessories.accessory5;
 
-    }).error(function () {
-      alert("error");
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
     });
   };
 
@@ -76,6 +69,7 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
     postObjectAnnonce.heightMax = $scope.heightMaxAnnonce;
     postObjectAnnonce.eyeColor = $scope.eyeColorAnnonce;
     postObjectAnnonce.comment = $scope.comment;
+    postObjectAnnonce.status = $scope.status;
 
     var postObjectAccessories = new Object();
     postObjectAccessories.idAccessories = $scope.idAccessories;
@@ -95,14 +89,17 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $location.path("/annonces");
+          $location.path('/services/'+$scope.id+'/show');
         } else {
           $scope.messageUpdate = "Erreur d'édition"
         }
-      })
-      .error(function errorCallback(response) {
-        $scope.messageUpdate= "Error " + response
-      });
+      }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
 
@@ -112,7 +109,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getCategoriesEnum',
     }).success(function(categories){
       $scope.categoriesEnum = categories;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getEyeColorEnum = function() {
@@ -121,7 +124,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getEyeColorEnum',
     }).success(function(eyeColor){
       $scope.eyeColorEnum = eyeColor;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getLengthHairEnum = function() {
@@ -130,7 +139,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getLengthHairEnum',
     }).success(function(length){
       $scope.lengthHairEnum = length;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.getSkinToneEnum = function() {
@@ -139,7 +154,13 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/getSkinToneEnum',
     }).success(function(skinTone){
       $scope.skinToneEnum = skinTone;
-    })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
   };
 
   $scope.addAccessorie = function(accessorie){

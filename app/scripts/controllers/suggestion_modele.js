@@ -12,31 +12,22 @@ modelFinderApp.controller('SuggestionModelCtrl', function ($scope, $http, $locat
 
   $http({
     method: 'GET',
-    url: 'http://localhost:8080/detailAnnonce/' + $routeParams.id_annonce,
-  }).success(function(data) {
-    $scope.findSuggestions(data.annonce.skinTone, data.annonce.eyeColor,
-      data.annonce.lengthHair, data.annonce.heightMin, data.annonce.heightMax);
+    url: 'http://localhost:8080/suggestionModel/' + $routeParams.id_annonce,
+  }).success(function(data){
+    if (data.length == 0) {
+      $scope.noSuggestion = "Il n'y a pas de modèle correspondant aux critères de l'annonce";
+      $scope.message = "";
+    } else {
+      $scope.message = data;
+    }
+
+  }).error(function (data, status) {
+    if(data.message == "Accès refusé"){
+      $location.path("/accessDenied");
+    }else{
+      $location.path("/error");
+    }
   });
-
-  $scope.findSuggestions = function (carnation_peau, couleur_yeux, longueur_cheveux, taille_min, taille_max) {
-    $http({
-      method: 'GET',
-      url: 'http://localhost:8080/suggestionModel/'+carnation_peau+'/'+couleur_yeux+'/'+longueur_cheveux+'/'+taille_min+'/'+taille_max,
-      ///modelList
-    }).success(function(data){
-      console.log(data.length == 0);
-      console.log(eval(data));
-      if (data.length == 0) {
-        $scope.noSuggestion = "Il n'y a pas de modèle correspondant au critères de l'annonce";
-        $scope.message = "";
-      } else {
-        $scope.message = data;
-      }
-
-    }).error(function(){
-      alert("error");
-    });
-  };
 
   $scope.go = function (path) {
     $location.path(path);

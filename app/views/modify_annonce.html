@@ -1,6 +1,5 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="ModifyAnnonceCtrl" data-ng-init="getDetailAnnonce()">
-  
+  <div ng-init="getDetailAnnonce()">
     <div class='row' ng-if="status=='Active'">
               <h1>Modification d'une annonce</h1>
             <form novalidate class="css-form">
@@ -35,27 +34,27 @@
               <p>
               <ul>
                 <li>{{accessorie1}}
-                  <button id="accessorie1" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie1')" class="visually-hidden">
+                  <button id="accessorie1" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie1')" ng-if="accessorie1">
                     <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
                   </button>
                 </li>
                 <li>{{accessorie2}}
-                  <button id="accessorie2" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie2')" class="visually-hidden">
+                  <button id="accessorie2" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie2')" ng-if="accessorie2">
                     <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
                   </button>
                 </li>
                 <li>{{accessorie3}}
-                  <button id="accessorie3" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie3')" class="visually-hidden">
+                  <button id="accessorie3" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie3')" ng-if="accessorie3">
                     <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
                   </button>
                 </li>
                 <li>{{accessorie4}}
-                  <button id="accessorie4" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie4')" class="visually-hidden">
+                  <button id="accessorie4" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie4')" ng-if="accessorie4">
                     <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
                   </button>
                 </li>
                 <li>{{accessorie5}}
-                  <button id="accessorie5" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie5')" class="visually-hidden">
+                  <button id="accessorie5" style="background-color:transparent; border-color:transparent;" ng-click="deleteAccessorie('accessorie5')" ng-if="accessorie5">
                     <img src="images/delete_button.png" title="Supprimer cet accessoire" height="15"/>
                   </button>
                 </li>
@@ -107,6 +106,6 @@
     </div>
 
 
-    
+
   </div>
 </div>
