@@ -24,9 +24,21 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
 
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/annonceList',
+      url: 'http://localhost:8080/annonceListInactives',
     }).success(function (data) {
-      $scope.message = data;
+      $scope.annoncesInactives = data;
+      $http({
+      method: 'GET',
+      url: 'http://localhost:8080/annonceListActives',
+      }).success(function (data) {
+        $scope.annoncesActives = data;
+      }).error(function (data, status) {
+        if(data.message == "Accès refusé"){
+          $location.path("/accessDenied");
+        }else{
+          $location.path("/error");
+        }
+      });
     }).error(function (data, status) {
       if(data.message == "Accès refusé"){
         $location.path("/accessDenied");

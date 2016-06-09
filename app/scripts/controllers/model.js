@@ -2,17 +2,11 @@
 
 /**
  * @ngdoc function
-<<<<<<< HEAD
  * @name modelFinderApp.controller:ModelCtrl
  * @description});
  * # ModelCtrl
-=======
- * @name modelFinderApp.controller:StudentCtrl
- * @description
- * # StudentCtrl
->>>>>>> b0703b631144e734494c505795bd32bbbf82fae8
  * Controller of the modelFinderApp
- */
+*/
 
 modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
 
@@ -49,11 +43,17 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     } else {
       postObjectModel.gender = "2";
     }
+      
+    var postObjectUser = new Object();
+    postObjectUser.password = $scope.password;
+    postObjectUser.mail = $scope.mail;
+    postObjectUser.isValidated = "true";  
+      
     $http({
-      url: "http://localhost:8080/createModel",
+      url: "http://localhost:8080/saveModel",
       method: "POST",
       dataType: "json",
-      data: postObjectModel,
+      data: {model:postObjectModel, user:postObjectUser},
       headers: {
         "Content-Type": "application/json"
       }
@@ -181,6 +181,10 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     	}
     };
 
+    $scope.getSexes = function() {
+        $scope.sexes=['','Femme','Homme'];
+    };
+    
      $scope.sexeIn = function (item) {
     	if ($scope.sexeSelectionne==''){
     		return item;
@@ -212,5 +216,11 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             $scope.etatDemande = "Error " + response
           });
     };
+    
+    $scope.checkPwd = function(pwd1, pwd2) {
+        if(pwd1==Pwd2){
+            createModel();
+        }
+    }
 
 });

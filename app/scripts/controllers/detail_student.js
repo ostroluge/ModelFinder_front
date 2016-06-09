@@ -15,6 +15,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
     url: 'http://localhost:8080/studentById/' + $routeParams.id_student
   }).success(function (data) {
     $scope.student = data;
+    $scope.student.birthDate = new Date($scope.student.birthDate);
   }).error(function (data, status) {
     if(data.message == "Accès refusé"){
       $location.path("/accessDenied");

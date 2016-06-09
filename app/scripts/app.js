@@ -80,6 +80,9 @@ modelFinderApp.config(function ($routeProvider, $httpProvider) {
     }).when('/models/:id_model/edit', {
       controller: 'DetailModelCtrl',
       templateUrl: 'views/modify_model.html'
+    }).when('/students/new', {
+      controller: 'StudentCtrl',
+      templateUrl: 'views/create_student.html'
     }).when('/profile', {
       controller: 'ProfileCtrl',
       templateUrl: 'views/profile.html'

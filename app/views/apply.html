@@ -4,9 +4,6 @@
       <h1>{{titre}}</h1>
       <div class="card">
         <form name="applyForm" ng-controller="ApplyCtrl">
-          <label>ID modèle :
-            <input type="number" ng-model="idModel" required>
-          </label><br>
           <span ng-repeat="accessory in checkList">
             <input type="checkbox" ng-model="accessory.checked"
                    ng-true-value="1" ng-false-value="0">  {{accessory.name}}<br>
@@ -20,7 +17,7 @@
       </div>
     </div>
     <div class='row card center' ng-if="status=='Inactive'">
-        L'annonce est inactive, vous ne pouvez donc pas y postuler.
+      L'annonce est inactive, vous ne pouvez donc pas y postuler.
     </div>
   </div>
 </div>

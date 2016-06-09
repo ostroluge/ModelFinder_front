@@ -1,18 +1,12 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="ReponseCtrl" ng-init="getAllResponses()">
+  <div ng-controller="ReponseCtrl" ng-init="getMyResponses()">
 
     <h1 class="titre">Suivre ses propositions</h1>
-    <div class="card">
-      <label>Id du modele : <input ng-model="search.model.id"></label> <br>
-      <label>Prénom du modele : <input ng-model="search.model.name"></label> <br>
-      <label>Nom du modele : <input ng-model="search.model.lastName"></label> <br>
-    </div>
-
     <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
     <div ng-repeat="groupeAccessoires in accessoires">
     <div ng-if="reponse.annonce.accessoriesId==groupeAccessoires.idAccessories">
       <a ng-href='/#/services/{{reponse.annonce.id}}/show'>{{reponse.annonce.title}}</a> <br>
-      Modele : <a ng-href='/#/models/{{reponse.model.id}}/show'>{{reponse.model.name}} {{reponse.model.lastName}}</a><br>      
+      Modele : <a ng-href='/#/models/{{reponse.model.id}}/show'>{{reponse.model.name}} {{reponse.model.lastName}}</a><br>
       Statut : {{reponse.statut}}<br>
       <div ng-if="groupeAccessoires.accessory1">
         {{groupeAccessoires.accessory1}} :  {{reponse.statusAccessory1}} <br>
