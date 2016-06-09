@@ -28,19 +28,16 @@
         </select>
       </label>
     </div>
-    <div ng-repeat="annonce in message | filter:search:strict">
-      <div class='row card' ng-if="annonce.status=='Active'">
+    <div class='row card' ng-repeat="annonce in annoncesActives | filter:search:strict">
         {{ annonce.title }}<br>
         Date début : {{ annonce.dateBegin }}<br>
         Date fin : {{ annonce.dateEnd }}<br>
         Catégorie prestation : {{ annonce.categoryService }}<br>
         Thème prestation : {{ annonce.themeService }}<br>
         <button class="button" ng-click="go('/services/'+annonce.id+'/show')">Voir les détails</button>
-      </div>
     </div>
-    <h1 class="titre">Annonces Inactives</h1>
-    <div ng-repeat="annonce in message | filter:search:strict">
-      <div class='row card' ng-if="annonce.status=='Inactive'">
+    <h1 class="titre" ng-if="!annoncesInactives">Annonces Inactives</h1>
+    <div class='row card' ng-repeat="annonce in annoncesInactives | filter:search:strict">
         {{annonce.status}}
         {{ annonce.title }}<br>
         Date début : {{ annonce.dateBegin }}<br>
@@ -48,7 +45,6 @@
         Catégorie prestation : {{ annonce.categoryService }}<br>
         Thème prestation : {{ annonce.themeService }}<br>
         <button class="button" ng-click="go('/services/'+annonce.id+'/show')">Voir les détails</button>
-      </div>
     </div>
   </div>
 </div>
