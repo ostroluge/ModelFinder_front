@@ -65,9 +65,9 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
       }
 
     }).error(function (data, status) {
-      if(data.message == "Accès refusé"){
+      if (data.message == "Accès refusé") {
         $location.path("/accessDenied");
-      }else{
+      } else {
         $location.path("/error");
       }
     });
@@ -80,7 +80,7 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
   $scope.postApplication = function () {
 
     var postObject = new Object();
-    postObject.idModel = $scope.idModel;
+    //postObject.idModel = $scope.idModel;
     postObject.idAnnonce = $routeParams.id_annonce;
     postObject.comment = $scope.comment;
 
@@ -124,32 +124,31 @@ modelFinderApp.controller('ApplyCtrl', function ($scope, $http, $location, $rout
       }
     }
 
-    if (postObject.idModel != null) {
-      $http({
-        url: "http://localhost:8080/apply",
-        method: "POST",
-        dataType: "json",
-        data: postObject,
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).success(function successCallback(response) {
-          if (response.response == "success") {
-            console.log("OK");
-            $scope.go('/annonces');
-          } else if(response.response == "already apply"){
-            $scope.alreadyApply = "Already Apply";
-          } else {
-            console.log("KO");
-          }
-        }).error(function (data, status) {
-            if(data.message == "Accès refusé"){
-              $location.path("/accessDenied");
-            }else{
-              $location.path("/error");
-            }
-        });
-    }
+    $http({
+      url: "http://localhost:8080/apply",
+      method: "POST",
+      dataType: "json",
+      data: postObject,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).success(function successCallback(response) {
+      if (response.response == "success") {
+        console.log("OK");
+        $scope.go('/services');
+      } else if (response.response == "already apply") {
+        $scope.alreadyApply = "Already Apply";
+      } else {
+        console.log("KO");
+      }
+    }).error(function (data, status) {
+      if (data.message == "Accès refusé") {
+        $location.path("/accessDenied");
+      } else {
+        $location.path("/error");
+      }
+    });
+
   };
 
 });
