@@ -15,6 +15,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     url: 'http://localhost:8080/detailModel/' + $routeParams.id_model
   }).success(function (data) {
     $scope.model = data;
+      $scope.model.dateOfBirth = new Date($scope.model.dateOfBirth);
      if (data.gender == 1) {
       $scope.sexe = "Homme";
     } else {

@@ -69,6 +69,9 @@ modelFinderApp.config(['$routeProvider',
     }).when('/models/:id_model/edit', {
       controller: 'DetailModelCtrl',
       templateUrl: 'views/modify_model.html'
+    }).when('/students/new', {
+      controller: 'StudentCtrl',
+      templateUrl: 'views/create_student.html'
     })
     .otherwise({redirectTo:'/'});
   }

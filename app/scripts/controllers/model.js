@@ -43,14 +43,14 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectModel.lowHeight = $scope.lowHeight;
     postObjectModel.shoeSize = $scope.shoeSize;  
     postObjectModel.comment = $scope.comment;
-    postObjectModel.description = $scope.description;   
+    postObjectModel.description = $scope.description;
     if ($scope.gender = "Homme") {
       postObjectModel.gender = "1";
     } else {
       postObjectModel.gender = "2";
     }
     $http({
-      url: "http://localhost:8080/createModel",
+      url: "http://localhost:8080/SaveModel",
       method: "POST",
       dataType: "json",
       data: postObjectModel,
@@ -181,6 +181,10 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     	}
     };
 
+    $scope.getSexes = function() {
+        $scope.sexes=['','Femme','Homme'];
+    };
+    
      $scope.sexeIn = function (item) {
     	if ($scope.sexeSelectionne==''){
     		return item;

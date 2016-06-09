@@ -14,7 +14,8 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
     method: 'GET',
     url: 'http://localhost:8080/StudentById/' + $routeParams.id_student
   }).success(function (data) {
-    $scope.student = data;   
+    $scope.student = data;
+    $scope.student.birthDate = new Date($scope.student.birthDate);
   }).error(function () {
     alert("error");
   });

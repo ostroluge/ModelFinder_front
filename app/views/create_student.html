@@ -1,0 +1,28 @@
+<div ng-app="modelFinderApp">
+  <div ng-controller="StudentCtrl">
+    <h1 class="titre">Création d'un étudiant</h1>
+    <div class="card">
+    <form novalidate class="css-form">
+      <p>Nom:
+        <input type="text" ng-model="lastName" required>
+      </p>
+      <p> Prenom:
+        <input type="text" ng-model="firstName" required>
+      </p>
+      <p> Mail:
+        <input type="email" ng-model="mail" required>
+      </p>
+      <p> Mot de Passe:
+        <input type="password" ng-model="password" required>
+      </p>
+      <p>
+        Date de naissance:
+        <input type="date" ng-model="birthDate" required>
+      </p>
+        <input class="button" type="submit" ng-click="createStudent()" value="Valider">
+    </form>
+    </div>
+    <p>{{messageCreation}}</p>
+      <p>{{aa}}</p>
+  </div>
+</div>
