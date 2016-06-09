@@ -8,7 +8,7 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $cookies) {
+modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $routeParams) {
 
   $scope.getAllAnnonces = function () {
 
@@ -75,7 +75,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $co
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $location.path('/services/'+$scope.idAnnonce+'/suggestions');
+          $location.path('/services/'+$routeParams.id_annonce+'/suggestions');
         } else {
           $scope.messageCreation = "Erreur de création"
         }
