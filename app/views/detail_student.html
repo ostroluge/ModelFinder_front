@@ -9,15 +9,25 @@
       <div ng-if="!student.isValidated">
         Etat : Compte en attente de validation<br><br>
         <div class='row'>
-          <div class='col-md-6'><button class="button" type="submit" ng-click="enableStudent(student.id)">Activer l'étudiant</button></div>
-          <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
+          <div ng-if="isAdmin())">
+            <div class='col-md-6'><button class="button" type="submit" ng-click="enableStudent(student.id)">Activer l'étudiant</button></div>
+            <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
+          </div>
+          <div ng-if="isStudent())">
+            <button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button>
+          </div>
         </div>
       </div>
       <div ng-if="student.isValidated">
         Etat : Compte validé<br><br>
         <div class='row'>
-          <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/students/'+student.id+'/edit')">Editer l'étudiant</button></div>
+          <div ng-if="isAdmin())">
+            <button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button>
+          </div>
+          <div ng-if="isStudent())">
+            <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/students/'+student.id+'/edit')">Editer l'étudiant</button></div>
           <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
+          </div>
         </div>
       </div>
     </div>

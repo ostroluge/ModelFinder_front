@@ -33,9 +33,8 @@
         Age : {{calculerAge(model.dateOfBirth)}} ans<br>
         Taille : {{model.height}} cm
       <div class='row'>
-        <div class='col-md-4'> <button class="button floatRight" ng-click="go('/models/'+model.id+'/show')">Voir les détails</button></div>
-        <div class='col-md-4'><button class="button" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer le modèle</button></div>
-        <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button></div>
+        <div class='col-md-6'> <button class="button floatRight" ng-click="go('/models/'+model.id+'/show')">Voir les détails</button></div>
+        <div class='col-md-6'><button class="button floatLeft" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button></div>
       </div>
     </div>
   </div>
