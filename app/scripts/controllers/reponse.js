@@ -11,10 +11,10 @@
 
 modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$route) {
 
-  $scope.getAllResponses = function () {
+  $scope.getMyResponses = function () {
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/reponseList',
+      url: 'http://localhost:8080/myResponses',
     }).success(function (data) {
       $scope.reponses = data;
       $scope.annonces = [];
