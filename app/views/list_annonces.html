@@ -28,6 +28,7 @@
         </select>
       </label>
     </div>
+    <h1 class="titre" ng-if="annoncesActives.length>0">Annonces Actives</h1>
     <div class='row card' ng-repeat="annonce in annoncesActives | filter:search:strict">
         {{ annonce.title }}<br>
         Date début : {{ annonce.dateBegin }}<br>
@@ -36,7 +37,7 @@
         Thème prestation : {{ annonce.themeService }}<br>
         <button class="button" ng-click="go('/services/'+annonce.id+'/show')">Voir les détails</button>
     </div>
-    <h1 class="titre" ng-if="!annoncesInactives">Annonces Inactives</h1>
+    <h1 class="titre" ng-if="annoncesInactives.length>0">Annonces Inactives</h1>
     <div class='row card' ng-repeat="annonce in annoncesInactives | filter:search:strict">
         {{annonce.status}}
         {{ annonce.title }}<br>
