@@ -50,7 +50,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectUser.isValidated = "true";  
       
     $http({
-      url: "http://localhost:8080/saveModel",
+      url: "http://localhost:8080/createModel",
       method: "POST",
       dataType: "json",
       data: {model:postObjectModel, user:postObjectUser},

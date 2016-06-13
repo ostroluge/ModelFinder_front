@@ -26,7 +26,7 @@ $(function(){
             </div>
             <div class="col-md-7">
                 Nom : {{model.lastName}} {{model.name}}<br/>
-                Mail : {{model.mail}}<br/>
+                Mail : {{user.mail}}<br/>
                 Age : {{calculerAge(model.dateOfBirth)}}<br/>
                 Sexe : {{sexe}}<br/>
                 Numéro Téléphone : {{model.phoneNumber}}<br/>
@@ -43,10 +43,10 @@ $(function(){
             </div>
             </div>
             <div class='row'>
-            <div ng-if="isAdmin())">
+            <div ng-if="isAdmin()">
                 <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer le modèle</button></div>
             </div>
-            <div ng-if="isModel())">
+            <div ng-if="isModel()">
                 <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer le modèle</button></div>
                 <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button></div>
             </div>

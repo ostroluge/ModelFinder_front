@@ -14,7 +14,10 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     method: 'GET',
     url: 'http://localhost:8080/detailModel/' + $routeParams.id_model
   }).success(function (data) {
-    $scope.model = data;
+    $scope.model = data.model;
+    $scope.user = data.user;
+    $scope.password = '';
+    $scope.passwordConf = '';
       $scope.model.dateOfBirth = new Date($scope.model.dateOfBirth);
      if (data.gender == 1) {
       $scope.sexe = "Homme";
@@ -55,6 +58,21 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     return new Number((d2.getTime() - d1.getTime()) / 31536000000).toFixed(0);
   };
 
+  $scope.checkPwdModify = function(pwd1, pwd2) {
+    if(pwd1==pwd2){ //Mots de passe identique
+      if(pwd1==''){ //Si aucune modif : mot de passe deja renseigné et crypté
+        $scope.modifyModel();
+      } else {//Si modif du mdp
+        $scope.user.password=pwd1;
+        $scope.modifyModelPassword();
+      }
+
+    }
+    else{
+      $scope.passwordError = "Veuillez entrer deux mots de passe identiques";
+    }
+  }
+
   $scope.modifyModel = function () {
     if ($scope.sexe = "Homme") {
       $scope.model.gender == 1;
@@ -62,10 +80,37 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
       $scope.model.gender == 2;
     }
     $http({
-          url: "http://localhost:8080/createModel",
+          url: "http://localhost:8080/modifyModel",
           method: "POST",
           dataType: "json",
-          data: $scope.model,
+          data: {model:$scope.model, user:$scope.user},
+          headers: {
+            "Content-Type": "application/json"
+          }
+        }).success(function successCallback(response) {
+            if (response.response == "success") {
+              console.log("OK");
+              $scope.go('/models/'+$routeParams.id_model+'/show');
+            } else {
+              console.log("KO");
+            }
+          })
+          .error(function errorCallback(response) {
+            console.log("Error");
+          });
+ }
+
+   $scope.modifyModelPassword = function () {
+    if ($scope.sexe = "Homme") {
+      $scope.model.gender == 1;
+    } else {
+      $scope.model.gender == 2;
+    }
+    $http({
+          url: "http://localhost:8080/modifyModelAndPassword",
+          method: "POST",
+          dataType: "json",
+          data: {model:$scope.model, user:$scope.user},
           headers: {
             "Content-Type": "application/json"
           }
