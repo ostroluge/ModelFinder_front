@@ -38,7 +38,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectModel.shoeSize = $scope.shoeSize;
     postObjectModel.comment = $scope.comment;
     postObjectModel.description = $scope.description;
-    if ($scope.gender = "Homme") {
+    if ($scope.gender == "Homme") {
       postObjectModel.gender = "1";
     } else {
       postObjectModel.gender = "2";
@@ -82,15 +82,15 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
    $scope.getAllModels = function () {
 	    $http({
 	    method: 'GET',
-	    url: 'http://localhost:8080/modelList',
+	    url: 'http://localhost:8080/usermodelList',
 		  }).success(function(data){
 		    $scope.models = data;
 		    $scope.lowerAge = null;
-            $scope.higherAge = null;
+        $scope.higherAge = null;
 		    $scope.lowerHeight = null;
-            $scope.higherHeight = null;
-            $scope.sexes=['','Femme','Homme'];
-            $scope.sexeSelectionne='';
+        $scope.higherHeight = null;
+        $scope.sexes=['','Femme','Homme'];
+        $scope.sexeSelectionne='';
 		  }).error(function(){
 		    alert("error");
 		  });
@@ -146,15 +146,15 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     $scope.ageBetween = function (item) {
     	if ($scope.lowerAge!=null){
     		if ($scope.higherAge!=null){
-    			if ($scope.lowerAge <= $scope.calculerAge(item.dateOfBirth) && $scope.calculerAge(item.dateOfBirth) <= $scope.higherAge)
+    			if ($scope.lowerAge <= $scope.calculerAge(item.model.dateOfBirth) && $scope.calculerAge(item.model.dateOfBirth) <= $scope.higherAge)
         			return item;
     		}else{
-    			if ($scope.lowerAge <= $scope.calculerAge(item.dateOfBirth))
+    			if ($scope.lowerAge <= $scope.calculerAge(item.model.dateOfBirth))
         			return item;
     		}
     	}else{
     		if ($scope.higherAge!=null){
-    			if ($scope.calculerAge(item.dateOfBirth) <= $scope.higherAge)
+    			if ($scope.calculerAge(item.model.dateOfBirth) <= $scope.higherAge)
         			return item;
     		}else{
     			return item;
@@ -165,15 +165,15 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     $scope.heightBetween = function (item) {
     	if ($scope.lowerHeight!=null){
     		if ($scope.higherHeight!=null){
-    			if ($scope.lowerHeight <= item.height && item.height <= $scope.higherHeight)
+    			if ($scope.lowerHeight <= item.model.height && item.model.height <= $scope.higherHeight)
         			return item;
     		}else{
-    			if ($scope.lowerHeight <= item.height)
+    			if ($scope.lowerHeight <= item.model.height)
         			return item;
     		}
     	}else{
     		if ($scope.higherHeight!=null){
-    			if (item.height <= $scope.higherHeight)
+    			if (item.model.height <= $scope.higherHeight)
         			return item;
     		}else{
     			return item;
@@ -182,7 +182,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     };
 
     $scope.getSexes = function() {
-        $scope.sexes=['','Femme','Homme'];
+        $scope.sexes=['Femme','Homme'];
     };
     
      $scope.sexeIn = function (item) {
@@ -190,10 +190,10 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     		return item;
     	}else{
     		if ($scope.sexeSelectionne=='Homme'){
-    			if (item.gender == 1)
+    			if (item.model.gender == 1)
         			return item;
     		}else{
-    			if (item.gender != 1)
+    			if (item.model.gender != 1)
         			return item;
     		}
     	}

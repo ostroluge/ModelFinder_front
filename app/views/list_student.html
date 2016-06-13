@@ -2,44 +2,29 @@
   <div ng-controller="StudentCtrl" ng-init="getAllStudents()">
     <h1 class="titre">Liste des étudiants</h1>
     <div class="card">
-      <label>Prénom : <input ng-model="search.firstName"></label> <br>
-      <label>Nom : <input ng-model="search.lastName"></label> <br>
-      <label>Adresse mail : <input ng-model="search.mail"></label> <br>
+      <label>Prénom : <input ng-model="search.student.firstName"></label> <br>
+      <label>Nom : <input ng-model="search.student.lastName"></label> <br>
+      <label>Adresse mail : <input ng-model="search.user.mail"></label> <br>
     </div>
-    <h1 class="titre">Etudiants en attente de validation</h1>
-    <div ng-repeat="student in students | filter:search:strict">
-    <div class="card" ng-if="!student.isValidated">
-
-        {{student.firstName}} {{student.lastName}}<br>
-        Adresse mail : {{student.mail}}
-        
-        <div ng-if="!student.isValidated">
-          Etat : Compte en attente de validation<br><br>
-          <div class='row'>
-            <div class='col-md-4'> <button class="button floatRight" ng-click="go('/students/'+student.id+'/show')">Voir les détails</button></div>
-            <div class='col-md-4'> <button class="button" type="submit" ng-click="enableStudent(student.id)">Activer l'étudiant</button></div>
-            <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
-          </div>
-        </div>
-       </div>
+    <h1 class="titre" ng-if="studentsWaitingVal.length>0">Etudiants en attente de validation</h1>
+    <div class ="card" ng-repeat="us in studentsWaitingVal | filter:search:strict">
+      {{us.student.firstName}} {{us.student.lastName}}<br>
+      Adresse mail : {{us.user.mail}}<br><br>
+      <div class='row'>
+        <div class='col-md-4'> <button class="button floatRight" ng-click="go('/students/'+us.student.id+'/show')">Voir les détails</button></div>
+        <div class='col-md-4'> <button class="button" type="submit" ng-click="enableStudent(us)">Activer l'étudiant</button></div>
+        <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="deleteStudent(us.student.id)">Supprimer l'étudiant</button></div>
       </div>
+     </div>
 
-    <h1 class="titre">Etudiants Validés</h1>
-    <div ng-repeat="student in students | filter:search:strict">
-      <div class="card" ng-if="!student.isValidated">
-
-        {{student.firstName}} {{student.lastName}}<br>
-        Adresse mail : {{student.mail}}
-        
-        <div ng-if="!student.isValidated">
-          Etat : Compte en attente de validation<br><br>
-          <div class='row'>
-            <div class='col-md-4'> <button class="button floatRight" ng-click="go('/students/'+student.id+'/show')">Voir les détails</button></div>
-            <div class='col-md-4'> <button class="button" type="submit" ng-click="enableStudent(student.id)">Activer l'étudiant</button></div>
-            <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
-          </div>
-        </div>
-       </div>
+    <h1 class="titre" ng-if="studentsVal.length>0">Etudiants Validés</h1>
+    <div class="card" ng-repeat="us in studentsVal | filter:search:strict">
+      {{us.student.firstName}} {{us.student.lastName}}<br>
+      Adresse mail : {{us.user.mail}}<br><br>
+      <div class='row'>
+        <div class='col-md-6'> <button class="button floatRight" ng-click="go('/students/'+us.student.id+'/show')">Voir les détails</button></div>
+        <div class='col-md-6'><button class="button floatLeft" type="submit" ng-click="deleteStudent(us.student.id)">Supprimer l'étudiant</button></div>
       </div>
+    </div>
   </div>
 </div>

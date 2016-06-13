@@ -50,7 +50,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
     }).success(function (response) {
           if (response.response === "success") {
             console.log("OK");
-            $scope.student.isValidated = true;
+            $scope.user.isValidated = true;
           } else {
             console.log("KO");
           }

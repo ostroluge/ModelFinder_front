@@ -2,21 +2,21 @@
   <div ng-controller="ModelCtrl" ng-init="getAllModels()">
     <h1 class="titre">Liste des modèles</h1>
     <div class="card">
-      <label class="col-md-6">Prénom : <input ng-model="search.name"></label> 
-      <label class="col-md-6">Nom : <input ng-model="search.lastName"></label> <br>
+      <label class="col-md-6">Prénom : <input ng-model="search.model.name"></label> 
+      <label class="col-md-6">Nom : <input ng-model="search.model.lastName"></label> <br>
       <label class="col-md-6">Age minimum : <input type="text" ng-model="lowerAge" /></label>
       <label class="col-md-6">Age maximum : <input type="text" ng-model="higherAge" /></label><br>
       <label class="col-md-6">Taille minimum : <input type="text" ng-model="lowerHeight" /> cm</label>
       <label class="col-md-6">Taille maximum : <input type="text" ng-model="higherHeight" /> cm</label><br>
       <br>
       <label class="col-md-6" data-ng-init="getLengthHairEnum()">Longueur des cheveux :
-        <select ng-model="search.lengthHair">
+        <select ng-model="search.model.lengthHair">
         <option value=""></option>
         <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
         </select>
       </label> 
       <label class="col-md-6" data-ng-init="getSkinToneEnum()">Carnation de la peau :
-        <select ng-model="search.skinTone">
+        <select ng-model="search.model.skinTone">
           <option value=""></option>
           <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
         </select>
@@ -27,14 +27,14 @@
         </select>
       </label>
     </div>
-    <div class="card" ng-repeat="model in models |filter:search:strict| filter:ageBetween | filter:heightBetween | filter:sexeIn">
-        {{model.name}} {{model.lastName}}<br>
-        Adresse mail : {{model.mail}}<br>
-        Age : {{calculerAge(model.dateOfBirth)}} ans<br>
-        Taille : {{model.height}} cm
+    <div class="card" ng-repeat="um in models |filter:search:strict| filter:ageBetween | filter:heightBetween | filter:sexeIn">
+        {{um.model.name}} {{um.model.lastName}}<br>
+        Adresse mail : {{um.user.mail}}<br>
+        Age : {{calculerAge(um.model.dateOfBirth)}} ans<br>
+        Taille : {{um.model.height}} cm
       <div class='row'>
-        <div class='col-md-6'> <button class="button floatRight" ng-click="go('/models/'+model.id+'/show')">Voir les détails</button></div>
-        <div class='col-md-6'><button class="button floatLeft" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button></div>
+        <div class='col-md-6'> <button class="button floatRight" ng-click="go('/models/'+um.model.id+'/show')">Voir les détails</button></div>
+        <div class='col-md-6'><button class="button floatLeft" type="submit" ng-click="deleteModel(um.model.id)">Supprimer le modèle</button></div>
       </div>
     </div>
   </div>

@@ -74,10 +74,10 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
   }
 
   $scope.modifyModel = function () {
-    if ($scope.sexe = "Homme") {
-      $scope.model.gender == 1;
+    if ($scope.sexe == "Homme") {
+      $scope.model.gender = 1;
     } else {
-      $scope.model.gender == 2;
+      $scope.model.gender = 2;
     }
     $http({
           url: "http://localhost:8080/modifyModel",
@@ -101,10 +101,10 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
  }
 
    $scope.modifyModelPassword = function () {
-    if ($scope.sexe = "Homme") {
-      $scope.model.gender == 1;
+    if ($scope.sexe == "Homme") {
+      $scope.model.gender = 1;
     } else {
-      $scope.model.gender == 2;
+      $scope.model.gender = 2;
     }
     $http({
           url: "http://localhost:8080/modifyModelAndPassword",
