@@ -23,13 +23,19 @@
         Commentaire : {{commentaire}}<br>
     </div>
      <div class='row' ng-if="status=='Active'">
-        <button class="button" ng-click="go('/services/'+id+'/edit')">Editer annonce</button><br>
-        <button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button><br>
-        <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button><br>
-        <button class="button" type="submit" ng-click="updateStatus(id,'Inactive')">Désactiver l'annonce</button><br>
+        <div ng-if="getId()==etudiant.id">
+            <div class='col-md-4'><button class="button floatRight" ng-click="go('/services/'+id+'/edit')">Editer annonce</button></div>
+            <div class='col-md-4'><button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button></div>
+            <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="updateStatus(id,'Inactive')">Désactiver l'annonce</button></div>
+        </div>
+        <div ng-if="isModel()">
+            <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button>
+        </div>
     </div>
     <div class='row' ng-if="status=='Inactive'">
-        <button class="button" type="submit" ng-click="updateStatus(id,'Active')">Activer l'annonce</button><br>
+        <div ng-if="getId()==etudiant.id">
+            <button class="button" type="submit" ng-click="updateStatus(id,'Active')">Activer l'annonce</button>
+        </div>
     </div>
   </div>
 </div>

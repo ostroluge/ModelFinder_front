@@ -33,8 +33,13 @@
         Age : {{calculerAge(um.model.dateOfBirth)}} ans<br>
         Taille : {{um.model.height}} cm
       <div class='row'>
-        <div class='col-md-6'> <button class="button floatRight" ng-click="go('/models/'+um.model.id+'/show')">Voir les détails</button></div>
-        <div class='col-md-6'><button class="button floatLeft" type="submit" ng-click="deleteModel(um.model.id)">Supprimer le modèle</button></div>
+        <div ng-if="isStudent()">
+          <button class="button" ng-click="go('/models/'+um.model.id+'/show')">Voir les détails</button>
+        </div>
+        <div ng-if="isAdmin()">
+          <div class='col-md-6'> <button class="button floatRight" ng-click="go('/models/'+um.model.id+'/show')">Voir les détails</button></div>
+          <div class='col-md-6'><button class="button floatLeft" type="submit" ng-click="deleteModel(um.model.id)">Supprimer le modèle</button></div>
+        </div>
       </div>
     </div>
   </div>
