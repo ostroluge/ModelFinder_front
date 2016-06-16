@@ -109,6 +109,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
               $scope.go('/students/'+$routeParams.id_student+'/show');
             } else {
               console.log("KO");
+
             }
           })
           .error(function errorCallback(response) {
