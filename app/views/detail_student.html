@@ -1,9 +1,9 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailStudentCtrl">
 
-    <h1>Détails de l'étudiant</h1>
+    <h1 class="titre">Fiche étudiant</h1>
+    <h1 class="soustitre">{{student.firstName}} {{student.lastName}}</h1>
     <div class="card">
-      Nom : {{student.firstName}} {{student.lastName}}<br/>
       Mail : {{user.mail}}<br/>
       Age : {{calculerAge(student.birthDate)}}<br/>
       <div ng-if="!user.isValidated">
