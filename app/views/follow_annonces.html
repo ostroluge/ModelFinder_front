@@ -1,11 +1,11 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="ReponseCtrl" ng-init="getAllResponses()">
+  <div ng-controller="ReponseCtrl" ng-init="getStudentAnnonces()">
     <h1 class="titre">Suivre ses annonces</h1>
-    <div class="card">
-      <label>Id de l'étudiant : <input ng-model="search.annonce.student.idStudent"></label> <br>
-      <label>Prénom de l'étudiant : <input ng-model="search.annonce.student.firstName"></label> <br>
-      <label>Nom de l'étudiant : <input ng-model="search.annonce.student.lastName"></label> <br>
-    </div>
+    <!--<div class="card">-->
+      <!--<label>Id de l'étudiant : <input ng-model="search.annonce.student.idStudent"></label> <br>-->
+      <!--<label>Prénom de l'étudiant : <input ng-model="search.annonce.student.firstName"></label> <br>-->
+      <!--<label>Nom de l'étudiant : <input ng-model="search.annonce.student.lastName"></label> <br>-->
+    <!--</div>-->
     <div class="card" ng-repeat="annonce in annonces | filter:search:strict | orderBy:'status'">
     <div ng-repeat="groupeAccessoires in accessoires">
     <div ng-if="annonce.accessoriesId==groupeAccessoires.idAccessories">
