@@ -2,7 +2,7 @@
   <div ng-controller="ReponseCtrl" ng-init="getModelResponses()">
 
     <h1 class="titre">Suivre ses propositions</h1>
-    <div class="card" ng-repeat="reponse in reponses | filter:search:strict">
+    <div class="card" ng-repeat="reponse in reponses | filter:search:strict | orderBy:'statutOrder'">
     <div ng-repeat="groupeAccessoires in accessoires">
     <div ng-if="reponse.annonce.accessoriesId==groupeAccessoires.idAccessories">
       <a ng-href='/#/services/{{reponse.annonce.id}}/show'>{{reponse.annonce.title}}</a> <br>

@@ -17,11 +17,7 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
       url: 'http://localhost:8080/modelProposals',
     }).success(function (data) {
       $scope.reponses = data;
-      $scope.annonces = [];
       angular.forEach($scope.reponses,function(reponse,key){
-        if(!annonceInCollection(reponse.annonce)){
-          $scope.annonces.push(reponse.annonce);
-        }
         if (reponse.statut=="En attente"){
             reponse.statutOrder=1;
           }
