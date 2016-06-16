@@ -52,6 +52,13 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
     return $scope.message.indexOf(annonce);
   };
 
+  $scope.preremplissageDates = function (annonce) {
+    var now = new Date((new Date($.now())).toISOString().substr(0,14)+'00:00');
+    $scope.dateBeginAnnonce = now;
+    $scope.dateEndAnnonce = now;
+  };
+  
+
   $scope.createAnnonce = function () {
 
     var postObjectAnnonce = new Object();

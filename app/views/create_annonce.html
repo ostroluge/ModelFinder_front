@@ -1,5 +1,7 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="AnnonceCtrl">
+      <div ng-init="preremplissageDates()">
+
     <h1 class="titre">Création d'une annonce</h1>
     <div class="card">
     <form novalidate class="css-form">
@@ -101,5 +103,6 @@
     </form>
     </div>
     <p>{{messageCreation}}</p>
+  </div>
   </div>
 </div>
