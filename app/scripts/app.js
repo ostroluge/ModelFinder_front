@@ -13,7 +13,6 @@ var modelFinderApp = angular.module('modelFinderApp', ['ngRoute', 'ngCookies']);
 
 modelFinderApp.config(function ($routeProvider, $httpProvider) {
 
-    $httpProvider.defaults.useXDomain = true;
     $httpProvider.defaults.withCredentials = true;
 
     $routeProvider.when('/', {
