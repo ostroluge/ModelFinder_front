@@ -6,7 +6,7 @@
       <label>Nom : <input ng-model="search.student.lastName"></label> <br>
       <label>Adresse mail : <input ng-model="search.user.mail"></label> <br>
     </div>
-    <h1 class="titre" ng-if="studentsWaitingVal.length>0">Etudiants en attente de validation</h1>
+    <h1 class="soustitre" ng-if="studentsWaitingVal.length>0">Etudiants en attente de validation</h1>
     <div class ="card" ng-repeat="us in studentsWaitingVal | filter:search:strict">
       {{us.student.firstName}} {{us.student.lastName}}<br>
       Adresse mail : {{us.user.mail}}<br><br>
@@ -17,7 +17,7 @@
       </div>
      </div>
 
-    <h1 class="titre" ng-if="studentsVal.length>0">Etudiants Validés</h1>
+    <h1 class="soustitre" ng-if="studentsVal.length>0">Etudiants Validés</h1>
     <div class="card" ng-repeat="us in studentsVal | filter:search:strict">
       {{us.student.firstName}} {{us.student.lastName}}<br>
       Adresse mail : {{us.user.mail}}<br><br>

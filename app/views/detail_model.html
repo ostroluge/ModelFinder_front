@@ -15,7 +15,8 @@ $(function(){
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailModelCtrl">
 
-    <h1>Détails du modèle</h1>
+    <h1 class="titre">Fiche modèle</h1>
+    <h1 class="soustitre">{{model.name}} {{model.lastName}}</h1>
       <div class="container-fluid">
         <div class="card">
             <div class="row">
@@ -25,7 +26,6 @@ $(function(){
                 <img src="{{model.modelPhoto[2].url}}" alt="Photo de mon gite" height="350" width="300">
             </div>
             <div class="col-md-7">
-                Nom : {{model.lastName}} {{model.name}}<br/>
                 Mail : {{user.mail}}<br/>
                 Age : {{calculerAge(model.dateOfBirth)}}<br/>
                 Sexe : {{sexe}}<br/>

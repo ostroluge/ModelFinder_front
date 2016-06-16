@@ -1,15 +1,15 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailAnnonceCtrl">
 
-    <h1>Détails de l'annonce</h1>
+    <h1 class="titre">Fiche annonce</h1>
+    <h1 class="soustitre">{{titre}}</h1>
     <div class="card">
-        ID : {{id}} - Statut : {{status}}<br>
+        Statut : {{status}}<br>
         Postée par l'etudiant : <a ng-href='/#/students/{{etudiant.id}}/show'>{{etudiant.firstName}} {{etudiant.lastName}}</a><br>
         Accessoires :<br>
         <ul class="listeAPuce">
           <li data-ng-repeat="accessorie in accessories" ng-if="accessorie != null">{{accessorie}}</li>
         </ul>
-        Titre : {{ titre }}<br>
         Date début : {{ date_debut }}<br>
         Date fin : {{ date_fin }}<br>
         Catégorie prestation : {{ categorie_prestation }}<br>
