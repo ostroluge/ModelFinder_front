@@ -48,24 +48,24 @@
         <div ng-if="!isAuthenticated()">
           <li class="active"><a href="#/login">Se connecter</a></li>
           <li class="active"><a href="#/models/new">Créer un compte modèle</a></li>
-          <li class="active"><a href="#/students/new">Creer un Etudiant</a></li>
+          <li class="active"><a href="#/students/new">Creer un compte étudiant</a></li>
         </div>
         <div ng-if="isAuthenticated()">
           <div ng-if="isAdmin()">
-            <li class="active"><a href="#/profile">Admin : {{getMail()}}</a></li>
+            <li class="active"><a href="#/profile">{{getMail()}}</a></li>
             <li class="active"><a href="#/students">Liste des étudiants</a></li>
             <li class="active"><a href="#/models">Liste des modèles</a></li>
             <li class="active"><a href="#/services">Liste des annonces</a></li>
           </div>
           <div ng-if="isStudent()">
-            <li class="active"><a href="#/students/{{getId()}}/show">Student : {{getMail()}}</a></li>
+            <li class="active"><a href="#/students/{{getId()}}/show">{{getMail()}}</a></li>
             <li class="active"><a href="#/models">Liste des modèles</a></li>
             <li class="active"><a href="#/services">Liste des annonces</a></li>
             <li class="active"><a href="#/services/new">Créer annonce</a></li>
             <li class="active"><a href="#/monitoring/services">Suivre ses annonces</a></li>
           </div>
           <div ng-if="isModel()">
-            <li class="active"><a href="#/models/{{getId()}}/show">Modèle : {{getMail()}}</a></li>
+            <li class="active"><a href="#/models/{{getId()}}/show">{{getMail()}}</a></li>
             <li class="active"><a href="#/services">Liste des annonces</a></li>
             <li class="active"><a href="#/monitoring/proposals">Suivre ses propositions</a></li>
           </div>
