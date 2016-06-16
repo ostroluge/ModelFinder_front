@@ -54,8 +54,8 @@ li{
 }
 
 a:link, a:visited, a:active {
-  text-decoration: none!important;
-  color : #FFFFFF !important;
+  text-decoration: underline!important;
+  color : #1c1f26 !important;
 }
 
 a:hover {
