@@ -68,23 +68,26 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
   };
 
   $scope.deleteStudent = function (id) {
-    $http({
-      method: 'GET',
-      url: 'http://localhost:8080/DeleteStudent/' + id,
-    }).success(function (response) {
-          if (response.response === "success") {
-            console.log("OK");
-            $scope.getAllStudents();
-          } else {
-            console.log("KO");
-          }
-        }).error(function (data, status) {
-            if(data.message == "Accès refusé"){
-              $location.path("/accessDenied");
-            }else{
-              $location.path("/error");
+    if (confirm("Voulez vous vraiment supprimer cet étudiant ?")) { 
+        $http({
+        method: 'GET',
+        url: 'http://localhost:8080/deleteStudent/' + id,
+      }).success(function (response) {
+            if (response.response === "success") {
+              console.log("OK");
+              $scope.getAllStudents();
+            } else {
+              console.log("KO");
             }
+          })
+          .error(function errorCallback(response) {
+            console.log("Error");
+            $scope.etatDemande = "Error " + response
           });
+      }
+    else{
+      $scope.getAllStudents();
+    }
   };
 
     $scope.createStudent = function () {

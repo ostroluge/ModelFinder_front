@@ -43,12 +43,13 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     } else {
       postObjectModel.gender = "2";
     }
-      
+
     var postObjectUser = new Object();
     postObjectUser.password = $scope.password;
     postObjectUser.mail = $scope.mail;
     postObjectUser.isValidated = "true";  
-      
+    postObjectUser.role = "model";
+
     $http({
       url: "http://localhost:8080/createModel",
       method: "POST",
@@ -59,7 +60,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-            $scope.messageCreation = "création OK"
+          $scope.go('/login');
         } else {
           $scope.messageCreation = "Erreur de création"
         }
@@ -94,6 +95,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
 		  }).error(function(){
 		    alert("error");
 		  });
+
   };
 
   $scope.go = function (path) {
@@ -184,7 +186,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     $scope.getSexes = function() {
         $scope.sexes=['Femme','Homme'];
     };
-    
+
      $scope.sexeIn = function (item) {
     	if ($scope.sexeSelectionne==''){
     		return item;
@@ -200,7 +202,8 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     };
 
     $scope.deleteModel = function (id) {
-      $http({
+      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) { 
+        $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
       }).success(function (response) {
@@ -215,11 +218,16 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             console.log("Error");
             $scope.etatDemande = "Error " + response
           });
+      }
+    else{
+      $scope.getAllModels();
+    }
+      
     };
-    
+
     $scope.checkPwd = function(pwd1, pwd2) {
-        if(pwd1==Pwd2){
-            createModel();
+        if(pwd1==pwd2){
+            $scope.createModel();
         }
     }
 

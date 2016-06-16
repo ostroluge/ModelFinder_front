@@ -62,21 +62,26 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
   };
 
   $scope.deleteStudent = function (id) {
-    $http({
-      method: 'GET',
-      url: 'http://localhost:8080/deleteStudent/' + id,
-    }).success(function (response) {
-          if (response.response === "success") {
-            console.log("OK");
-            go('/students');
-          } else {
-            console.log("KO");
-          }
-        })
-        .error(function errorCallback(response) {
-          console.log("Error");
-          $scope.etatDemande = "Error " + response
-        });
+    if (confirm("Voulez vous vraiment supprimer cet étudiant ?")) { 
+        $http({
+        method: 'GET',
+        url: 'http://localhost:8080/deleteStudent/' + id,
+      }).success(function (response) {
+            if (response.response === "success") {
+              console.log("OK");
+              $scope.getAllStudents();
+            } else {
+              console.log("KO");
+            }
+          })
+          .error(function errorCallback(response) {
+            console.log("Error");
+            $scope.etatDemande = "Error " + response
+          });
+      }
+    else{
+      $scope.getAllStudents();
+    }
   };
 
     $scope.checkPwdModify = function(pwd1, pwd2) {

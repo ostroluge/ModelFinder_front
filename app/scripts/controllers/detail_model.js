@@ -155,13 +155,14 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
   };
 
     $scope.deleteModel = function (id) {
-      $http({
+      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) { 
+        $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
       }).success(function (response) {
             if (response.response === "success") {
               console.log("OK");
-              go('/models');
+              $scope.getAllModels();
             } else {
               console.log("KO");
             }
@@ -170,8 +171,28 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
             console.log("Error");
             $scope.etatDemande = "Error " + response
           });
+      }
     };
 
+    $scope.deleteLogoutModel = function (id) {
+      if (confirm("Voulez vous vraiment supprimer votre compte ?")) { 
+        $http({
+        method: 'GET',
+        url: 'http://localhost:8080/deleteModel/' + id,
+      }).success(function (response) {
+            if (response.response === "success") {
+              console.log("OK");
+              $scope.go('/logout');
+            } else {
+              console.log("KO");
+            }
+          })
+          .error(function errorCallback(response) {
+            console.log("Error");
+            $scope.etatDemande = "Error " + response
+          });
+      }
+    };
 
 
 });
