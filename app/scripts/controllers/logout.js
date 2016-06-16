@@ -23,7 +23,9 @@ modelFinderApp.controller('LogoutCtrl', ['$scope', '$cookies', '$location', '$ht
         "Content-Type": "application/json"
       }}).success(function successCallback(response, status) {
         if (status == 200) {
-          $scope.messageLogout = "La déconnexion a fonctionné";
+          $scope.password="";
+          $scope.userName="";
+          $cookies.remove('authenticatedUser');
           $scope.go('/login');
         }
       })
