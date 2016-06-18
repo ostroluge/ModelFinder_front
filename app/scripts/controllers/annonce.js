@@ -12,12 +12,6 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
 
   $scope.getAllAnnonces = function () {
 
-    //if ($cookies.getObject('authenticatedUser') != null) {
-    //  console.log($cookies.getObject('authenticatedUser').role);
-    //} else {
-    //  console.log('Personne n\'est identifié ma petite gueule');
-    //}
-
     $scope.go = function (path) {
       $location.path(path);
     };
@@ -57,7 +51,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
     $scope.dateBeginAnnonce = now;
     $scope.dateEndAnnonce = now;
   };
-  
+
 
   $scope.createAnnonce = function () {
 

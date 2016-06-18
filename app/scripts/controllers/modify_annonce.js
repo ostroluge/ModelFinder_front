@@ -8,7 +8,7 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $location, $routeParams) {
+modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $location, $routeParams,$cookies) {
 
   $scope.getDetailAnnonce = function() {
     $http({
@@ -42,6 +42,10 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       $scope.accessorie3 = data.accessories.accessory3;
       $scope.accessorie4 = data.accessories.accessory4;
       $scope.accessorie5 = data.accessories.accessory5;
+
+      if($cookies.getObject('authenticatedUser').id != data.annonce.idStudent){
+        $location.path("/accessDenied");
+      }
 
     }).error(function (data, status) {
       if(data.message == "Accès refusé"){
