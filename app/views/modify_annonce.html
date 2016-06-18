@@ -2,7 +2,7 @@
   <div ng-init="getDetailAnnonce()">
     <div class='row' ng-if="status=='Active'">
             <h1 class="titre">Editer une annonce</h1>
-            <form novalidate class="css-form">
+            <form ng-submit="submit()"  class="css-form" ng-controller="ModifyAnnonceCtrl">
               <p>Titre:
                 <input type="text" ng-model="titleAnnonce" required>
               </p>
@@ -26,7 +26,7 @@
               </p>
               <span id="messageTooManyAccessories" class="visually-hidden messageError" >Vous ne pouvez pas ajouter plus d'accessoires</span>
               <p> Accessoires:
-                <input type="text" ng-model="accessoriesAnnonce" required>
+                <input type="text" ng-model="accessoriesAnnonce">
                 <button style="background-color:transparent; border-color:transparent;" ng-click="addAccessorie(accessoriesAnnonce)">
                   <img src="images/add_button.png" title="Ajouter un accessoire" height="15"/>
                 </button>
@@ -66,14 +66,14 @@
               </p>
               <p data-ng-init="getLengthHairEnum()">
                 Longueur des cheveux :
-                <select ng-model="lengthHairAnnonce">
+                <select ng-model="lengthHairAnnonce" required>
                   <option value=""></option>
                   <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
                 </select><br>
               </p>
               <p data-ng-init="getSkinToneEnum()">
                 Carnation de peau :
-                <select ng-model="skinToneAnnonce">
+                <select ng-model="skinToneAnnonce" required>
                   <option value=""></option>
                   <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
                 </select><br>
@@ -88,7 +88,7 @@
               </p>
               <p data-ng-init="getEyeColorEnum()">
                 Couleur des yeux :
-                <select ng-model="eyeColorAnnonce">
+                <select ng-model="eyeColorAnnonce" required>
                   <option value=""></option>
                   <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
                 </select><br>
@@ -97,7 +97,7 @@
                 Commentaire :
                 <input type="text" ng-model="comment">
               </p>
-              <input class="button" type="submit" ng-click="updateAnnonce()" value="Editer l'annonce">
+              <input class="button" type="submit" id="submit" value="Editer l'annonce">
             </form>
             <p>{{messageUpdate}}</p>
     </div>

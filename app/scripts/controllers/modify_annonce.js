@@ -55,9 +55,10 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
     });
   };
 
-  $scope.updateAnnonce = function () {
+  $scope.submit = function () {
 
     var postObjectAnnonce = new Object();
+    console.log($scope.heightMaxAnnonce);
     postObjectAnnonce.id= $routeParams.idAnnonce;
     postObjectAnnonce.title = $scope.titleAnnonce;
     postObjectAnnonce.themeService = $scope.themeAnnonce;
