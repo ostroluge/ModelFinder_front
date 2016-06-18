@@ -38,7 +38,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectModel.shoeSize = $scope.shoeSize;
     postObjectModel.comment = $scope.comment;
     postObjectModel.description = $scope.description;
-    if ($scope.gender == "Homme") {
+    if ($scope.sexe == "Homme") {
       postObjectModel.gender = "1";
     } else {
       postObjectModel.gender = "2";
@@ -47,7 +47,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     var postObjectUser = new Object();
     postObjectUser.password = $scope.password;
     postObjectUser.mail = $scope.mail;
-    postObjectUser.isValidated = "true";  
+    postObjectUser.isValidated = "true";
     postObjectUser.role = "model";
 
     $http({
@@ -202,7 +202,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     };
 
     $scope.deleteModel = function (id) {
-      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) { 
+      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) {
         $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
@@ -222,7 +222,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     else{
       $scope.getAllModels();
     }
-      
+
     };
 
     $scope.checkPwd = function(pwd1, pwd2) {
