@@ -16,9 +16,8 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/detailAnnonce/' + $routeParams.idAnnonce,
     }).success(function (data) {
 
-      console.log(data);
       $scope.id = data.annonce.id;
-      $scope.etudiant_id = data.annonce.idStudent;
+      $scope.etudiant_id = data.annonce.student.id;
       $scope.accessoriesAnnonce = data.annonce.idAccessories;
       $scope.titleAnnonce = data.annonce.title;
       $scope.dateBeginAnnonce = new Date(data.annonce.dateBegin);
@@ -43,7 +42,7 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       $scope.accessorie4 = data.accessories.accessory4;
       $scope.accessorie5 = data.accessories.accessory5;
 
-      if($cookies.getObject('authenticatedUser').id != data.annonce.idStudent){
+      if($cookies.getObject('authenticatedUser').id != data.annonce.student.id){
         $location.path("/accessDenied");
       }
 
