@@ -2,7 +2,7 @@
   <div ng-init="getDetailAnnonce()">
     <div class='row' ng-if="status=='Active'">
             <h1 class="titre">Editer une annonce</h1>
-            <form ng-submit="submit()"  class="css-form" ng-controller="ModifyAnnonceCtrl">
+            <form ng-submit="submit()"  class="card css-form" ng-controller="ModifyAnnonceCtrl">
               <p>Titre:
                 <input type="text" ng-model="titleAnnonce" required>
               </p>

@@ -1,8 +1,7 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="StudentCtrl">
     <h1 class="titre">Créer un compte étudiant</h1>
-    <div class="card">
-    <form novalidate class="css-form">
+    <form ng-submit="checkPwd(password, passwordConf)"  class="card css-form">
       <p>Nom:
         <input type="text" ng-model="lastName" required>
       </p>
@@ -22,10 +21,7 @@
         Date de naissance:
         <input type="date" ng-model="birthDate" required>
       </p>
-        <input class="button" type="submit" ng-click="checkPwd(password, passwordConf)" value="Valider">
+      <input class="button" type="submit" id="submit" value="Valider">
     </form>
-    </div>
-    <p>{{messageCreation}}</p>
-      <p>{{aa}}</p>
   </div>
 </div>
