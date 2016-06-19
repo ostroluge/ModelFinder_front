@@ -6,6 +6,9 @@
       <!--<label>Prénom de l'étudiant : <input ng-model="search.annonce.student.firstName"></label> <br>-->
       <!--<label>Nom de l'étudiant : <input ng-model="search.annonce.student.lastName"></label> <br>-->
     <!--</div>-->
+    <div ng-if="reponses.length==0" class="center">
+      Aucun modèle n'a encore postulé à une de vos annonces
+    </div>
     <div class="card" ng-repeat="annonce in annonces | filter:search:strict | orderBy:'status'">
     <div ng-repeat="groupeAccessoires in accessoires">
     <div ng-if="annonce.accessoriesId==groupeAccessoires.idAccessories">

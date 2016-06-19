@@ -2,6 +2,9 @@
   <div ng-controller="ReponseCtrl" ng-init="getModelResponses()">
 
     <h1 class="titre">Suivre ses propositions</h1>
+    <div ng-if="reponses.length==0" class="center">
+      Vous n'avez postulé à aucune annonce.
+    </div>
     <div class="card" ng-repeat="reponse in reponses | filter:search:strict | orderBy:'statutOrder'">
     <div ng-repeat="groupeAccessoires in accessoires">
     <div ng-if="reponse.annonce.accessoriesId==groupeAccessoires.idAccessories">

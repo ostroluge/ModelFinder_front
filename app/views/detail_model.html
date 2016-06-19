@@ -44,11 +44,11 @@ $(function(){
             </div>
             <div class='row'>
             <div ng-if="isAdmin()">
-                <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button></div>
+                <button class="button" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button>
             </div>
             <div ng-if="isModel()">
-                <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer le modèle</button></div>
-                <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteLogoutModel(model.id)">Supprimer le modèle</button></div>
+                <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer son compte</button></div>
+                <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteLogoutModel(model.id)">Supprimer son compte</button></div>
             </div>
         </div>
         </div>

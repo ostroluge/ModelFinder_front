@@ -53,6 +53,8 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
         .error(function errorCallback(error, status) {
           if (status == 401) {
             $scope.messageAuth = "Mauvaise combinaison login/mot de passe";
+          } else if (status == 412) {
+            $scope.messageAuth = "Compte en attente de validation";
           } else {
             $scope.messageAuth = "Error " + response;
           }
