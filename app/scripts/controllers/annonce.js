@@ -88,7 +88,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $location.path('/services/'+$routeParams.id_annonce+'/suggestions');
+          $location.path('/services/'+response.id+'/suggestions');
         } else {
           $scope.messageCreation = "Erreur de création"
         }
