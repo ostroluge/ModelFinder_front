@@ -15,7 +15,8 @@
         Catégorie prestation : {{ categorie_prestation }}<br>
         Thème prestation : {{ theme_prestation }}<br>
         Carnation de peau : {{carnation_peau}}<br>
-        Couleur des yeux : {{couleur_yeux}}<br>
+        <div ng-if="couleur_yeux">Couleur des yeux : {{couleur_yeux}}</div>
+        <div ng-if="!couleur_yeux">Couleur des yeux : indifférente</div>
         Couleur de cheveux : {{couleur_cheveux}}<br>
         Longueur de cheveux : {{longueur_cheveux}}<br>
         Taille modèle min : {{taille_min}}<br>

@@ -89,7 +89,7 @@
       </p>
       <p data-ng-init="getEyeColorEnum()">
         Couleur des yeux :
-        <select ng-model="eyeColorAnnonce" required>
+        <select ng-model="eyeColorAnnonce">
           <option value=""></option>
           <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
         </select><br>
