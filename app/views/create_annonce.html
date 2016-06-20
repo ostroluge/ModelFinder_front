@@ -27,7 +27,7 @@
       </p>
       <span id="messageTooManyAccessories" class="visually-hidden messageError" >Vous ne pouvez pas ajouter plus d'accessoires</span>
       <p> Accessoires:
-        <input type="text" ng-model="accessoriesAnnonce" required>
+        <input type="text" ng-model="accessoriesAnnonce">
         <button style="background-color:transparent; border-color:transparent;" ng-click="addAccessorie(accessoriesAnnonce)">
           <img src="images/add_button.png" title="Ajouter un accessoire" height="15"/>
         </button>
@@ -89,7 +89,7 @@
       </p>
       <p data-ng-init="getEyeColorEnum()">
         Couleur des yeux :
-        <select ng-model="eyeColorAnnonce" required>
+        <select ng-model="eyeColorAnnonce">
           <option value=""></option>
           <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
         </select><br>
