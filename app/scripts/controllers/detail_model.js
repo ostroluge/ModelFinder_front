@@ -14,14 +14,32 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     method: 'GET',
     url: 'http://localhost:8080/detailModel/' + $routeParams.id_model
   }).success(function (data) {
-    $scope.model = data;
-      $scope.model.dateOfBirth = new Date($scope.model.dateOfBirth);
+    $scope.id = data.model.id;
+    $scope.lastName = data.model.lastName;  
+      $scope.dateOfBirth = new Date($scope.dateOfBirth);
+      $scope.name = data.model.name;
+      $scope.mail=data.model.mail;
+      $scope.dateOfBirth=data.model.dateOfBirth;    
+      $scope.phoneNumber=data.model.phoneNumber;
+                $scope.skinTone=data.model.skinTone;
+                $scope.hairColor=data.model.hairColor;
+                $scope.eyeColor=data.model.eyeColor;
+                $scope.lengthHair=data.model.lengthHair;
+                $scope.height=data.model.height;
+                $scope.shoeSize=data.model.shoeSize;
+                $scope.highHeight=data.model.highHeight;
+                $scope.lowHeight=data.model.lowHeight;
+                $scope.description=data.model.description;
+                $scope.comment=data.model.comment
      if (data.gender == 1) {
       $scope.sexe = "Homme";
     } else {
       $scope.sexe = "Femme";
     }
     $scope.sexes=['Femme','Homme'];
+    $scope.file1=data.model.modelPhoto[0].file;
+    $scope.file2=data.model.modelPhoto[1].file;
+    $scope.file3=data.model.modelPhoto[2].file;  
   }).error(function (data, status) {
     if(data.message == "Accès refusé"){
       $location.path("/accessDenied");

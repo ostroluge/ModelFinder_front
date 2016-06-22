@@ -117,6 +117,8 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
     $scope.checkPwd = function(pwd1, pwd2) {
         if(pwd1==pwd2){
             $scope.createStudent();
+        } else {
+            $scope.confirmationMdp = "Veuillez saisir 2 mots de passe identiques";
         }
     };
     

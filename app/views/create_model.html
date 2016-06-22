@@ -18,6 +18,7 @@
       <p> Confirmation de Mot de Passe:
         <input type="password" ng-model="passwordConf" required>
       </p>
+        <label id="confMdp" style="color:#FF0000">{{confirmationMdp}}</label>
       <p>
         Date de naissance:
         <input type="date" ng-model="dateOfBirth" required>
@@ -80,10 +81,12 @@
         <input type="text" ng-model="comment">
       </p>
       <p>
-        Photos :
-          <input type="file" ng-model="photo" onchange="previewFile()"><br>
-            <img src="" height="50" alt="Image preview...">  
-      </p>  
+        <input id="file0" type="file"/>
+        <img id="img0" ng-model="img0"/>
+        <input id="file1" type="file"/>  
+        <img id="img1" ng-model="img1"/>
+        <input id="file2" type="file"/>
+        <img id="img2" ng-model="img2"/>
       <input class="button" type="submit" ng-click="checkPwd(password, passwordConf)" value="Valider">
     </form>
     </div>

@@ -10,6 +10,7 @@
 
 modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
 
+    
 
   $scope.go = function (path) {
     $location.path(path);
@@ -42,13 +43,34 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       postObjectModel.gender = "1";
     } else {
       postObjectModel.gender = "2";
-    }
+    }  
       
     var postObjectUser = new Object();
     postObjectUser.password = $scope.password;
     postObjectUser.mail = $scope.mail;
-    postObjectUser.isValidated = "true";  
+    postObjectUser.isValidated = "true";
+    postObjectUser.role = "model";  
       
+    postObjectModel.modelPhoto = [];
+       if ($scope.i0){
+      var photo0 = {file:$scope.i0};
+      console.log(photo0);
+      postObjectModel.modelPhoto.push(photo0);
+       }
+      if ($scope.i1){
+      var photo1 = {file:$scope.i1};
+          postObjectModel.modelPhoto.push(photo1);
+      console.log(photo1);
+      }
+      if ($scope.i2!= null){
+      var photo2 = {file:$scope.i2};
+          postObjectModel.modelPhoto.push(photo2);
+      console.log(photo2);
+      }
+      
+      
+      
+
     $http({
       url: "http://localhost:8080/saveModel",
       method: "POST",
@@ -218,9 +240,47 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     };
     
     $scope.checkPwd = function(pwd1, pwd2) {
-        if(pwd1==Pwd2){
-            createModel();
+        if(pwd1==pwd2){
+            $scope.createModel();
+        } else {
+            $scope.confirmationMdp = "Veuillez saisir 2 mots de passe identiques";
         }
-    }
-
+    };
+  
+     $("#file0").change(function () {
+         var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img0').attr('src', e.target.result);
+            $scope.i0 = e.target.result;
+        }
+        if (this.files.length > 0) {
+            reader.readAsDataURL(this.files[0]);
+        }
 });
+    
+  $("#file1").change(function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img1').attr('src', e.target.result);
+            $scope.i1 = e.target.result;
+        }
+        if (this.files.length > 0) {
+            reader.readAsDataURL(this.files[0]);
+        }
+});
+     $("#file2").change(function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img2').attr('src', e.target.result);
+            $scope.i2 = e.target.result;
+        }
+        if (this.files.length > 0) {
+            reader.readAsDataURL(this.files[0]);
+        }
+});
+    
+    
+    
+    
+});    
+
