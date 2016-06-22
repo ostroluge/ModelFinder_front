@@ -47,4 +47,12 @@ modelFinderApp.controller('RoleCtrl', function ($scope, $cookies) {
     return false;
   };
 
+  $scope.isStudentWithId = function (id) {
+    if ($scope.isAuthenticated()) {
+      return ($cookies.getObject('authenticatedUser').role === 'student') &&
+        ($cookies.getObject('authenticatedUser').id === id);
+    }
+    return false;
+  }
+
 });
