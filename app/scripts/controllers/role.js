@@ -20,6 +20,12 @@ modelFinderApp.controller('RoleCtrl', function ($scope, $cookies) {
     }
   };
 
+  $scope.getId = function () {
+    if ($scope.isAuthenticated()) {
+      return ($cookies.getObject('authenticatedUser').id);
+    }
+  };
+
   $scope.isAdmin = function () {
     if ($scope.isAuthenticated()) {
       return ($cookies.getObject('authenticatedUser').role === 'admin');

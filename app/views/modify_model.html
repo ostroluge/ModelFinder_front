@@ -1,17 +1,16 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailModelCtrl">
 
-    <h1>Editer le modèle</h1>
-    <div class="card">
-      <form novalidate class="css-form">
-        <p>Nom:
+    <h1 class="titre">Editer son profil</h1>
+    <form ng-submit="checkPwdModify(password, passwordConf)"  class="card css-form">
+      <p>Nom:
         <input type="text" ng-model="model.lastName" required>
       </p>
       <p> Prenom:
         <input type="text" ng-model="model.name" required>
       </p>
       <p> Mail:
-        <input type="email" ng-model="model.mail" required>
+        <input type="email" ng-model="user.mail" required>
       </p>
       <p>
         Date de naissance:
@@ -74,8 +73,13 @@
         Commentaire :
         <input type="text" ng-model="model.comment">
       </p>
-       <button class="button" type="submit" ng-click="modifyModel()">Valider</button>
+      <p> Mot de Passe:
+        <input type="password" ng-model="password">
+      </p>
+      <p> Confirmation de Mot de Passe:
+        <input type="password" ng-model="passwordConf"> {{passwordError}}
+      </p>
+        <input class="button" type="submit" id="submit" value="Valider">
       </form>
-    </div>
   </div>
 </div>

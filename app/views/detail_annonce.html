@@ -1,21 +1,22 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailAnnonceCtrl">
 
-    <h1>Détails de l'annonce</h1>
+    <h1 class="titre">Fiche annonce</h1>
+    <h1 class="soustitre">{{titre}}</h1>
     <div class="card">
-        ID : {{id}} - Statut : {{status}}<br>
+        Statut : {{status}}<br>
         Postée par l'etudiant : <a ng-href='/#/students/{{etudiant.id}}/show'>{{etudiant.firstName}} {{etudiant.lastName}}</a><br>
         Accessoires :<br>
         <ul class="listeAPuce">
           <li data-ng-repeat="accessorie in accessories" ng-if="accessorie != null">{{accessorie}}</li>
         </ul>
-        Titre : {{ titre }}<br>
         Date début : {{ date_debut }}<br>
         Date fin : {{ date_fin }}<br>
         Catégorie prestation : {{ categorie_prestation }}<br>
         Thème prestation : {{ theme_prestation }}<br>
         Carnation de peau : {{carnation_peau}}<br>
-        Couleur des yeux : {{couleur_yeux}}<br>
+        <div ng-if="couleur_yeux">Couleur des yeux : {{couleur_yeux}}</div>
+        <div ng-if="!couleur_yeux">Couleur des yeux : indifférente</div>
         Couleur de cheveux : {{couleur_cheveux}}<br>
         Longueur de cheveux : {{longueur_cheveux}}<br>
         Taille modèle min : {{taille_min}}<br>
@@ -23,13 +24,19 @@
         Commentaire : {{commentaire}}<br>
     </div>
      <div class='row' ng-if="status=='Active'">
-        <button class="button" ng-click="go('/services/'+id+'/edit')">Editer annonce</button><br>
-        <button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button><br>
-        <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button><br>
-        <button class="button" type="submit" ng-click="updateStatus(id,'Inactive')">Désactiver l'annonce</button><br>
+        <div ng-if="getId()==etudiant.id">
+            <div class='col-md-4'><button class="button floatRight" ng-click="go('/services/'+id+'/edit')">Editer annonce</button></div>
+            <div class='col-md-4'><button class="button" ng-click="go('/services/'+id+'/suggestions')">Voir les suggestions de modèles</button></div>
+            <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="updateStatus(id,'Inactive')">Désactiver l'annonce</button></div>
+        </div>
+        <div ng-if="isModel()">
+            <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button>
+        </div>
     </div>
     <div class='row' ng-if="status=='Inactive'">
-        <button class="button" type="submit" ng-click="updateStatus(id,'Active')">Activer l'annonce</button><br>
+        <div ng-if="getId()==etudiant.id">
+            <button class="button" type="submit" ng-click="updateStatus(id,'Active')">Activer l'annonce</button>
+        </div>
     </div>
   </div>
 </div>

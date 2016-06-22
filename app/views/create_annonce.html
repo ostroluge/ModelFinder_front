@@ -1,8 +1,9 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="AnnonceCtrl">
+      <div ng-init="preremplissageDates()">
+
     <h1 class="titre">Création d'une annonce</h1>
-    <div class="card">
-    <form novalidate class="css-form">
+    <form ng-submit="createAnnonce()"  class="card css-form">
       <p>Titre:
         <input type="text" ng-model="titleAnnonce" required>
       </p>
@@ -26,7 +27,7 @@
       </p>
       <span id="messageTooManyAccessories" class="visually-hidden messageError" >Vous ne pouvez pas ajouter plus d'accessoires</span>
       <p> Accessoires:
-        <input type="text" ng-model="accessoriesAnnonce" required>
+        <input type="text" ng-model="accessoriesAnnonce">
         <button style="background-color:transparent; border-color:transparent;" ng-click="addAccessorie(accessoriesAnnonce)">
           <img src="images/add_button.png" title="Ajouter un accessoire" height="15"/>
         </button>
@@ -66,25 +67,25 @@
       </p>
       <p data-ng-init="getLengthHairEnum()">
         Longueur des cheveux :
-        <select ng-model="lengthHairAnnonce">
+        <select ng-model="lengthHairAnnonce" required>
           <option value=""></option>
           <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
         </select><br>
       </p>
       <p data-ng-init="getSkinToneEnum()">
         Carnation de peau :
-        <select ng-model="skinToneAnnonce">
+        <select ng-model="skinToneAnnonce" required>
           <option value=""></option>
           <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
         </select><br>
       </p>
       <p>
         Taille min :
-        <input type="number" ng-model="heightMinAnnonce" required>
+        <input type="number" ng-model="heightMinAnnonce" required> cm
       </p>
       <p>
         Taille max :
-        <input type="number" ng-model="heightMaxAnnonce" required>
+        <input type="number" ng-model="heightMaxAnnonce" required> cm
       </p>
       <p data-ng-init="getEyeColorEnum()">
         Couleur des yeux :
@@ -97,9 +98,9 @@
         Commentaire :
         <input type="text" ng-model="comment">
       </p>
-      <input class="button" type="submit" ng-click="createAnnonce()" value="Creation d'une annonce">
+      <input class="button" type="submit" id="submit" value="Créer l'annonce">
     </form>
-    </div>
     <p>{{messageCreation}}</p>
+  </div>
   </div>
 </div>

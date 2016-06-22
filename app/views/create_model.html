@@ -1,8 +1,8 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="ModelCtrl">
-    <h1 class="titre">Création d'un compte</h1>
-    <div class="card" ng-init="getSexes()">
-    <form novalidate class="css-form">
+    <h1 class="titre">Créer un compte modèle</h1>
+    <div ng-init="getSexes()">
+    <form ng-submit="checkPwd(password, passwordConf)"  class="card css-form">
       <p>Nom:
         <input type="text" ng-model="lastName" required>
       </p>
@@ -24,7 +24,7 @@
         <input type="date" ng-model="dateOfBirth" required>
       </p>
       <p> Sexe:
-        <select ng-model="sexe">
+        <select ng-model="sexe" required>
           <option data-ng-repeat="sexe in sexes" value="{{sexe}}">{{sexe}}</option>
         </select>
       </p>    
@@ -33,7 +33,7 @@
       </p>    
       <p data-ng-init="getSkinToneEnum()">
         Carnation de peau :
-        <select ng-model="skinToneModel">
+        <select ng-model="skinToneModel" required>
           <option value=""></option>
           <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
         </select><br>
@@ -44,21 +44,21 @@
       </p>
       <p data-ng-init="getLengthHairEnum()">
         Longueur des cheveux :
-        <select ng-model="lengthHairModel">
+        <select ng-model="lengthHairModel" required>
           <option value=""></option>
           <option data-ng-repeat="length in lengthHairEnum" value="{{length}}">{{length}}</option>
         </select><br>
       </p>
       <p data-ng-init="getEyeColorEnum()">
         Couleur des yeux :
-        <select ng-model="eyeColorModel">
+        <select ng-model="eyeColorModel" required>
           <option value=""></option>
           <option data-ng-repeat="eyeColor in eyeColorEnum" value="{{eyeColor}}">{{eyeColor}}</option>
         </select><br>
       </p>
       <p>
         Taille :
-        <input type="number" min="0" ng-model="height" required>
+        <input type="number" min="0" ng-model="height" required> cm
       </p>
       <p>
         Pointure :
@@ -81,6 +81,7 @@
         <input type="text" ng-model="comment">
       </p>
       <p>
+        Photos :  
         <input id="file0" type="file"/>
         <img id="img0" ng-model="img0"/>
         <input id="file1" type="file"/>  

@@ -7,15 +7,16 @@ $(function(){
 		pagination: {active:false},
       });
     });
-    
+
     sjs = $('#slides').data('plugin_slidesjs');
-    
+
 </script>
 
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailModelCtrl">
 
-    <h1>Détails du modèle</h1>
+    <h1 class="titre">Fiche modèle</h1>
+    <h1 class="soustitre">{{model.name}} {{model.lastName}}</h1>
       <div class="container-fluid">
         <div class="card">
             <div class="card">
@@ -28,18 +29,20 @@ $(function(){
                 Nom : {{lastName}} {{name}}<br/>
                 Mail : {{mail}}<br/>
                 Age : {{calculerAge(dateOfBirth)}}<br/>
-                Sexe : {{sexe}}<br/>
-                Numéro Téléphone : {{phoneNumber}}<br/>
-                Couleur de la peau : {{skinTone}}<br/>
-                Couleur des cheveux : {{hairColor}}<br/>
-                Couleur des yeux : {{eyeColor}}<br/>
-                Longueur des cheveux : {{lengthHair}}<br/>
-                Taille : {{height}}<br/>
-                Pointure : {{shoeSize}}<br/>
-                Taille haut : {{highHeight}}<br/>
-                Taille bas : {{lowHeight}}<br/>
-                Description : {{description}}<br/>
-                Commentaire : {{comment}}<br/>
+                Mail : {{user.mail}}<br/>
+                Age : {{calculerAge(model.dateOfBirth)}}<br/>
+                Sexe : {{model.sexe}}<br/>
+                Numéro Téléphone : {{model.phoneNumber}}<br/>
+                Couleur de la peau : {{model.skinTone}}<br/>
+                Couleur des cheveux : {{model.hairColor}}<br/>
+                Couleur des yeux : {{model.eyeColor}}<br/>
+                Longueur des cheveux : {{model.lengthHair}}<br/>
+                Taille : {{model.height}}<br/>
+                Pointure : {{model.shoeSize}}<br/>
+                Taille haut : {{model.highHeight}}<br/>
+                Taille bas : {{model.lowHeight}}<br/>
+                Description : {{model.description}}<br/>
+                Commentaire : {{model.comment}}<br/>
             </div>
             </div>
             <div class='row'>
@@ -47,8 +50,8 @@ $(function(){
                 <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+id+'/edit')">Editer le modèle</button></div>
             </div>
             <div ng-if="isModel()">
-                <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+id+'/edit')">Editer le modèle</button></div>
-                <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteModel(id)">Supprimer le modèle</button></div>
+                <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer son compte</button></div>
+                <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteLogoutModel(model.id)">Supprimer son compte</button></div>
             </div>
         </div>
         </div>

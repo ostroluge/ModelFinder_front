@@ -8,7 +8,7 @@
  * Controller of the modelFinderApp
  */
 
-modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $location, $routeParams) {
+modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $location, $routeParams,$cookies) {
 
   $scope.getDetailAnnonce = function() {
     $http({
@@ -16,9 +16,8 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       url: 'http://localhost:8080/detailAnnonce/' + $routeParams.idAnnonce,
     }).success(function (data) {
 
-      console.log(data);
       $scope.id = data.annonce.id;
-      $scope.etudiant_id = data.annonce.idStudent;
+      $scope.etudiant_id = data.annonce.student.id;
       $scope.accessoriesAnnonce = data.annonce.idAccessories;
       $scope.titleAnnonce = data.annonce.title;
       $scope.dateBeginAnnonce = new Date(data.annonce.dateBegin);
@@ -43,6 +42,10 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
       $scope.accessorie4 = data.accessories.accessory4;
       $scope.accessorie5 = data.accessories.accessory5;
 
+      if($cookies.getObject('authenticatedUser').id != data.annonce.student.id){
+        $location.path("/accessDenied");
+      }
+
     }).error(function (data, status) {
       if(data.message == "Accès refusé"){
         $location.path("/accessDenied");
@@ -52,9 +55,10 @@ modelFinderApp.controller('ModifyAnnonceCtrl', function ($scope, $http, $locatio
     });
   };
 
-  $scope.updateAnnonce = function () {
+  $scope.submit = function () {
 
     var postObjectAnnonce = new Object();
+    console.log($scope.heightMaxAnnonce);
     postObjectAnnonce.id= $routeParams.idAnnonce;
     postObjectAnnonce.title = $scope.titleAnnonce;
     postObjectAnnonce.themeService = $scope.themeAnnonce;

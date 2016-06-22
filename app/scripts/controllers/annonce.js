@@ -12,12 +12,6 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
 
   $scope.getAllAnnonces = function () {
 
-    //if ($cookies.getObject('authenticatedUser') != null) {
-    //  console.log($cookies.getObject('authenticatedUser').role);
-    //} else {
-    //  console.log('Personne n\'est identifié ma petite gueule');
-    //}
-
     $scope.go = function (path) {
       $location.path(path);
     };
@@ -51,6 +45,13 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
   $scope.getIndex = function (annonce) {
     return $scope.message.indexOf(annonce);
   };
+
+  $scope.preremplissageDates = function (annonce) {
+    var now = new Date((new Date($.now())).toISOString().substr(0,14)+'00:00');
+    $scope.dateBeginAnnonce = now;
+    $scope.dateEndAnnonce = now;
+  };
+
 
   $scope.createAnnonce = function () {
 
@@ -87,7 +88,7 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-          $location.path('/services/'+$routeParams.id_annonce+'/suggestions');
+          $location.path('/services/'+response.id+'/suggestions');
         } else {
           $scope.messageCreation = "Erreur de création"
         }

@@ -1,32 +1,32 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="DetailStudentCtrl">
 
-    <h1>Détails de l'étudiant</h1>
+    <h1 class="titre">Fiche étudiant</h1>
+    <h1 class="soustitre">{{student.firstName}} {{student.lastName}}</h1>
     <div class="card">
-      Nom : {{student.firstName}} {{student.lastName}}<br/>
-      Mail : {{student.mail}}<br/>
+      Mail : {{user.mail}}<br/>
       Age : {{calculerAge(student.birthDate)}}<br/>
-      <div ng-if="!student.isValidated">
+      <div ng-if="!user.isValidated">
         Etat : Compte en attente de validation<br><br>
         <div class='row'>
-          <div ng-if="isAdmin())">
-            <div class='col-md-6'><button class="button" type="submit" ng-click="enableStudent(student.id)">Activer l'étudiant</button></div>
+          <div ng-if="isAdmin()">
+            <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="enableStudent(student.id)">Activer l'étudiant</button></div>
             <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
           </div>
-          <div ng-if="isStudent())">
-            <button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button>
+          <div ng-if="isStudent()">
+            <button class="button" type="submit" ng-click="deleteStudent(student.id)">Supprimer son compte</button>
           </div>
         </div>
       </div>
-      <div ng-if="student.isValidated">
+      <div ng-if="user.isValidated">
         Etat : Compte validé<br><br>
         <div class='row'>
-          <div ng-if="isAdmin())">
-            <button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button>
+          <div ng-if="isAdmin()">
+            <button class="button" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button>
           </div>
-          <div ng-if="isStudent())">
-            <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/students/'+student.id+'/edit')">Editer l'étudiant</button></div>
-          <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button></div>
+          <div ng-if="isStudent()">
+            <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/students/'+student.id+'/edit')">Editer son compte</button></div>
+          <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer son compte</button></div>
           </div>
         </div>
       </div>

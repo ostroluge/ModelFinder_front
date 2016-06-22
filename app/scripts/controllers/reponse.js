@@ -11,17 +11,13 @@
 
 modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$route) {
 
-  $scope.getMyResponses = function () {
+  $scope.getModelResponses = function () {
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/myResponses',
+      url: 'http://localhost:8080/modelProposals',
     }).success(function (data) {
       $scope.reponses = data;
-      $scope.annonces = [];
       angular.forEach($scope.reponses,function(reponse,key){
-        if(!annonceInCollection(reponse.annonce)){
-          $scope.annonces.push(reponse.annonce);
-        }
         if (reponse.statut=="En attente"){
             reponse.statutOrder=1;
           }
@@ -47,6 +43,41 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
     });
   };
 
+  $scope.getStudentAnnonces = function () {
+    $http({
+      method: 'GET',
+      url: 'http://localhost:8080/studentServices',
+    }).success(function (data) {
+      $scope.reponses = data;
+      $scope.annonces = [];
+      angular.forEach($scope.reponses,function(reponse,key){
+        if(!annonceInCollection(reponse.annonce)){
+          $scope.annonces.push(reponse.annonce);
+        }
+        if (reponse.statut=="En attente"){
+          reponse.statutOrder=1;
+        }
+        else if (reponse.statut=="Validée"){
+          reponse.statutOrder=2;
+        }
+        else{
+          reponse.statutOrder=3;
+        };
+      });
+      $http({
+        method: 'GET',
+        url: 'http://localhost:8080/accessoireList',
+      }).success(function (accessL) {
+        $scope.accessoires=accessL;
+      })
+    }).error(function (data, status) {
+      if(data.message == "Accès refusé"){
+        $location.path("/accessDenied");
+      }else{
+        $location.path("/error");
+      }
+    });
+  };
 
  function annonceInCollection(annonce) {
   for (var i = 0; i < $scope.annonces.length; i++) {

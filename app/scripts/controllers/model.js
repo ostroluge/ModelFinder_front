@@ -39,7 +39,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectModel.shoeSize = $scope.shoeSize;
     postObjectModel.comment = $scope.comment;
     postObjectModel.description = $scope.description;
-    if ($scope.gender = "Homme") {
+    if ($scope.sexe == "Homme") {
       postObjectModel.gender = "1";
     } else {
       postObjectModel.gender = "2";
@@ -52,27 +52,24 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectUser.role = "model";  
       
     postObjectModel.modelPhoto = [];
-       if ($scope.i0){
+      if ($scope.i0){
       var photo0 = {file:$scope.i0};
       console.log(photo0);
       postObjectModel.modelPhoto.push(photo0);
        }
       if ($scope.i1){
       var photo1 = {file:$scope.i1};
-          postObjectModel.modelPhoto.push(photo1);
+      postObjectModel.modelPhoto.push(photo1);
       console.log(photo1);
       }
       if ($scope.i2!= null){
       var photo2 = {file:$scope.i2};
-          postObjectModel.modelPhoto.push(photo2);
+      postObjectModel.modelPhoto.push(photo2);
       console.log(photo2);
       }
       
-      
-      
-
     $http({
-      url: "http://localhost:8080/saveModel",
+      url: "http://localhost:8080/createModel",
       method: "POST",
       dataType: "json",
       data: {model:postObjectModel, user:postObjectUser},
@@ -81,7 +78,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       }
     }).success(function successCallback(response) {
         if (response.response == "success") {
-            $scope.messageCreation = "création OK"
+          $scope.go('/login');
         } else {
           $scope.messageCreation = "Erreur de création"
         }
@@ -104,18 +101,19 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
    $scope.getAllModels = function () {
 	    $http({
 	    method: 'GET',
-	    url: 'http://localhost:8080/modelList',
+	    url: 'http://localhost:8080/usermodelList',
 		  }).success(function(data){
 		    $scope.models = data;
 		    $scope.lowerAge = null;
-            $scope.higherAge = null;
+        $scope.higherAge = null;
 		    $scope.lowerHeight = null;
-            $scope.higherHeight = null;
-            $scope.sexes=['','Femme','Homme'];
-            $scope.sexeSelectionne='';
+        $scope.higherHeight = null;
+        $scope.sexes=['','Femme','Homme'];
+        $scope.sexeSelectionne='';
 		  }).error(function(){
 		    alert("error");
 		  });
+
   };
 
   $scope.go = function (path) {
@@ -168,15 +166,15 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     $scope.ageBetween = function (item) {
     	if ($scope.lowerAge!=null){
     		if ($scope.higherAge!=null){
-    			if ($scope.lowerAge <= $scope.calculerAge(item.dateOfBirth) && $scope.calculerAge(item.dateOfBirth) <= $scope.higherAge)
+    			if ($scope.lowerAge <= $scope.calculerAge(item.model.dateOfBirth) && $scope.calculerAge(item.model.dateOfBirth) <= $scope.higherAge)
         			return item;
     		}else{
-    			if ($scope.lowerAge <= $scope.calculerAge(item.dateOfBirth))
+    			if ($scope.lowerAge <= $scope.calculerAge(item.model.dateOfBirth))
         			return item;
     		}
     	}else{
     		if ($scope.higherAge!=null){
-    			if ($scope.calculerAge(item.dateOfBirth) <= $scope.higherAge)
+    			if ($scope.calculerAge(item.model.dateOfBirth) <= $scope.higherAge)
         			return item;
     		}else{
     			return item;
@@ -187,15 +185,15 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     $scope.heightBetween = function (item) {
     	if ($scope.lowerHeight!=null){
     		if ($scope.higherHeight!=null){
-    			if ($scope.lowerHeight <= item.height && item.height <= $scope.higherHeight)
+    			if ($scope.lowerHeight <= item.model.height && item.model.height <= $scope.higherHeight)
         			return item;
     		}else{
-    			if ($scope.lowerHeight <= item.height)
+    			if ($scope.lowerHeight <= item.model.height)
         			return item;
     		}
     	}else{
     		if ($scope.higherHeight!=null){
-    			if (item.height <= $scope.higherHeight)
+    			if (item.model.height <= $scope.higherHeight)
         			return item;
     		}else{
     			return item;
@@ -204,25 +202,26 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     };
 
     $scope.getSexes = function() {
-        $scope.sexes=['','Femme','Homme'];
+        $scope.sexes=['Femme','Homme'];
     };
-    
+
      $scope.sexeIn = function (item) {
     	if ($scope.sexeSelectionne==''){
     		return item;
     	}else{
     		if ($scope.sexeSelectionne=='Homme'){
-    			if (item.gender == 1)
+    			if (item.model.gender == 1)
         			return item;
     		}else{
-    			if (item.gender != 1)
+    			if (item.model.gender != 1)
         			return item;
     		}
     	}
     };
 
     $scope.deleteModel = function (id) {
-      $http({
+      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) {
+        $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
       }).success(function (response) {
@@ -237,11 +236,17 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             console.log("Error");
             $scope.etatDemande = "Error " + response
           });
+      }
+    else{
+      $scope.getAllModels();
+    }
+
     };
-    
+
     $scope.checkPwd = function(pwd1, pwd2) {
         if(pwd1==pwd2){
             $scope.createModel();
+<<<<<<< HEAD
         } else {
             $scope.confirmationMdp = "Veuillez saisir 2 mots de passe identiques";
         }
@@ -255,6 +260,8 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
         }
         if (this.files.length > 0) {
             reader.readAsDataURL(this.files[0]);
+=======
+>>>>>>> e2439d29b29e4e3988ee56dd487fc130a98a2585
         }
 });
     

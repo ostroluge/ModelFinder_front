@@ -2,25 +2,25 @@
   <div ng-controller="SuggestionModelCtrl">
     <h1 class="titre">Suggestion de modèles</h1>
 
-    <div>{{noSuggestion}}</div>
-      <div class="container-fluid">
-        <div class="card" class="row" ng-repeat="model in message | limitTo:5">
-            <div ng-repeat="photo in model.modelPhoto | limitTo:1">        
-                <div class="col-md-4">
-                    <img src="{{photo.file}}" alt="Photo de mon gite" height="200" width="150"/> 
-                </div>
-                <div class="col-md-8"> 
-                    <div style="font-size:15px; font-weight:bold; cursor:pointer;" ng-click="go('/models/'+model.id+'/show')">
-                        {{model.name}} {{model.lastName}}<br/>
-                    </div>
-                    <div>
-                        {{calculerAge(model.dateOfBirth)}} ans<br/>
-                        {{model.height}} cm<br/>
-                    </div>
-                </div>
-            </div>
+
+    <div class="center">{{noSuggestion}}</div>
+    <div class="container-fluid">
+      <div class="card" class="row" ng-repeat="model in message | limitTo:5">
+        <div ng-repeat="photo in model.modelPhoto | limitTo:1">
+        <div class="col-md-4">
+        <img src="{{photo.file}}" height="200" width="150"/>
         </div>
+        <div class="col-md-8">
+          <div style="font-size:15px; font-weight:bold; cursor:pointer;" ng-click="go('/models/'+model.id+'/show')">
+            {{model.name}} {{model.lastName}}<br/>
+          </div>
+          <div>
+            {{calculerAge(model.dateOfBirth)}} ans<br/>
+            {{model.height}} cm<br/>
+          </div>
         </div>
-       
+      </div>
+    </div>
   </div>
+</div>
 </div>
