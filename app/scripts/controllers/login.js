@@ -14,6 +14,14 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
     $scope.userName = "";
     $scope.userPassword = "";
 
+    $scope.go = function (path) {
+      $location.path(path);
+    };
+
+    if ($scope.isAuthenticated()) {
+      $scope.go('/services');
+    }
+
     $scope.authenticate = function () {
 
       var postObject = new Object();
@@ -59,9 +67,5 @@ modelFinderApp.controller('LoginCtrl', ['$scope', '$http', '$cookies', '$locatio
             $scope.messageAuth = "Error " + response;
           }
         });
-    };
-
-    $scope.go = function (path) {
-      $location.path(path);
     };
   }]);
