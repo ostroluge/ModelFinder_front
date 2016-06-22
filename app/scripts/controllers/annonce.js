@@ -78,28 +78,37 @@ modelFinderApp.controller('AnnonceCtrl', function ($scope, $http, $location, $ro
     postObjectAccessories.accessory4 = $scope.accessorie4;
     postObjectAccessories.accessory5 = $scope.accessorie5;
 
-    $http({
-      url: "http://localhost:8080/createAnnonce",
-      method: "POST",
-      dataType: "json",
-      data: {annonce: postObjectAnnonce,accessories: postObjectAccessories},
-      headers: {
-        "Content-Type": "application/json"
-      }
-    }).success(function successCallback(response) {
-        if (response.response == "success") {
-          $location.path('/services/'+response.id+'/suggestions');
-        } else {
-          $scope.messageCreation = "Erreur de création"
+    if ($scope.heightMaxAnnonce >= $scope.heightMinAnnonce) {
+      $scope.isHeightNotValidated = false;
+      $scope.postAnnonce();
+    } else {
+      $scope.isHeightNotValidated = true;
+    }
+
+    $scope.postAnnonce = function() {
+      $http({
+        url: "http://localhost:8080/createAnnonce",
+        method: "POST",
+        dataType: "json",
+        data: {annonce: postObjectAnnonce,accessories: postObjectAccessories},
+        headers: {
+          "Content-Type": "application/json"
         }
-      })
-      .error(function (data, status) {
-        if(data.message == "Accès refusé"){
-          $location.path("/accessDenied");
-        }else{
-          $location.path("/error");
-        }
-      });
+      }).success(function successCallback(response) {
+          if (response.response == "success") {
+            $location.path('/services/'+response.id+'/suggestions');
+          } else {
+            $scope.messageCreation = "Erreur de création"
+          }
+        })
+        .error(function (data, status) {
+          if(data.message == "Accès refusé"){
+            $location.path("/accessDenied");
+          }else{
+            $location.path("/error");
+          }
+        });
+    }
   };
 
   $scope.addAccessorie = function(accessorie){
