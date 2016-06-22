@@ -10,9 +10,9 @@
 
 modelFinderApp.controller('ProfileCtrl', function ($scope, $cookies) {
 
-  $scope.isAuthenticated = ($cookies.getObject('authenticatedUser') != null);
+  $scope.isUserAuthenticated = ($cookies.getObject('authenticatedUser') != null);
 
-  if ($scope.isAuthenticated) {
+  if ($scope.isUserAuthenticated) {
     $scope.userToShow = $cookies.getObject('authenticatedUser');
   }
 });

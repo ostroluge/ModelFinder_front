@@ -16,7 +16,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
   }).success(function (data) {
     $scope.model = data.model;
     $scope.user = data.user;
-    console.log($scope.model);  
+  
     $scope.model.id = data.model.id;
     $scope.model.lastName = data.model.lastName;
     $scope.model.dateOfBirth = new Date(data.model.dateOfBirth);
@@ -33,23 +33,23 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     $scope.model.lowHeight=data.model.lowHeight;
     $scope.model.description=data.model.description;
     $scope.model.comment=data.model.comment
-      
+    
      if (data.model.gender == 1) {
       $scope.sexe = "Homme";
     } else {
       $scope.sexe = "Femme";
     }
     $scope.sexes=['Femme','Homme'];
-      
-    if(data.model.modelPhoto[0]){  
+
+    if(data.model.modelPhoto[0]){
     $scope.file1 = data.model.modelPhoto[0].file;
      }
     if(data.model.modelPhoto[1]){
     $scope.file2 = data.model.modelPhoto[1].file;
     }
-    if(data.model.modelPhoto[2]){    
+    if(data.model.modelPhoto[2]){
     $scope.file3 = data.model.modelPhoto[2].file;
-    }  
+    }
   }).error(function (data, status) {
     if(data.message == "Accès refusé"){
       $location.path("/accessDenied");
@@ -195,7 +195,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
   };
 
     $scope.deleteModel = function (id) {
-      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) { 
+      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) {
         $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
@@ -215,7 +215,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     };
 
     $scope.deleteLogoutModel = function (id) {
-      if (confirm("Voulez vous vraiment supprimer votre compte ?")) { 
+      if (confirm("Voulez vous vraiment supprimer votre compte ?")) {
         $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
