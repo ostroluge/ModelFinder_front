@@ -15,11 +15,11 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     url: 'http://localhost:8080/detailModel/' + $routeParams.id_model
   }).success(function (data) {
     $scope.id = data.model.id;
-    $scope.lastName = data.model.lastName;  
+    $scope.lastName = data.model.lastName;
     $scope.dateOfBirth = new Date($scope.dateOfBirth);
     $scope.name = data.model.name;
     $scope.mail=data.model.mail;
-    $scope.dateOfBirth=data.model.dateOfBirth;    
+    $scope.dateOfBirth=data.model.dateOfBirth;
     $scope.phoneNumber=data.model.phoneNumber;
     $scope.skinTone=data.model.skinTone;
     $scope.hairColor=data.model.hairColor;
@@ -34,23 +34,23 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
 
     $scope.model = data.model;
     $scope.user = data.user;
-      
-     if (data.gender == 1) {
+
+     if (data.model.gender == 1) {
       $scope.sexe = "Homme";
     } else {
       $scope.sexe = "Femme";
     }
     $scope.sexes=['Femme','Homme'];
-      
-    if(data.model.modelPhoto[0]){  
+
+    if(data.model.modelPhoto[0]){
     $scope.file1 = data.model.modelPhoto[0].file;
      }
     if(data.model.modelPhoto[1]){
     $scope.file2 = data.model.modelPhoto[1].file;
     }
-    if(data.model.modelPhoto[2]){    
+    if(data.model.modelPhoto[2]){
     $scope.file3 = data.model.modelPhoto[2].file;
-    }  
+    }
   }).error(function (data, status) {
     if(data.message == "Accès refusé"){
       $location.path("/accessDenied");
@@ -180,7 +180,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
   };
 
     $scope.deleteModel = function (id) {
-      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) { 
+      if (confirm("Voulez vous vraiment supprimer ce modèle ?")) {
         $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
@@ -200,7 +200,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     };
 
     $scope.deleteLogoutModel = function (id) {
-      if (confirm("Voulez vous vraiment supprimer votre compte ?")) { 
+      if (confirm("Voulez vous vraiment supprimer votre compte ?")) {
         $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteModel/' + id,
