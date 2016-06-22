@@ -14,12 +14,14 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     method: 'GET',
     url: 'http://localhost:8080/detailModel/' + $routeParams.id_model
   }).success(function (data) {
+    $scope.model = data.model;
+    $scope.user = data.user;
+
     $scope.id = data.model.id;
     $scope.lastName = data.model.lastName;
-    $scope.dateOfBirth = new Date($scope.dateOfBirth);
+    $scope.model.dateOfBirth = new Date($scope.model.dateOfBirth);
     $scope.name = data.model.name;
     $scope.mail=data.model.mail;
-    $scope.dateOfBirth=data.model.dateOfBirth;
     $scope.phoneNumber=data.model.phoneNumber;
     $scope.skinTone=data.model.skinTone;
     $scope.hairColor=data.model.hairColor;
@@ -32,8 +34,6 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     $scope.description=data.model.description;
     $scope.comment=data.model.comment
 
-    $scope.model = data.model;
-    $scope.user = data.user;
 
      if (data.model.gender == 1) {
       $scope.sexe = "Homme";
