@@ -52,12 +52,12 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     postObjectUser.role = "model";  
       
     postObjectModel.modelPhoto = [];
-      if ($scope.i0){
+      if ($scope.i0!=null){
       var photo0 = {file:$scope.i0};
       console.log(photo0);
       postObjectModel.modelPhoto.push(photo0);
        }
-      if ($scope.i1){
+      if ($scope.i1!=null){
       var photo1 = {file:$scope.i1};
       postObjectModel.modelPhoto.push(photo1);
       console.log(photo1);
@@ -69,7 +69,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       }
       
     $http({
-      url: "http://localhost:8080/createModel",
+      url: "http://localhost:8080/saveModel",
       method: "POST",
       dataType: "json",
       data: {model:postObjectModel, user:postObjectUser},
@@ -138,18 +138,6 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       $scope.skinToneEnum = skinTone;
     })
   };
-
-    $scope.add = function(){
-      var f = document.getElementById('file').files[0],
-          r = new FileReader();
-      r.onloadend = function(e){
-        $scope.aa = e.target.result;
-      }
-      r.readAsArrayBuffer(f);
-    }
-
-
-
 
   $scope.calculerAge = function (dateOfBirth) {
     var maintenant = new Date();
@@ -246,7 +234,6 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
     $scope.checkPwd = function(pwd1, pwd2) {
         if(pwd1==pwd2){
             $scope.createModel();
-<<<<<<< HEAD
         } else {
             $scope.confirmationMdp = "Veuillez saisir 2 mots de passe identiques";
         }
@@ -260,8 +247,6 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
         }
         if (this.files.length > 0) {
             reader.readAsDataURL(this.files[0]);
-=======
->>>>>>> e2439d29b29e4e3988ee56dd487fc130a98a2585
         }
 });
     
@@ -285,9 +270,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             reader.readAsDataURL(this.files[0]);
         }
 });
-    
-    
-    
+      
     
 });    
 

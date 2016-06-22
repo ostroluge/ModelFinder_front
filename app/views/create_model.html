@@ -2,7 +2,7 @@
   <div ng-controller="ModelCtrl">
     <h1 class="titre">Créer un compte modèle</h1>
     <div ng-init="getSexes()">
-    <form ng-submit="checkPwd(password, passwordConf)"  class="card css-form">
+    <form   class="card css-form">
       <p>Nom:
         <input type="text" ng-model="lastName" required>
       </p>
@@ -80,14 +80,36 @@
         Commentaire :
         <input type="text" ng-model="comment">
       </p>
-      <p>
-        Photos :  
-        <input id="file0" type="file"/>
-        <img id="img0" ng-model="img0"/>
-        <input id="file1" type="file"/>  
-        <img id="img1" ng-model="img1"/>
-        <input id="file2" type="file"/>
-        <img id="img2" ng-model="img2"/>
+    Photos :  
+    <table class="demo">
+	   <thead>
+	   <tr>
+		  <th>Photo 1</th>
+		  <th>Photo 2</th>
+		  <th>Photo 3</th>
+	   </tr>
+	   </thead>
+	   <tbody>
+	   <tr>
+		  <td><input id="file0" type="file" style="display: none;" class="col-sm-4"/>
+                <button class="input_file" value="Browse..." onclick="document.getElementById('file0').click();">Browse ...
+                </button>
+           </td>
+		  <td><input id="file1" type="file" style="display: none;" class="col-sm-4"/>
+                <button class="input_file" value="Browse..." onclick="document.getElementById('file1').click();">Browse ...
+                </button>
+          </td>
+		  <td><input id="file2" type="file" style="display: none;" class="col-sm-4"/>
+                <button class="input_file" value="Browse..." onclick="document.getElementById('file2').click();">Browse ...
+          </button></td>
+	   </tr>
+	   <tr>
+		  <td><div><img id="img0" ng-model="img0" text-align="center" width="100%" height="100%"/></div></td>
+		  <td><div><img id="img1" ng-model="img1" text-align="center" width="100%" height="100%"/></div></td>
+		  <td><div><img id="img2" ng-model="img2" text-align="center"width="100%" height="100%"/></div></td>
+	   </tr>
+	   </tbody>
+    </table>
       <input class="button" type="submit" ng-click="checkPwd(password, passwordConf)" value="Valider">
     </form>
     </div>
