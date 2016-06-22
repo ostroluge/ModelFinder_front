@@ -2,7 +2,7 @@
   <div ng-controller="DetailModelCtrl">
 
     <h1 class="titre">Editer son profil</h1>
-    <form ng-submit="checkPwdModify(password, passwordConf)"  class="card css-form">
+    <form class="card css-form">
       <p>Nom:
         <input type="text" ng-model="model.lastName" required>
       </p>
@@ -79,7 +79,37 @@
       <p> Confirmation de Mot de Passe:
         <input type="password" ng-model="passwordConf"> {{passwordError}}
       </p>
-        <input class="button" type="submit" id="submit" value="Valider">
+        Photos :  
+    <table class="demo">
+	   <thead>
+	   <tr>
+		  <th>Photo 1</th>
+		  <th>Photo 2</th>
+		  <th>Photo 3</th>
+	   </tr>
+	   </thead>
+	   <tbody>
+	   <tr>
+		  <td><input id="file0" type="file" style="display: none;" class="col-sm-4"/>
+                <button class="input_file" value="Browse..." onclick="document.getElementById('file0').click();">Browse ...
+                </button>
+           </td>
+		  <td><input id="file1" type="file" style="display: none;" class="col-sm-4"/>
+                <button class="input_file" value="Browse..." onclick="document.getElementById('file1').click();">Browse ...
+                </button>
+          </td>
+		  <td><input id="file2" type="file" style="display: none;" class="col-sm-4"/>
+                <button class="input_file" value="Browse..." onclick="document.getElementById('file2').click();">Browse ...
+          </button></td>
+	   </tr>
+	   <tr>
+		  <td><div><img id="img0" ng-model="img0" src="{{file1}}" text-align="center" width="100%" height="100%"/></div></td>
+		  <td><div><img id="img1" ng-model="img1" src="{{file2}}" text-align="center" width="100%" height="100%"/></div></td>
+		  <td><div><img id="img2" ng-model="img2" src="{{file3}}" text-align="center"width="100%" height="100%"/></div></td>
+	   </tr>
+	   </tbody>
+    </table>
+        <input class="button" type="submit" id="submit" ng-click="modifyModel()" value="Valider">
       </form>
   </div>
 </div>

@@ -68,6 +68,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       console.log(photo2);
       }
       
+      
     $http({
       url: "http://localhost:8080/saveModel",
       method: "POST",

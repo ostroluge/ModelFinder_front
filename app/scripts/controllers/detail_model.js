@@ -14,28 +14,27 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     method: 'GET',
     url: 'http://localhost:8080/detailModel/' + $routeParams.id_model
   }).success(function (data) {
-    $scope.id = data.model.id;
-    $scope.lastName = data.model.lastName;  
-    $scope.dateOfBirth = new Date($scope.dateOfBirth);
-    $scope.name = data.model.name;
-    $scope.mail=data.model.mail;
-    $scope.dateOfBirth=data.model.dateOfBirth;    
-    $scope.phoneNumber=data.model.phoneNumber;
-    $scope.skinTone=data.model.skinTone;
-    $scope.hairColor=data.model.hairColor;
-    $scope.eyeColor=data.model.eyeColor;
-    $scope.lengthHair=data.model.lengthHair;
-    $scope.height=data.model.height;
-    $scope.shoeSize=data.model.shoeSize;
-    $scope.highHeight=data.model.highHeight;
-    $scope.lowHeight=data.model.lowHeight;
-    $scope.description=data.model.description;
-    $scope.comment=data.model.comment
-
     $scope.model = data.model;
     $scope.user = data.user;
+    console.log($scope.model);  
+    $scope.model.id = data.model.id;
+    $scope.model.lastName = data.model.lastName;
+    $scope.model.dateOfBirth = new Date(data.model.dateOfBirth);
+    $scope.model.name = data.model.name;
+    $scope.model.mail=data.model.mail;    
+    $scope.model.phoneNumber=data.model.phoneNumber;
+    $scope.model.skinTone=data.model.skinTone;
+    $scope.model.hairColor=data.model.hairColor;
+    $scope.model.eyeColor=data.model.eyeColor;
+    $scope.model.lengthHair=data.model.lengthHair;
+    $scope.model.height=data.model.height;
+    $scope.model.shoeSize=data.model.shoeSize;
+    $scope.model.highHeight=data.model.highHeight;
+    $scope.model.lowHeight=data.model.lowHeight;
+    $scope.model.description=data.model.description;
+    $scope.model.comment=data.model.comment
       
-     if (data.gender == 1) {
+     if (data.model.gender == 1) {
       $scope.sexe = "Homme";
     } else {
       $scope.sexe = "Femme";
@@ -104,6 +103,22 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
     } else {
       $scope.model.gender = 2;
     }
+      
+      if ($scope.i0!=null){
+      var photo0 = {file:$scope.i0};
+      console.log(photo0);
+      $scope.model.modelPhoto[0]=photo0;
+       }
+      if ($scope.i1!=null){
+      var photo1 = {file:$scope.i1};
+      $scope.model.modelPhoto[1]=photo1;
+      console.log(photo1);
+      }
+      if ($scope.i2!= null){
+      var photo2 = {file:$scope.i2};
+      $scope.model.modelPhoto[2]=photo2;
+      console.log(photo2);
+      }
     $http({
           url: "http://localhost:8080/modifyModel",
           method: "POST",
@@ -219,6 +234,38 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
       }
     };
 
+
+         $("#file0").change(function () {
+         var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img0').attr('src', e.target.result);
+            $scope.i0 = e.target.result;
+        }
+        if (this.files.length > 0) {
+            reader.readAsDataURL(this.files[0]);
+        }
+});
+    
+  $("#file1").change(function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img1').attr('src', e.target.result);
+            $scope.i1 = e.target.result;
+        }
+        if (this.files.length > 0) {
+            reader.readAsDataURL(this.files[0]);
+        }
+});
+     $("#file2").change(function () {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+            $('#img2').attr('src', e.target.result);
+            $scope.i2 = e.target.result;
+        }
+        if (this.files.length > 0) {
+            reader.readAsDataURL(this.files[0]);
+        }
+});
 
 });
 
