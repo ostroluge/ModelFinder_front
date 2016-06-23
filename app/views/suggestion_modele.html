@@ -6,21 +6,27 @@
     <div class="center">{{noSuggestion}}</div>
     <div class="container-fluid">
       <div class="card" class="row" ng-repeat="model in message | limitTo:5">
-        <div ng-repeat="photo in model.modelPhoto | limitTo:1">
-        <div class="col-md-4">
-        <img src="{{photo.file}}" height="200" width="150"/>
-        </div>
-        <div class="col-md-8">
-          <div style="font-size:15px; font-weight:bold; cursor:pointer;" ng-click="go('/models/'+model.id+'/show')">
-            {{model.name}} {{model.lastName}}<br/>
-          </div>
-          <div>
-            {{calculerAge(model.dateOfBirth)}} ans<br/>
-            {{model.height}} cm<br/>
+        <table class="list">
+	       <tbody>
+            <tr>   
+	           <td>
+		          <div><img src="{{model.modelPhoto[0].file}}" border="0" width="100px" height="100px"></div>
+	           </td>
+                <td>
+                    <div style="font-size:15px; font-weight:bold; cursor:pointer;" ng-click="go('/models/'+model.id+'/show')">
+                    {{model.name}} {{model.lastName}}<br/>
+                    </div>
+                    <div>
+                    {{calculerAge(model.dateOfBirth)}} ans<br/>
+                    {{model.height}} cm<br/>
+                    </div>
+                </td>
+            </tr>   
+            </tbody>
+        </table>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
-</div>
+
+
