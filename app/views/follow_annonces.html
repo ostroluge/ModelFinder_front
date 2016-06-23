@@ -31,19 +31,49 @@
           Modele : <a ng-href='/#/models/{{reponse.model.id}}/show'>{{reponse.model.name}} {{reponse.model.lastName}}</a><br>
           Statut : {{reponse.statut}}<br>
           <div ng-if="groupeAccessoires.accessory1">
-            {{groupeAccessoires.accessory1}} : {{reponse.statusAccessory1}} <br>
+            {{groupeAccessoires.accessory1}} :
+          <span ng-if="reponse.statusAccessory1 == 'Ko'">
+            <img src="images/delete_button.png" title="Vous n'avez pas cet accessoire" height="15"/>
+          </span>
+          <span ng-if="reponse.statusAccessory1 == 'Ok'">
+             <img src="images/logo_valider.png" title="Vous possédez cet accessoire" height="15"/>
+          </span><br>
           </div>
           <div ng-if="groupeAccessoires.accessory2">
-            {{groupeAccessoires.accessory2}} : {{reponse.statusAccessory2}} <br>
+              {{groupeAccessoires.accessory2}} :
+          <span ng-if="reponse.statusAccessory2 == 'Ko'">
+            <img src="images/delete_button.png" title="Vous n'avez pas cet accessoire" height="15"/>
+          </span>
+          <span ng-if="reponse.statusAccessory2 == 'Ok'">
+             <img src="images/logo_valider.png" title="Vous possédez cet accessoire" height="15"/>
+          </span><br>
           </div>
           <div ng-if="groupeAccessoires.accessory3">
-            {{groupeAccessoires.accessory3}} : {{reponse.statusAccessory3}} <br>
+              {{groupeAccessoires.accessory3}} :
+          <span ng-if="reponse.statusAccessory3 == 'Ko'">
+            <img src="images/delete_button.png" title="Vous n'avez pas cet accessoire" height="15"/>
+          </span>
+          <span ng-if="reponse.statusAccessory3 == 'Ok'">
+             <img src="images/logo_valider.png" title="Vous possédez cet accessoire" height="15"/>
+          </span><br>
           </div>
           <div ng-if="groupeAccessoires.accessory4">
-            {{groupeAccessoires.accessory4}} : {{reponse.statusAccessory4}} <br>
-          </div>
+              {{groupeAccessoires.accessory4}} :
+          <span ng-if="reponse.statusAccessory4 == 'Ko'">
+            <img src="images/delete_button.png" title="Vous n'avez pas cet accessoire" height="15"/>
+          </span>
+          <span ng-if="reponse.statusAccessory4 == 'Ok'">
+             <img src="images/logo_valider.png" title="Vous possédez cet accessoire" height="15"/>
+          </span><br>
+            </div>
           <div ng-if="groupeAccessoires.accessory5">
-            {{groupeAccessoires.accessory5}} : {{reponse.statusAccessory5}} <br>
+              {{groupeAccessoires.accessory5}} :
+          <span ng-if="reponse.statusAccessory5 == 'Ko'">
+            <img src="images/delete_button.png" title="Vous n'avez pas cet accessoire" height="15"/>
+          </span>
+          <span ng-if="reponse.statusAccessory5 == 'Ok'">
+             <img src="images/logo_valider.png" title="Vous possédez cet accessoire" height="15"/>
+          </span><br>
           </div>
           <div ng-if="reponse.comment">
             Commentaire : {{reponse.comment}} <br>

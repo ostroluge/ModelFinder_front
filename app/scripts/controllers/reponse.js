@@ -124,7 +124,7 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
       $scope.updateStatusAnnonce(postObject.annonce.id, "Inactive");
 
       $http({
-        url: "http://localhost:8080/modifyReponse",
+        url: "http://localhost:8080/modifyReponseStatus",
         method: "POST",
         dataType: "json",
         data: postObject,
@@ -133,6 +133,7 @@ modelFinderApp.controller('ReponseCtrl', function ($scope, $http,$location,$rout
         }
       }).success(function successCallback(response) {
           if (response.response == "success") {
+            $location.path("/monitoring/services");
             console.log("OK");
             $scope.etatDemande = "La demande a été envoyée avec succès.";
             $scope.reponses[indexReponseInResponses(id)].statut="Validée";
@@ -166,7 +167,7 @@ $scope.refuserReponse = function (id) {
       postObject.statut = "Refusée";
 
     $http({
-        url: "http://localhost:8080/modifyReponse",
+        url: "http://localhost:8080/modifyReponseStatus",
         method: "POST",
         dataType: "json",
         data: postObject,
@@ -175,6 +176,7 @@ $scope.refuserReponse = function (id) {
         }
       }).success(function successCallback(response) {
           if (response.response === "success") {
+            $location.path("/monitoring/services");
             console.log("OK");
             $scope.etatDemande = "La demande a été envoyée avec succès.";
             $scope.reponses[indexReponseInResponses(id)].statut="Refusée";
@@ -242,7 +244,6 @@ $scope.refuserReponse = function (id) {
           if (response.response == "success") {
             console.log("OK");
             $scope.etatDemande = "La demande a été envoyée avec succès.";
-            $scope.getStudentResponses();
             } else {
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
@@ -254,11 +255,11 @@ $scope.refuserReponse = function (id) {
             $location.path("/error");
           }
         });
-    };    
+    };
 
 
     $scope.updateStatusAnnonce = function (id, new_status) {
-    $http({
+      $http({
       method: 'GET',
       url: 'http://localhost:8080/detailAnnonce/' + id,
     }).success(function (data) {
@@ -278,41 +279,13 @@ $scope.refuserReponse = function (id) {
           "Content-Type": "application/json"
         }
       }).success(function successCallback(response) {
-
-          if (response.response == "success") {
-            if (new_status=="Inactive"){
-              $http({
-                method: 'GET',
-                url: 'http://localhost:8080/ReponsesByAnnonceAndStatut/' + id +'/En attente',
-                 }).success(function (data) {
-                  var reponsesaRefuser = new Object();
-                  reponsesaRefuser = data;
-                  angular.forEach(reponsesaRefuser,function(reponse,key){
-                    $scope.refuserReponse(reponse.id);
-                  });
-                  $scope.annonces[indexAnnonceInAnnonces(id)].status="Inactive";
-                 });
-              }
-            if (new_status=="Active"){
-              $http({
-                method: 'GET',
-                url: 'http://localhost:8080/ReponsesByAnnonce/' + id,
-                 }).success(function (data) {
-                  var reponsesaSupprimer = new Object();
-                  reponsesaSupprimer = data;
-                  angular.forEach(reponsesaSupprimer,function(reponse,key){
-                    $scope.deleteReponseByStudent(reponse.id);
-                  });
-                  $scope.annonces[indexAnnonceInAnnonces(id)].status="Active";
-                 });
-              }
-            console.log("OK");
-            $scope.etatDemande = "La demande a été envoyée avec succès.";
-          } else {
-            console.log("KO");
-            $scope.etatDemande = "Échec de la demande, veuillez réessayer."
-          }
-        }).error(function (data, status) {
+        $http({
+          url: 'http://localhost:8080/deleteAllReponse/' + id,
+          method: "GET"
+        }).success(function successCallback(response) {
+          $route.reload();
+        });
+      }).error(function (data, status) {
         if(data.message == "Accès refusé"){
           $location.path("/accessDenied");
         }else{
