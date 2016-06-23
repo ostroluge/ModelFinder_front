@@ -202,7 +202,7 @@ $scope.refuserReponse = function (id) {
 
 
 
-    $scope.deleteReponse = function (id) {
+    $scope.deleteReponseByModel = function (id) {
         $http({
         url: "http://localhost:8080/supprimerReponse",
         method: "POST",
@@ -215,7 +215,7 @@ $scope.refuserReponse = function (id) {
           if (response.response == "success") {
             console.log("OK");
             $scope.etatDemande = "La demande a été envoyée avec succès.";
-            $scope.getAllResponses();
+            $scope.getModelResponses();
             } else {
             console.log("KO");
             $scope.etatDemande = "Échec de la demande, veuillez réessayer."
@@ -228,6 +228,33 @@ $scope.refuserReponse = function (id) {
           }
         });
     };
+
+  $scope.deleteReponseByStudent = function (id) {
+        $http({
+        url: "http://localhost:8080/supprimerReponse",
+        method: "POST",
+        dataType: "json",
+        data: id,
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).success(function successCallback(response) {
+          if (response.response == "success") {
+            console.log("OK");
+            $scope.etatDemande = "La demande a été envoyée avec succès.";
+            $scope.getStudentResponses();
+            } else {
+            console.log("KO");
+            $scope.etatDemande = "Échec de la demande, veuillez réessayer."
+          }
+        }).error(function (data, status) {
+          if(data.message == "Accès refusé"){
+            $location.path("/accessDenied");
+          }else{
+            $location.path("/error");
+          }
+        });
+    };    
 
 
     $scope.updateStatusAnnonce = function (id, new_status) {
@@ -274,7 +301,7 @@ $scope.refuserReponse = function (id) {
                   var reponsesaSupprimer = new Object();
                   reponsesaSupprimer = data;
                   angular.forEach(reponsesaSupprimer,function(reponse,key){
-                    $scope.deleteReponse(reponse.id);
+                    $scope.deleteReponseByStudent(reponse.id);
                   });
                   $scope.annonces[indexAnnonceInAnnonces(id)].status="Active";
                  });
