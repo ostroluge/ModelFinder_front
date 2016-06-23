@@ -1,7 +1,7 @@
 <div ng-app="modelFinderApp">
-  <div ng-controller="StudentCtrl">
+  <div ng-controller="StudentCtrl" class="card">
     <h1 class="titre">Créer un compte étudiant</h1>
-    <form ng-submit="checkPwd(password, passwordConf)"  class="card css-form">
+    <form ng-submit="checkPwd(password, passwordConf)" class="css-form">
       <p>Nom:
         <input type="text" ng-model="lastName" required>
       </p>
@@ -17,12 +17,13 @@
       <p> Confirmation de Mot de Passe:
         <input type="password" ng-model="passwordConf" required>
       </p>
-        <label id="confMdp" style="color:#FF0000">{{confirmationMdp}}</label>
+      <label id="confMdp" style="color:#FF0000">{{confirmationMdp}}</label>
       <p>
         Date de naissance:
         <input type="date" ng-model="birthDate" required>
       </p>
       <input class="button" type="submit" id="submit" value="Valider">
     </form>
+    <p class="center">{{messageCreation}}</p>
   </div>
 </div>

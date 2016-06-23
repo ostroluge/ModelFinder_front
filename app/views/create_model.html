@@ -1,8 +1,8 @@
 <div ng-app="modelFinderApp">
   <div ng-controller="ModelCtrl">
     <h1 class="titre">Créer un compte modèle</h1>
-    <div ng-init="getSexes()">
-    <form   class="card css-form">
+    <div class="card" ng-init="getSexes()">
+    <form  class="css-form">
       <p>Nom:
         <input type="text" ng-model="lastName" required>
       </p>
@@ -27,17 +27,17 @@
         <select ng-model="sexe" required>
           <option data-ng-repeat="sexe in sexes" value="{{sexe}}">{{sexe}}</option>
         </select>
-      </p>    
+      </p>
       <p> Telephone:
         <input type="tel" ng-model="phoneNumber" required>
-      </p>    
+      </p>
       <p data-ng-init="getSkinToneEnum()">
         Carnation de peau :
         <select ng-model="skinToneModel" required>
           <option value=""></option>
           <option data-ng-repeat="skinTone in skinToneEnum" value="{{skinTone}}">{{skinTone}}</option>
         </select><br>
-      </p>  
+      </p>
       <p>
         Couleur cheveux :
         <input type="text" ng-model="hairColor" required>
@@ -80,7 +80,7 @@
         Commentaire :
         <input type="text" ng-model="comment">
       </p>
-    Photos :  
+    Photos :
     <table class="demo">
 	   <thead>
 	   <tr>
@@ -110,9 +110,10 @@
 	   </tr>
 	   </tbody>
     </table>
+      <br>
       <input class="button" type="submit" ng-click="checkPwd(password, passwordConf)" value="Valider">
     </form>
+    <p class="center">{{messageCreation}}</p>
     </div>
-    <p>{{messageCreation}}</p>
   </div>
 </div>
