@@ -119,7 +119,7 @@ $http({
   $scope.refuserReponse = function (id) {
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/OneReponse/' + id,
+      url: 'http://localhost:8080/detailReponse/' + id,
     }).success(function (data) {
 
       var postObject = new Object();
