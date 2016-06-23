@@ -14,7 +14,7 @@ modelFinderApp.controller('ModifyReponseCtrl', function ($scope, $http, $locatio
 
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/OneReponse/' + $routeParams.id_reponse,
+      url: 'http://localhost:8080/detailReponse/' + $routeParams.id_reponse,
     }).success(function (rep) {
         $scope.laReponse = rep;
 
@@ -100,7 +100,7 @@ modelFinderApp.controller('ModifyReponseCtrl', function ($scope, $http, $locatio
     else {
       return 'erreur';
     }
-  };  
+  };
 
   $scope.go = function (path) {
     $location.path(path);
@@ -150,7 +150,7 @@ modelFinderApp.controller('ModifyReponseCtrl', function ($scope, $http, $locatio
       }
     }
 
-    
+
       $http({
         url: "http://localhost:8080/modifyReponse",
         method: "POST",
@@ -170,7 +170,7 @@ modelFinderApp.controller('ModifyReponseCtrl', function ($scope, $http, $locatio
         .error(function errorCallback(response) {
           console.log("Error");
         });
-    
+
   };
 
 });
