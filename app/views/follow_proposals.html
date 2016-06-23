@@ -30,12 +30,12 @@
         Commentaire : {{reponse.comment}} <br>
       </div>
       <div class='row' ng-if="reponse.statut=='En attente'">
-            <div class='col-md-6'><input class="button floatRight" type="submit" ng-click="deleteReponse(reponse.id)" value="Supprimer"></div>
+            <div class='col-md-6'><input class="button floatRight" type="submit" ng-click="deleteReponseByModel(reponse.id)" value="Supprimer"></div>
 
             <div class='col-md-6 '><button class="button floatLeft" ng-click="go('/proposals/'+reponse.id+'/edit')">Modifier</button></div>
       </div>
       <div ng-if="reponse.statut!='En attente'">
-        <input class="button" type="submit" ng-click="deleteReponse(reponse.id)" value="Supprimer">
+        <input class="button" type="submit" ng-click="deleteReponseByModel(reponse.id)" value="Supprimer">
        </div>
     </div>
   </div>

@@ -68,7 +68,7 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
   };
 
   $scope.deleteStudent = function (id) {
-    if (confirm("Voulez vous vraiment supprimer cet étudiant ?")) { 
+    if (confirm("Voulez vous vraiment supprimer cet étudiant ?")) {
         $http({
         method: 'GET',
         url: 'http://localhost:8080/deleteStudent/' + id,
@@ -123,7 +123,11 @@ modelFinderApp.controller('StudentCtrl', function ($scope, $http, $location) {
         }
       })
       .error(function errorCallback(response) {
-        $scope.messageCreation = "Error " + response
+        if (response.status = 500) {
+          $scope.messageCreation = "Un utilisateur avec l'adresse mail " + $scope.mail + " existe déjà"
+        } else {
+          $scope.messageCreation = "Error " + response
+        }
       });
     };
 

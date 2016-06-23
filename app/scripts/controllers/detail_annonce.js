@@ -32,14 +32,43 @@ $http({
   $scope.status=data.annonce.status;
   $scope.accessories = {accessory1 : data.accessories.accessory1,accessory2 : data.accessories.accessory2,
     accessory3 : data.accessories.accessory3,accessory4 : data.accessories.accessory4,accessory5 : data.accessories.accessory5};
+  $scope.hadApply();
 
   }).error(function (data, status) {
-  if(data.message == "Accès refusé"){
-    $location.path("/accessDenied");
-  }else{
-    $location.path("/error");
-  }
-});
+    if(data.message == "Accès refusé"){
+     $location.path("/accessDenied");
+    }else{
+     $location.path("/error");
+    }
+  });
+
+$scope.hadApply = function () {
+
+    $http({
+      url: "http://localhost:8080/hadApply",
+      method: "POST",
+      dataType: "json",
+      data: $routeParams.id_annonce,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).success(function successCallback(response) {
+      if (response.response == "Had apply") {
+        $scope.apply = "Had apply";
+      } else if (response.response == "Had not apply") {
+        $scope.apply = "Had not apply";
+      } else {
+        $scope.apply = "Not a model";
+      }
+    }).error(function (data, status) {
+      if (data.message == "Accès refusé") {
+        $location.path("/accessDenied");
+      } else {
+        $location.path("/error");
+      }
+    });
+
+  };
 
   $scope.go = function (path) {
     $location.path(path);
@@ -119,7 +148,7 @@ $http({
   $scope.refuserReponse = function (id) {
     $http({
       method: 'GET',
-      url: 'http://localhost:8080/OneReponse/' + id,
+      url: 'http://localhost:8080/detailReponse/' + id,
     }).success(function (data) {
 
       var postObject = new Object();

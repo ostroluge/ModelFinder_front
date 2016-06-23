@@ -31,7 +31,6 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
     var maintenant = new Date();
     var birth = new Date(dateOfBirth);
     var age = dateDiff(birth, maintenant);
-    console.log(age);
     return age;
   };
 
@@ -69,7 +68,7 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
       }).success(function (response) {
             if (response.response === "success") {
               console.log("OK");
-              $scope.getAllStudents();
+              $scope.go('/students');
             } else {
               console.log("KO");
             }
@@ -79,9 +78,26 @@ modelFinderApp.controller('DetailStudentCtrl', function ($http,$scope, $routePar
             $scope.etatDemande = "Error " + response
           });
       }
-    else{
-      $scope.getAllStudents();
-    }
+  };
+
+    $scope.deleteLogoutStudent = function (id) {
+    if (confirm("Voulez vous vraiment supprimer votre compte ?")) { 
+        $http({
+        method: 'GET',
+        url: 'http://localhost:8080/deleteStudent/' + id,
+      }).success(function (response) {
+            if (response.response === "success") {
+              console.log("OK");
+              $scope.go('/logout');
+            } else {
+              console.log("KO");
+            }
+          })
+          .error(function errorCallback(response) {
+            console.log("Error");
+            $scope.etatDemande = "Error " + response
+          });
+      }
   };
 
     $scope.checkPwdModify = function(pwd1, pwd2) {

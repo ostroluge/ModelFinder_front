@@ -10,7 +10,7 @@
 
 modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
 
-    
+
 
   $scope.go = function (path) {
     $location.path(path);
@@ -43,14 +43,14 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       postObjectModel.gender = "1";
     } else {
       postObjectModel.gender = "2";
-    }  
-      
+    }
+
     var postObjectUser = new Object();
     postObjectUser.password = $scope.password;
     postObjectUser.mail = $scope.mail;
     postObjectUser.isValidated = "true";
-    postObjectUser.role = "model";  
-      
+    postObjectUser.role = "model";
+
     postObjectModel.modelPhoto = [];
       if ($scope.i0!=null){
       var photo0 = {file:$scope.i0};
@@ -67,8 +67,8 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
       postObjectModel.modelPhoto.push(photo2);
       console.log(photo2);
       }
-      
-      
+
+
     $http({
       url: "http://localhost:8080/saveModel",
       method: "POST",
@@ -85,7 +85,11 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
         }
       })
       .error(function errorCallback(response) {
-        $scope.messageCreation = "Error " + response
+        if (response.status = 500) {
+          $scope.messageCreation = "Un utilisateur avec l'adresse mail " + $scope.mail + " existe déjà"
+        } else {
+          $scope.messageCreation = "Error " + response
+        }
       });
     };
 
@@ -239,7 +243,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             $scope.confirmationMdp = "Veuillez saisir 2 mots de passe identiques";
         }
     };
-  
+
      $("#file0").change(function () {
          var reader = new FileReader();
         reader.onload = function (e) {
@@ -250,7 +254,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             reader.readAsDataURL(this.files[0]);
         }
 });
-    
+
   $("#file1").change(function () {
         var reader = new FileReader();
         reader.onload = function (e) {
@@ -271,7 +275,7 @@ modelFinderApp.controller('ModelCtrl', function ($scope, $http, $location) {
             reader.readAsDataURL(this.files[0]);
         }
 });
-      
-    
-});    
+
+
+});
 

@@ -30,7 +30,13 @@
             <div class='col-md-4'><button class="button floatLeft" type="submit" ng-click="updateStatus(id,'Inactive')">Désactiver l'annonce</button></div>
         </div>
         <div ng-if="isModel()">
-            <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button>
+            <div ng-if="apply == 'Had not apply'">
+                <button class="button" ng-click="go('/services/'+id+'/applications/new')">Postuler</button>
+            </div>
+            <div ng-if="apply == 'Had apply'">
+            <div class='center'>Vous avez postulé à cette annonce.</div><br>
+                <button class="button" ng-click="go('/monitoring/proposals')">Suivre ses propositions</button>
+            </div>
         </div>
     </div>
     <div class='row' ng-if="status=='Inactive'">

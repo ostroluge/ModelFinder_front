@@ -19,7 +19,6 @@ $(function(){
     <h1 class="soustitre">{{model.name}} {{model.lastName}}</h1>
       <div class="container-fluid">
         <div class="card">
-            <div class="card">
                 <div id="cont_slides" class="container" class ="col-md-5">    
                     <div id="slides" class="col-md-5">
                         <img src="{{file1}}" width="50%" height="100%">
@@ -49,7 +48,7 @@ $(function(){
             </div>
             <div class='row'>
             <div ng-if="isAdmin()">
-                <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+id+'/edit')">Editer le modèle</button></div>
+                <button class="button" type="submit" ng-click="deleteModel(model.id)">Supprimer le modèle</button>
             </div>
             <div ng-if="isModel()">
                 <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/models/'+model.id+'/edit')">Editer son compte</button></div>
@@ -59,4 +58,3 @@ $(function(){
         </div>
       </div>
   </div>
-</div>

@@ -22,11 +22,11 @@
         Etat : Compte validé<br><br>
         <div class='row'>
           <div ng-if="isAdmin()">
-            <button class="button" type="submit" ng-click="deleteStudent(student.id)">Supprimer l'étudiant</button>
+            <button class="button" type="submit" ng-click="deleteModel(student.id)">Supprimer l'étudiant</button>
           </div>
           <div ng-if="isStudentWithId(user.id)">
             <div class='col-md-6'><button class="button floatRight" type="submit" ng-click="go('/students/'+student.id+'/edit')">Editer son compte</button></div>
-          <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteStudent(student.id)">Supprimer son compte</button></div>
+          <div class='col-md-6 '><button class="button floatLeft" type="submit" ng-click="deleteLogoutStudent(student.id)">Supprimer son compte</button></div>
           </div>
         </div>
       </div>

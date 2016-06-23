@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="styles/main.css">
   <link href="styles/bootstrap.min.css" rel="stylesheet">   
-  <link href="styles/basic.css" rel="stylesheet">    
   <script src="scripts/jquery-2.2.3.js"></script>
   <script src="scripts/jquery.slides.js"></script>
   <script src="scripts/jquery.slides.min.js"></script>
@@ -48,7 +47,7 @@
         <div ng-if="!isAuthenticated()">
           <li class="active"><a href="#/login">Se connecter</a></li>
           <li class="active"><a href="#/models/new">Créer un compte modèle</a></li>
-          <li class="active"><a href="#/students/new">Creer un compte étudiant</a></li>
+          <li class="active"><a href="#/students/new">Créer un compte étudiant</a></li>
         </div>
         <div ng-if="isAuthenticated()">
           <div ng-if="isAdmin()">
