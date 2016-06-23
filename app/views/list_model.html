@@ -28,10 +28,21 @@
       </label>
     </div>
     <div class="card" ng-repeat="um in models |filter:search:strict| filter:ageBetween | filter:heightBetween | filter:sexeIn">
+        <table class="list">
+	   <tbody>
+        <tr>   
+	   <td>
+		  <div><img src="{{um.model.modelPhoto[0].file}}" border="0" width="100px" height="100px"></div>
+	   </td>
+        <td>
         {{um.model.name}} {{um.model.lastName}}<br>
         Adresse mail : {{um.user.mail}}<br>
         Age : {{calculerAge(um.model.dateOfBirth)}} ans<br>
         Taille : {{um.model.height}} cm<br>
+        </td>
+        </tr>   
+        </tbody>
+        </table>
       <div class='row'>
         <div ng-if="isStudent()">
           <button class="button" ng-click="go('/models/'+um.model.id+'/show')">Voir les détails</button>

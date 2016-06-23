@@ -19,6 +19,7 @@ modelFinderApp.controller('SuggestionModelCtrl', function ($scope, $http, $locat
       $scope.message = "";
     } else {
       $scope.message = data;
+        console.log(data);
     }
 
   }).error(function (data, status) {
@@ -37,7 +38,6 @@ modelFinderApp.controller('SuggestionModelCtrl', function ($scope, $http, $locat
         var maintenant = new Date();
         var birth = new Date(dateOfBirth);
         var age = dateDiff(birth,maintenant);
-        console.log(age);
         return age;
     };
 
