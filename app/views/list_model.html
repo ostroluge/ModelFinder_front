@@ -31,9 +31,9 @@
         <table class="list">
 	   <tbody>
         <tr>   
-	   <td>
+	   <td ng-if="um.model.modelPhoto[0].file">
 		  <div><img src="{{um.model.modelPhoto[0].file}}" border="0" width="100px" height="100px"></div>
-	   </td>
+	   </td><td width='10px' ng-if="um.model.modelPhoto[0].file"></td>
         <td>
         {{um.model.name}} {{um.model.lastName}}<br>
         Adresse mail : {{um.user.mail}}<br>
