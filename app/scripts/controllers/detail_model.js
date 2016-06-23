@@ -106,19 +106,21 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
       
       if ($scope.i0!=null){
       var photo0 = {file:$scope.i0};
-      console.log(photo0);
+      console.log($scope.i0);
       $scope.model.modelPhoto[0]=photo0;
        }
       if ($scope.i1!=null){
       var photo1 = {file:$scope.i1};
       $scope.model.modelPhoto[1]=photo1;
-      console.log(photo1);
+      console.log($scope.i1);
       }
       if ($scope.i2!= null){
       var photo2 = {file:$scope.i2};
       $scope.model.modelPhoto[2]=photo2;
-      console.log(photo2);
+      console.log($scope.i2);
       }
+      
+      console.log($scope.model);
     $http({
           url: "http://localhost:8080/modifyModel",
           method: "POST",
@@ -266,6 +268,24 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
             reader.readAsDataURL(this.files[0]);
         }
 });
+     $scope.myReset = function (num) {
+            if(num==0)
+                {
+                    $scope.file1 = null;
+                    $scope.i0 = null;
+                    $scope.model.modelPhoto[0].file =null;
+                }else if(num==1)
+                    {
+                        $scope.file2 = null;
+                        $scope.i1 = null;
+                        $scope.model.modelPhoto[1].file=null;
+                    }else if(num==2)
+                        {
+                            $scope.file3 = null;
+                            $scope.i2 = null;
+                            $scope.model.modelPhoto[2].file=null;
+                        }
+};
 
 });
 

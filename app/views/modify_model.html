@@ -93,14 +93,21 @@
 		  <td><input id="file0" type="file" style="display: none;" class="col-sm-4"/>
                 <button class="input_file" value="Browse..." onclick="document.getElementById('file0').click();">Browse ...
                 </button>
+                <button value="Delete" ng-click="myReset(0)">Delete
+                </button>
            </td>
 		  <td><input id="file1" type="file" style="display: none;" class="col-sm-4"/>
                 <button class="input_file" value="Browse..." onclick="document.getElementById('file1').click();">Browse ...
                 </button>
+                <button value="Delete" ng-click="myReset(1)">Delete
+                </button>
           </td>
 		  <td><input id="file2" type="file" style="display: none;" class="col-sm-4"/>
                 <button class="input_file" value="Browse..." onclick="document.getElementById('file2').click();">Browse ...
-          </button></td>
+                </button>
+                <button value="Delete" ng-click="myReset(2)">Delete
+                </button>
+          </td>
 	   </tr>
 	   <tr>
 		  <td><div><img id="img0" ng-model="img0" src="{{file1}}" text-align="center" width="100%" height="100%"/></div></td>
