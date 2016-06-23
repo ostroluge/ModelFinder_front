@@ -202,7 +202,7 @@ modelFinderApp.controller('DetailModelCtrl', function ($scope, $http, $location,
       }).success(function (response) {
             if (response.response === "success") {
               console.log("OK");
-              $scope.getAllModels();
+              $scope.go("/models");
             } else {
               console.log("KO");
             }
